@@ -1,36 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import LoginButton from "./components/Login";
-import LogoutButton from "./components/Logout";
+import React from "react";
+import {Routes, Route} from 'react-router-dom';
 import Profile from "./components/Profile";
-import TestButton from "./components/Test";
+import ProtectedRoute from "./components/navigation/ProtectedRoute";
+import LoginButton from "./components/authentication/Login";
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <TestButton/>
-        <LoginButton/>
-        <br/><br/>
-        <LogoutButton/>
-        <br/><br/>
-        <Profile/>
 
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route exact path="/" element={<LoginButton/>}/>
+                <Route path="/dashboard" element={<ProtectedRoute component={Dashboard}/>}/>
+                <Route path="/profile" element={<ProtectedRoute component={Profile}/>}/>
+            </Routes>
+        </div>);
 }
 
 export default App;
