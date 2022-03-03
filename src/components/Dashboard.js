@@ -6,6 +6,7 @@ import CustomerNavBar from "./navigation/CustomerNavBar";
 import StaffNavBar from "./navigation/StaffNavBar";
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/actionCreators";
+require('dotenv').config();
 
 const mapStateToProps = (state) => {
     return {
@@ -28,11 +29,11 @@ function Dashboard(props) {
 
     const getAccessToken = async () => {
         const token = await getAccessTokenSilently({
-            audience: 'https://dev-eyvtzgck.us.auth0.com/api/v2/',
+            audience: process.env.AUTH_AUDIENCE,
             scope: "read:current_user",
         });
         const jwtDecoded = JSON.parse(atob(token.split('.')[1]));
-        const roleDecoded = jwtDecoded["https://www.jasonpaff.dev/roles"][0];
+        const roleDecoded = jwtDecoded[process.env.AUTH_ROLE_ORIGIN][0];
         props.onSetRole(roleDecoded);
     }
 

@@ -5,8 +5,9 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const { auth } = require('express-oauth2-jwt-bearer');
 const cors = require("cors");
+require('dotenv').config();
 
-mongoose.connect("mongodb+srv://jasonpaff:paffword@issuetracker.kuz0d.mongodb.net/IssueTracker?retryWrites=true&w=majority").catch(console.error);
+mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
 
 const port = process.env.PORT || 4000;
@@ -19,13 +20,13 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 app.use(logger('dev'));
-app.use(cors({ origin: 'http://localhost:3000', }));
+app.use(cors({ origin: process.env.APP_ORIGIN, }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const checkJwt = auth({
-    audience : "https://dev-eyvtzgck.us.auth0.com/api/v2/",
-    issuerBaseURL: `https://dev-eyvtzgck.us.auth0.com/`
+    audience: process.env.AUTH_AUDIENCE,
+    issuerBaseURL: process.env.AUTH_BASE_URL
 });
 
 // ROUTES
