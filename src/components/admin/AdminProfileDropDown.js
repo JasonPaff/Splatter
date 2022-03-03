@@ -6,7 +6,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function ProfileDropDown(props) {
+export default function AdminProfileDropDown(props) {
     const {user, logout} = useAuth0();
 
     return (
@@ -41,7 +41,7 @@ export default function ProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
-                                    onClick={() => props.navigate("/profile")}
+                                    onClick={() => props.navigate("/adminProfile")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'block px-4 py-2 text-sm text-gray-700'
@@ -54,6 +54,7 @@ export default function ProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
+                                    onClick={() => props.navigate("/adminSettings")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'block px-4 py-2 text-sm text-gray-700'

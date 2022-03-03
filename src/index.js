@@ -4,7 +4,7 @@ import "./tailwind.output.css"
 import App from './App';
 import {applyMiddleware, compose, createStore} from 'redux';
 import {Provider} from "react-redux";
-import reducer from "./store/reducer";
+import reducer from "./store/reducers/reducer";
 import {BrowserRouter} from "react-router-dom";
 import Auth0ProviderWithHistory from "./components/authentication/Auth0ProviderWithHistory";
 import thunk from "redux-thunk";

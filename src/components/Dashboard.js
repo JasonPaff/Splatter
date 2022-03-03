@@ -1,11 +1,11 @@
 ﻿import React, {useEffect} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import {connect} from 'react-redux'
-import AdminNavBar from "./admin/AdminNavBar";
-import CustomerNavBar from "./customer/CustomerNavBar";
-import StaffNavBar from "./staff/StaffNavBar";
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/actionCreators";
+import CustomerHome from "./customer/CustomerHome";
+import AdminHome from "./admin/AdminHome";
+import StaffHome from "./staff/StaffHome";
 
 const mapStateToProps = (state) => {
     return {
@@ -39,15 +39,15 @@ function Dashboard(props) {
     switch (props.role) {
         case "admin":
             return (
-                <AdminNavBar/>
+                <AdminHome/>
             )
         case "customer":
             return (
-                <CustomerNavBar/>
+                <CustomerHome/>
             )
         case "staff":
             return (
-                <StaffNavBar/>
+                <StaffHome/>
             )
         default:
             return (
