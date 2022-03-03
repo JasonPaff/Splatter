@@ -1,59 +1,22 @@
-﻿import React, {useEffect, useState} from "react";
+﻿import React from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import NavBar from "./NavBar";
 
-const Profile = () => {
-    const {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
-    const [userMetadata, setUserMetadata] = useState(null);
-
-    useEffect(() => {
-        const getUserMetadata = async () => {
-            const domain = "dev-eyvtzgck.us.auth0.com";
-
-            try {
-                const accessToken = await getAccessTokenSilently({
-                    audience: `https://${domain}/api/v2/`,
-                    scope: "read:current_user",
-                });
-
-                const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-
-                const metadataResponse = await fetch(userDetailsByIdUrl, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-
-                const {user_metadata} = await metadataResponse.json();
-
-                setUserMetadata(user_metadata);
-            } catch (err) {
-                console.log(err.message);
-            }
-        };
-
-        getUserMetadata().catch(console.error);
-    }, [getAccessTokenSilently, user?.sub]);
+export default function Profile() {
+    const {user, isAuthenticated} = useAuth0();
 
     return (
         isAuthenticated && (
             <>
                 <NavBar/>
                 <div className={"flex justify-center"}>
-                    <img src={user.picture} alt={user.name}/>
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
-                    <h3>User Metadata</h3>
-                    {userMetadata ? (
-                        <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-                    ) : (
-                        "No user metadata defined"
-                    )}
+                    <ul>
+                        <img src={user.picture} alt={user.name}/>
+                        <h2>Name : {user.name}</h2>
+                        <h2>Email : {user.email}</h2>
+                    </ul>
                 </div>
             </>
         )
     );
-
 };
-
-export default Profile;

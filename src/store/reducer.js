@@ -1,9 +1,19 @@
-﻿const initialState = {
-    test: 'test'
+﻿import * as actionTypes from "./actions/actionTypes";
+
+const initialState = {
+    role: 'none'
 }
 
 const reducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case actionTypes.SET_ROLE:
+            return {
+                ...state,
+                role: action.payload
+            }
+        default:
+            return state
+    }
 }
 
 export default reducer;
