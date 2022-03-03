@@ -1,28 +1,24 @@
 ﻿import {Auth0Provider} from "@auth0/auth0-react";
 import React from "react";
 import {useNavigate} from "react-router-dom";
+require('dotenv').config();
 
 export default function Auth0ProviderWithHistory({children}) {
     const navigate = useNavigate();
-
-    const domain = "dev-eyvtzgck.us.auth0.com";
-    const clientId = "Zd9AsdTm7q9zLWtbnYNMsr73bax2vZS5";
-    const audience = "https://dev-eyvtzgck.us.auth0.com/api/v2/";
-    const scope = "read:current_user update:current_user_metadata"
 
     const onRedirectCallback = (appState) => {
         navigate(appState.returnTo || window.location.pathname);
     };
 
-    if (!(domain && clientId && audience)) {
+    if (!(process.env.AUTH_DOMAIN && process.env.AUTH_CLIENT_ID && process.env.AUTH_AUDIENCE)) {
         return null;
     }
 
     return (<Auth0Provider
-        domain={domain}
-        clientId={clientId}
-        audience={audience}
-        scope={scope}
+        domain={process.env.AUTH_DOMAIN}
+        clientId={process.env.AUTH_CLIENT_ID}
+        audience={process.env.AUTH_AUDIENCE}
+        scope="read:current_user update:current_user_metadata"
         redirectUri={window.location.origin + "/dashboard"}
         onRedirectCallback={onRedirectCallback}
     >
