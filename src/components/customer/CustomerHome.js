@@ -1,10 +1,10 @@
 ﻿import React from "react";
-import NavBar from "../NavBar";
+import CustomerNavBar from "./CustomerNavBar";
 
 export default function CustomerHome() {
     return (
         <>
-            <NavBar/>
+            <CustomerNavBar/>
             <div className="flex justify-center">
                 <h1>Customer Home</h1>
             </div>

@@ -1,12 +1,11 @@
 ﻿import React, {useEffect} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import {connect} from 'react-redux'
-import AdminNavBar from "./navigation/AdminNavBar";
-import CustomerNavBar from "./navigation/CustomerNavBar";
-import StaffNavBar from "./navigation/StaffNavBar";
+import AdminNavBar from "./admin/AdminNavBar";
+import CustomerNavBar from "./customer/CustomerNavBar";
+import StaffNavBar from "./staff/StaffNavBar";
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/actionCreators";
-require('dotenv').config();
 
 const mapStateToProps = (state) => {
     return {
@@ -29,11 +28,11 @@ function Dashboard(props) {
 
     const getAccessToken = async () => {
         const token = await getAccessTokenSilently({
-            audience: process.env.AUTH_AUDIENCE,
+            audience: "https://dev-eyvtzgck.us.auth0.com/api/v2/",
             scope: "read:current_user",
         });
         const jwtDecoded = JSON.parse(atob(token.split('.')[1]));
-        const roleDecoded = jwtDecoded[process.env.AUTH_ROLE_ORIGIN][0];
+        const roleDecoded = jwtDecoded["https://www.jasonpaff.dev/roles"][0];
         props.onSetRole(roleDecoded);
     }
 

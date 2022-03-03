@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./tailwind.output.css"
 import App from './App';
-import {createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import {Provider} from "react-redux";
 import reducer from "./store/reducer";
 import {BrowserRouter} from "react-router-dom";
 import Auth0ProviderWithHistory from "./components/authentication/Auth0ProviderWithHistory";
+import thunk from "redux-thunk";
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(
+    applyMiddleware(thunk)
+));
 
 ReactDOM.render(<React.StrictMode>
     <BrowserRouter>

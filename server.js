@@ -10,7 +10,7 @@ require('dotenv').config();
 mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
 
-const port = process.env.PORT || 4000;
+const port = 4000;
 const app = express();
 const server = http.createServer(app);
 
