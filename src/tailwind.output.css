@@ -653,6 +653,10 @@ select {
   right: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -716,6 +720,10 @@ select {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .block {
@@ -823,11 +831,6 @@ select {
           transform-origin: top right;
 }
 
-.origin-top-left {
-  -webkit-transform-origin: top left;
-          transform-origin: top left;
-}
-
 .scale-95 {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
@@ -867,6 +870,10 @@ select {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {

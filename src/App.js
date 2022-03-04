@@ -49,5 +49,6 @@ export default function App() {
                 <Route path="/StaffSupport" element={<ProtectedRoute component={StaffSupport}/>}/>
                 <Route path="/StaffSettings" element={<ProtectedRoute component={StaffSettings}/>}/>
             </Routes>
-        </div>);
+        </div>
+    );
 };

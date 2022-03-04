@@ -28,7 +28,6 @@ export default function QANewTicket() {
                     <div>
                         <IssueTitle/>
 
-
                         <div className="flex flex-wrap space-x-2">
                             <SeverityDropDown/>
                             <PriorityDropDown/>

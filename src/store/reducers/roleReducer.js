@@ -1,10 +1,10 @@
-﻿import * as actionTypes from "../actions/actionTypes";
+﻿import * as actionTypes from "../actions/roleActionTypes";
 
 const initialState = {
     role: 'none'
 }
 
-const reducer = (state = initialState, action) => {
+const roleReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_ROLE:
             return {
@@ -16,4 +16,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default roleReducer;
