@@ -22,13 +22,13 @@ export default function QANewTicket() {
     return (
         <>
             <QANavBar/>
-            <form className="m-2 space-y-8 divide-y divide-gray-200 flex justify-center">
+            <div className="m-2 space-y-8 divide-y divide-gray-200 flex justify-center">
                 <div className="space-y-8 divide-y divide-gray-200 min-w-[50%] max-w-screen-2xl">
                     <IssueHeader/>
-                    <div>
+                    <div className="pt-4">
                         <IssueTitle/>
 
-                        <div className="flex flex-wrap space-x-2">
+                        <div className="flex flex-wrap space-x-2 pt-2">
                             <SeverityDropDown/>
                             <PriorityDropDown/>
                             <ReportTypesDropDown/>
@@ -50,7 +50,7 @@ export default function QANewTicket() {
                         </span>
                     </div>
                 </div>
-            </form>
+            </div>
         </>
     );
 };

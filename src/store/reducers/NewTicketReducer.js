@@ -1,7 +1,7 @@
 ﻿import * as actionTypes from "../actions/newTicketActionTypes"
 
 const initialState = {
-    title : '',
+    title: '',
     priority: '1',
     severity: 'Minor',
     type: 'Coding error',
@@ -15,11 +15,11 @@ const initialState = {
 }
 
 const newTicketReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case actionTypes.SET_TITLE:
             return {
-            ...state,
-            title: action.payload,
+                ...state,
+                title: action.payload,
             }
         case actionTypes.SET_SEVERITY:
             return {
@@ -70,6 +70,21 @@ const newTicketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 actualResult: action.payload
+            }
+        case actionTypes.RESET_VALUES:
+            return {
+                ...state,
+                title: '',
+                priority: '1',
+                severity: 'Minor',
+                type: 'Coding error',
+                product: 'Fake Product One',
+                browser: 'Microsoft Edge',
+                screenshot: '',
+                summary: '',
+                reproductionSteps: '',
+                expectedResult: '',
+                actualResult: ''
             }
         default:
             return state

@@ -8,26 +8,29 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        expectedResult: state.newTicketReducer.expectedResult
+    }
+}
+
 function ExpectedResult(props) {
     return (
         <div className="sm:col-span-6">
             <label htmlFor="expectedResult" className="block text-sm font-medium text-gray-700">
                 Expected result
             </label>
-            <p className="mt-2 text-sm text-gray-500">Describe the expected result of the steps above.</p>
-
-            <div className="mt-1">
                 <textarea
                     id="expectedResult"
                     rows={3}
+                    value={props.expectedResult}
                     onChange={(e) => props.onTextChange(e.target.value)}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full
-                                        sm:text-sm border border-gray-300 rounded-md"
-                    defaultValue={''}
+                    className="shadow-sm focus:ring-sky-500 focus:border-sky-500 block w-full
+                                        sm:text-sm border border-gray-300 rounded-md mt-1"
+                    placeholder={'Describe the expected result of the steps above'}
                 />
-            </div>
         </div>
     );
 }
 
-export default connect(null, mapDispatchToProps)(ExpectedResult);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpectedResult);

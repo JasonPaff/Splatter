@@ -5,10 +5,11 @@ import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const browserOptions = [
-    {browser: 'Microsoft Edge', description: '', current: true},
-    {browser: 'Google Chrome', description: '', current: false},
-    {browser: 'Mozilla Firefox', description: '', current: false},
-    {browser: 'Apple Safari', description: '', current: false},];
+    'Microsoft Edge',
+    'Google Chrome',
+    'Mozilla Firefox',
+    'Apple Safari'
+];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -20,13 +21,19 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        browser: state.newTicketReducer.browser
+    };
+}
+
 function BrowserDropDown(props) {
 
     const [selected, setSelected] = useState(browserOptions[0])
 
     const handleSelect = (e) => {
         setSelected(e);
-        props.onSelectChange(e.browser);
+        props.onSelectChange(e);
     }
 
     return (
@@ -34,24 +41,24 @@ function BrowserDropDown(props) {
             <label htmlFor="browser" className="block text-sm font-medium text-gray-700">
                 Browser
             </label>
-            <Listbox value={selected} onChange={handleSelect} id="browser">
+            <Listbox value={props.browser} onChange={handleSelect} id="browser">
                 {({open}) => (
                     <>
                         <Listbox.Label className="sr-only">change browser</Listbox.Label>
                         <div className="relative">
-                            <div className="inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
+                            <div className="inline-flex shadow-sm rounded-md divide-x divide-sky-600">
                                 <div
-                                    className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
+                                    className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
                                     <div
-                                        className="relative inline-flex items-center bg-indigo-500 py-2 pl-3 pr-4 border
+                                        className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
                                         border-transparent rounded-l-md shadow-sm text-white">
-                                        <p className="ml-2.5 text-sm font-medium">{selected.browser}</p>
+                                        <p className="ml-2.5 text-sm font-medium">{props.browser}</p>
                                     </div>
                                     <Listbox.Button
-                                        className="relative inline-flex items-center bg-indigo-500 p-2 rounded-l-none
-                                         rounded-r-md text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none
+                                        className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none
+                                         rounded-r-md text-sm font-medium text-white hover:bg-sky-600 focus:outline-none
                                          focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
-                                         focus:ring-indigo-500">
+                                         focus:ring-sky-500">
                                         <span className="sr-only">change browser</span>
                                         <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                     </Listbox.Button>
@@ -71,22 +78,19 @@ function BrowserDropDown(props) {
                                     focus:outline-none">
                                     {browserOptions.map((option) => (
                                         <Listbox.Option
-                                            key={option.browser}
-                                            className={({active}) => classNames(active ? 'text-white bg-indigo-500' : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
+                                            key={option}
+                                            className={({active}) => classNames(active ? 'text-white bg-sky-500' : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
                                             value={option}
                                         >
                                             {({selected, active}) => (
                                                 <div className="flex flex-col">
                                                     <div className="flex justify-between">
-                                                        <p className={selected ? 'font-semibold' : 'font-normal'}>{option.browser}</p>
+                                                        <p className={selected ? 'font-semibold' : 'font-normal'}>{option}</p>
                                                         {selected ? (
-                                                            <span className={active ? 'text-white' : 'text-indigo-500'}>
+                                                            <span className={active ? 'text-white' : 'text-sky-500'}>
                               <CheckIcon className="h-5 w-5" aria-hidden="true"/>
                             </span>) : null}
                                                     </div>
-                                                    <p className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'mt-2')}>
-                                                        {option.description}
-                                                    </p>
                                                 </div>)}
                                         </Listbox.Option>))}
                                 </Listbox.Options>
@@ -98,4 +102,4 @@ function BrowserDropDown(props) {
     );
 }
 
-export default connect(null, mapDispatchToProps)(BrowserDropDown);
+export default connect(mapStateToProps, mapDispatchToProps)(BrowserDropDown);

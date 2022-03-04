@@ -76,3 +76,10 @@ export const setActualResult = (actualResult) => {
         payload: actualResult
     }
 }
+
+export const resetValues = () => {
+    return {
+        type: actionTypes.RESET_VALUES,
+        payload: {}
+    }
+}

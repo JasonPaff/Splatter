@@ -1,16 +1,30 @@
 ﻿import React from "react";
+import {connect} from 'react-redux'
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
-export default function ResetButton() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onResetClick: () => dispatch(actionCreators.resetValues())
+    };
+}
+
+function ResetButton(props) {
+
+    const handleClick = () => {
+        props.onResetClick();
+    }
+
     return (
-        <>
-            <button
-                type="button"
-                className="ml-3 mb-2 bg-white py-2 px-4 border border-gray-300 rounded-md
+        <button
+            type="button"
+            onClick={handleClick}
+            className="ml-3 mb-2 bg-white py-2 px-4 border border-gray-300 rounded-md
                             shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50
-                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-                Reset
-            </button>
-        </>
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+        >
+            Reset
+        </button>
     );
 }
+
+export default connect(null, mapDispatchToProps)(ResetButton);
