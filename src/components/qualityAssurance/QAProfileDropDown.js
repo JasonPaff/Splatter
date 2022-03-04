@@ -6,7 +6,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function CustomerProfileDropDown(props) {
+export default function QAProfileDropDown(props) {
     const {user, logout} = useAuth0();
 
     return (
@@ -41,7 +41,8 @@ export default function CustomerProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
-                                    onClick={() => props.navigate("/customerProfile")}
+                                    href="#"
+                                    onClick={() => props.navigate("/qaProfile")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'block px-4 py-2 text-sm text-gray-700'
@@ -54,7 +55,8 @@ export default function CustomerProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
-                                    onClick={() => props.navigate("/customerSettings")}
+                                    href="#"
+                                    onClick={() => props.navigate("/qaSettings")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'block px-4 py-2 text-sm text-gray-700'

@@ -3,7 +3,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {connect} from 'react-redux'
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/actionCreators";
-import CustomerHome from "./customer/CustomerHome";
+import QAHome from "./qualityAssurance/QAHome";
 import AdminHome from "./admin/AdminHome";
 import StaffHome from "./staff/StaffHome";
 
@@ -24,7 +24,7 @@ function Dashboard(props) {
 
     useEffect(() => {
         getAccessToken().catch(console.error);
-    }, [getAccessTokenSilently])
+    })
 
     const getAccessToken = async () => {
         const token = await getAccessTokenSilently({
@@ -43,7 +43,7 @@ function Dashboard(props) {
             )
         case "customer":
             return (
-                <CustomerHome/>
+                <QAHome/>
             )
         case "staff":
             return (

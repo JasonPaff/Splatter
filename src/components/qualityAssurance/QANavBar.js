@@ -1,16 +1,16 @@
 ﻿import {Disclosure} from "@headlessui/react";
 import {useNavigate} from "react-router-dom";
 import NavBarLogo from "../navigationBar/NavBarLogo";
-import CustomerNavBarButtons from "./CustomerNavBarButtons";
+import QANavBarButtons from "./QANavBarButtons";
 import NotificationsButton from "../navigationBar/NotificationsButton";
 import MobileMenuHamburger from "../navigationBar/MobileMenuHamburger";
 import MobileNotificationsButton from "../navigationBar/MobileNotificationsButton";
 import MobileProfileView from "../navigationBar/MobileProfileView";
-import CustomerProfileDropDown from "./CustomerProfileDropDown";
-import CustomerMobileUserOptions from "./CustomerMobileUserOptions";
-import CustomerMobileMenuButtons from "./CustomerMobileMenuButtons";
+import QAProfileDropDown from "./QAProfileDropDown";
+import QAMobileUserOptions from "./QAMobileUserOptions";
+import QAMobileMenuButtons from "./QAMobileMenuButtons";
 
-function CustomerNavBar() {
+function QANavBar() {
     const navigate = useNavigate();
 
     return (
@@ -24,7 +24,7 @@ function CustomerNavBar() {
                                 <NavBarLogo/>
                                 <div className="hidden sm:block sm:ml-6">
                                     {/* Navigation bar buttons dropdown */}
-                                    <CustomerNavBarButtons navigate={navigate}/>
+                                    <QANavBarButtons navigate={navigate}/>
                                 </div>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
@@ -33,7 +33,7 @@ function CustomerNavBar() {
                                     <NotificationsButton/>
 
                                     {/* Profile dropdown */}
-                                    <CustomerProfileDropDown navigate={navigate}/>
+                                    <QAProfileDropDown navigate={navigate}/>
                                 </div>
                             </div>
                             <div className="-mr-2 flex sm:hidden">
@@ -45,7 +45,7 @@ function CustomerNavBar() {
 
                     <Disclosure.Panel className="sm:hidden">
                         {/* Mobile menu buttons */}
-                        <CustomerMobileMenuButtons navigate={navigate}/>
+                        <QAMobileMenuButtons navigate={navigate}/>
                         <div className="pt-4 pb-3 border-t border-gray-700">
                             <div className="flex items-center px-5">
                                 {/* Mobile profile drop down */}
@@ -56,7 +56,7 @@ function CustomerNavBar() {
                             </div>
 
                             {/* Mobile user option buttons */}
-                            <CustomerMobileUserOptions navigate={navigate}/>
+                            <QAMobileUserOptions navigate={navigate}/>
                         </div>
                     </Disclosure.Panel>
                 </>
@@ -65,4 +65,4 @@ function CustomerNavBar() {
     );
 }
 
-export default CustomerNavBar;
+export default QANavBar;

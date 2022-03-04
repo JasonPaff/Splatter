@@ -7,12 +7,14 @@ export default function AdminMobileUserOptions(props) {
         <>
             <div className="mt-3 px-2 space-y-1">
                 <a
+                    href="#"
                     onClick={() => props.navigate("/adminProfile")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white block
                                     px-3 py-2 rounded-md text-base font-medium">
                     Profile
                 </a>
                 <a
+                    href="#"
                     onClick={() => props.navigate("/adminSettings")}
                     className="block px-3 py-2 rounded-md text-base font-medium
                                     text-gray-300 hover:text-white hover:bg-gray-700"

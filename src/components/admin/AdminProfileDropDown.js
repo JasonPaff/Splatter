@@ -41,6 +41,7 @@ export default function AdminProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
+                                    href="#"
                                     onClick={() => props.navigate("/adminProfile")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',
@@ -54,6 +55,7 @@ export default function AdminProfileDropDown(props) {
                         <Menu.Item>
                             {({active}) => (
                                 <a
+                                    href="#"
                                     onClick={() => props.navigate("/adminSettings")}
                                     className={classNames(
                                         active ? 'bg-gray-100' : '',

@@ -6,7 +6,7 @@ export default function StaffSettings() {
         <>
             <StaffNavBar/>
             <div className="flex justify-center">
-                <h1>Admin Settings</h1>
+                <h1>Staff Settings</h1>
             </div>
         </>
     );

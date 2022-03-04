@@ -1,42 +1,42 @@
-﻿export default function CustomerNavBarButtons(props) {
+﻿export default function QANavBarButtons(props) {
     return (
         <>
             <div className="flex space-x-4">
                 {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                <a
-                    onClick={() => props.navigate("/customerHome")}
+                <button
+                    onClick={() => props.navigate("/qaHome")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white
                                                 px-3 py-2 rounded-md text-sm font-medium">
                     Home
-                </a>
-                <a
-                    onClick={() => props.navigate("/customerNewTickets")}
+                </button>
+                <button
+                    onClick={() => props.navigate("/qaNewTicket")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white
                                                 px-3 py-2 rounded-md text-sm font-medium"
                 >
                     New Ticket
-                </a>
-                <a
-                    onClick={() => props.navigate("/customerOpenTickets")}
+                </button>
+                <button
+                    onClick={() => props.navigate("/qaOpenTickets")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white
                                                 px-3 py-2 rounded-md text-sm font-medium"
                 >
                     Open Tickets
-                </a>
-                <a
-                    onClick={() => props.navigate("/customerClosedTickets")}
+                </button>
+                <button
+                    onClick={() => props.navigate("/qaClosedTickets")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white
                                                 px-3 py-2 rounded-md text-sm font-medium"
                 >
                     Closed Tickets
-                </a>
-                <a
-                    onClick={() => props.navigate("/customerSupport")}
+                </button>
+                <button
+                    onClick={() => props.navigate("/qaMessages")}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white
                                                 px-3 py-2 rounded-md text-sm font-medium"
                 >
-                    Support
-                </a>
+                    Messages
+                </button>
             </div>
         </>
     );
