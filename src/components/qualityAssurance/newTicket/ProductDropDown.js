@@ -1,6 +1,8 @@
 ﻿import React, {Fragment, useState} from 'react'
+import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const productOptions = [
     { product: 'Fake Product One', description: 'one line description', current: true },
@@ -11,15 +13,27 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductDropDown() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectChange: (selected) => dispatch(actionCreators.setProduct(selected))
+    };
+}
+
+function ProductDropDown(props) {
 
     const [selected, setSelected] = useState(productOptions[0])
+
+    const handleSelect = (e) => {
+        setSelected(e);
+        props.onSelectChange(e.product);
+    }
+
     return (
         <div className="mt-2">
             <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Product
             </label>
-            <Listbox value={selected} onChange={setSelected} id="severity">
+            <Listbox value={selected} onChange={handleSelect} id="severity">
                 {({open}) => (
                     <>
                         <Listbox.Label className="sr-only">change product</Listbox.Label>
@@ -82,3 +96,5 @@ export default function ProductDropDown() {
         </div>
     );
 }
+
+export default connect(null, mapDispatchToProps)(ProductDropDown);
