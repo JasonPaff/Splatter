@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const newTicketReducer = (state = initialState, action) => {
-    switch(action.Type){
+    switch(action.type){
         case actionTypes.SET_TITLE:
             console.log("here");
         return {
