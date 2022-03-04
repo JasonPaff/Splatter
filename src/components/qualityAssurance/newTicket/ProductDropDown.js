@@ -15,8 +15,8 @@ export default function ProductDropDown() {
 
     const [selected, setSelected] = useState(productOptions[0])
     return (
-        <>
-            <label htmlFor="severity" className="block text-sm font-medium text-gray-700 mr-1 mt-2">
+        <div className="mt-2">
+            <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Product
             </label>
             <Listbox value={selected} onChange={setSelected} id="severity">
@@ -79,6 +79,6 @@ export default function ProductDropDown() {
                         </div>
                     </>)}
             </Listbox>
-        </>
+        </div>
     );
 }

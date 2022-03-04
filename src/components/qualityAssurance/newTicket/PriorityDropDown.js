@@ -15,9 +15,9 @@ function classNames(...classes) {
 
 export default function PriorityDropDown() {
 
-    const [selected, setSelected] = useState(priorityOptions[2])
+    const [selected, setSelected] = useState(priorityOptions[0])
     return (
-        <>
+        <div className="mt-2">
             <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
                 Priority
             </label>
@@ -53,7 +53,7 @@ export default function PriorityDropDown() {
                                 leaveTo="opacity-0"
                             >
                                 <Listbox.Options
-                                    className="origin-top-right absolute z-10 right-0 mt-2 w-72 rounded-md shadow-lg
+                                    className="origin-top-right absolute z-10 left-0 mt-2 w-72 rounded-md shadow-lg
                                     overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5
                                     focus:outline-none">
                                     {priorityOptions.map((option) => (
@@ -81,5 +81,5 @@ export default function PriorityDropDown() {
                         </div>
                     </>)}
             </Listbox>
-        </>)
+        </div>)
 }

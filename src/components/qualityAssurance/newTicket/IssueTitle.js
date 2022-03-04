@@ -1,6 +1,6 @@
 ﻿export default function IssueTitle() {
     return (
-        <>
+        <div className="mt-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Title
             </label>
@@ -14,6 +14,6 @@
                     placeholder="descriptive issue title"
                 />
             </div>
-        </>
+        </div>
     );
 }

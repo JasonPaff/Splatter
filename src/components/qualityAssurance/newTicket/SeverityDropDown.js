@@ -3,10 +3,10 @@ import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
 
 const severityOptions = [
+    { severity: 'Minor', description: 'Minor loss of function', current: true },
+    { severity: 'Major', description: 'Major loss of function', current: false },
     { severity: 'Blocker', description: 'No further testing work can be done', current: false },
     { severity: 'Critical', description: 'Application crash, loss of data', current: false },
-    { severity: 'Major', description: 'Major loss of function', current: false },
-    { severity: 'Minor', description: 'Minor loss of function', current: true },
     { severity: 'Trivial', description: 'Some UI enhancements', current: false },
     { severity: 'Enhancement', description: 'New feature or enhancement request', current: false },]
 
@@ -16,10 +16,10 @@ function classNames(...classes) {
 
 export default function SeverityDropDown() {
 
-    const [selected, setSelected] = useState(severityOptions[3])
+    const [selected, setSelected] = useState(severityOptions[0])
     return (
-        <>
-            <label htmlFor="severity" className="block text-sm font-medium text-gray-700 mr-1 mt-2">
+        <div className="mt-2">
+            <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Severity
             </label>
             <Listbox value={selected} onChange={setSelected} id="severity">
@@ -54,7 +54,7 @@ export default function SeverityDropDown() {
                             leaveTo="opacity-0"
                         >
                             <Listbox.Options
-                                className="origin-top-right absolute z-10 right-0 mt-2 w-72 rounded-md shadow-lg
+                                className="origin-top-right absolute z-10 left-0 mt-2 w-72 rounded-md shadow-lg
                                     overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5
                                     focus:outline-none">
                                 {severityOptions.map((option) => (
@@ -82,5 +82,5 @@ export default function SeverityDropDown() {
                     </div>
                 </>)}
             </Listbox>
-        </>)
+        </div>)
 }

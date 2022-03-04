@@ -17,7 +17,7 @@ export default function ReportTypesDropDown() {
 
     const [selected, setSelected] = useState(reportTypes[0])
     return (
-        <>
+        <div className="mt-2">
             <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
                 Type
             </label>
@@ -82,6 +82,6 @@ export default function ReportTypesDropDown() {
                         </div>
                     </>)}
             </Listbox>
-        </>
+        </div>
     );
 }

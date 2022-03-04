@@ -16,8 +16,8 @@ export default function BrowserDropDown() {
 
     const [selected, setSelected] = useState(browserOptions[0])
     return (
-        <>
-            <label htmlFor="severity" className="block text-sm font-medium text-gray-700 mr-1 mt-2">
+        <div className="mt-2">
+            <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Browser
             </label>
             <Listbox value={selected} onChange={setSelected} id="severity">
@@ -80,6 +80,6 @@ export default function BrowserDropDown() {
                         </div>
                     </>)}
             </Listbox>
-        </>
+        </div>
     );
 }
