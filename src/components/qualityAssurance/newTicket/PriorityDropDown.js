@@ -1,6 +1,8 @@
 ﻿import React, {Fragment, useState} from 'react'
-import {Listbox, Transition} from '@headlessui/react'
-import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import {connect} from 'react-redux';
+import {Listbox, Transition} from '@headlessui/react';
+import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid';
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const priorityOptions = [
     {priority: '1', description: 'lowest priority', current: false},
@@ -9,19 +11,31 @@ const priorityOptions = [
     {priority: '4', description: '', current: false},
     {priority: '5', description: 'highest priority', current: false}];
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectChange: (selected) => dispatch(actionCreators.setPriority(selected))
+    };
+}
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function PriorityDropDown() {
+function PriorityDropDown(props) {
 
-    const [selected, setSelected] = useState(priorityOptions[0])
+    const [selected, setSelected] = useState(priorityOptions[0]);
+
+    const handleSelect = (e) => {
+        setSelected(e);
+        props.onSelectChange(e.priority);
+    }
+
     return (
         <div className="mt-2">
             <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
                 Priority
             </label>
-            <Listbox value={selected} onChange={setSelected} id="priority">
+            <Listbox value={selected} onChange={handleSelect} id="priority">
                 {({open}) => (
                     <>
                         <Listbox.Label className="sr-only">change issue priority</Listbox.Label>
@@ -68,8 +82,8 @@ export default function PriorityDropDown() {
                                                         <p className={selected ? 'font-semibold' : 'font-normal'}>{option.priority}</p>
                                                         {selected ? (
                                                             <span className={active ? 'text-white' : 'text-indigo-500'}>
-                              <CheckIcon className="h-5 w-5" aria-hidden="true"/>
-                            </span>) : null}
+                                                                <CheckIcon className="h-5 w-5" aria-hidden="true"/>
+                                                            </span>) : null}
                                                     </div>
                                                     <p className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'mt-2')}>
                                                         {option.description}
@@ -83,3 +97,5 @@ export default function PriorityDropDown() {
             </Listbox>
         </div>)
 }
+
+export default connect(null, mapDispatchToProps)(PriorityDropDown);

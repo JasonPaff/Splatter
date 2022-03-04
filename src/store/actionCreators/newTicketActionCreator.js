@@ -6,3 +6,17 @@ export const setTitle = (title) => {
         payload: title
     }
 }
+
+export const setPriority = (priority) => {
+    return {
+        type: actionTypes.SET_PRIORITY,
+        payload: priority
+    }
+}
+
+export const setSeverity = (severity) => {
+    return {
+        type: actionTypes.SET_SEVERITY,
+        payload: severity
+    }
+}

@@ -1,1 +1,11 @@
 ﻿export const SET_TITLE = 'SET_TITLE';
+export const SET_SEVERITY = 'SET_SEVERITY';
+export const SET_PRIORITY = 'SET_PRIORITY';
+export const SET_TYPE = 'SET_TYPE';
+export const SET_PRODUCT = 'SET_PRODUCT';
+export const SET_BROWSER = 'SET_BROWSER';
+export const SET_SCREENSHOT = 'SET_SCREENSHOT';
+export const SET_SUMMARY = 'SET_SUMMARY';
+export const SET_REPRODUCTION_STEPS = 'SET_REPRODUCTION_STEPS';
+export const SET_EXPECTED_RESULT = 'SET_EXPECTED_RESULT';
+export const SET_ACTUAL_RESULT = 'SET_ACTUAL_RESULT';

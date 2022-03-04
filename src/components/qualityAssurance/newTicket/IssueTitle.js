@@ -30,7 +30,7 @@ function IssueTitle(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         onTitleChange: (title) => dispatch(actionCreators.setTitle(title))
-    }
+    };
 }
 
 export default connect(null, mapDispatchToProps)(IssueTitle);
