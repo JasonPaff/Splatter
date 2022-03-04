@@ -1,6 +1,8 @@
 ﻿import React, {Fragment, useState} from 'react'
+import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const reportTypes = [
     {type: 'Coding error', description: '', current: true},
@@ -13,15 +15,27 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function ReportTypesDropDown() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectChange: (selected) => dispatch(actionCreators.setType(selected))
+    };
+}
+
+function ReportTypesDropDown(props) {
 
     const [selected, setSelected] = useState(reportTypes[0])
+
+    const handleSelect = (e) => {
+        setSelected(e);
+        props.onSelectChange(e.type);
+    }
+
     return (
         <div className="mt-2">
             <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
                 Type
             </label>
-            <Listbox value={selected} onChange={setSelected} id="priority">
+            <Listbox value={selected} onChange={handleSelect} id="priority">
                 {({open}) => (
                     <>
                         <Listbox.Label className="sr-only">change report type</Listbox.Label>
@@ -85,3 +99,5 @@ export default function ReportTypesDropDown() {
         </div>
     );
 }
+
+export default connect(null, mapDispatchToProps)(ReportTypesDropDown);

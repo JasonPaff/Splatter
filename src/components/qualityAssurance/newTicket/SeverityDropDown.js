@@ -1,6 +1,8 @@
 ﻿import React, {Fragment, useState} from 'react'
+import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const severityOptions = [
     { severity: 'Minor', description: 'Minor loss of function', current: true },
@@ -14,15 +16,27 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function SeverityDropDown() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectChange: (selected) => dispatch(actionCreators.setSeverity(selected))
+    };
+}
+
+function SeverityDropDown(props) {
 
     const [selected, setSelected] = useState(severityOptions[0])
+
+    const handleSelect = (e) => {
+        setSelected(e);
+        props.onSelectChange(e.severity);
+    }
+
     return (
         <div className="mt-2">
             <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Severity
             </label>
-            <Listbox value={selected} onChange={setSelected} id="severity">
+            <Listbox value={selected} onChange={handleSelect} id="severity">
                 {({open}) => (
                     <>
                     <Listbox.Label className="sr-only">change issue severity</Listbox.Label>
@@ -84,3 +98,4 @@ export default function SeverityDropDown() {
             </Listbox>
         </div>)
 }
+export default connect(null, mapDispatchToProps)(SeverityDropDown);

@@ -11,14 +11,14 @@ const priorityOptions = [
     {priority: '4', description: '', current: false},
     {priority: '5', description: 'highest priority', current: false}];
 
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ');
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onSelectChange: (selected) => dispatch(actionCreators.setPriority(selected))
     };
-}
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
 }
 
 function PriorityDropDown(props) {

@@ -31,6 +31,46 @@ const newTicketReducer = (state = initialState, action) => {
                 ...state,
                 priority: action.payload,
             }
+        case actionTypes.SET_TYPE:
+            return {
+                ...state,
+                type: action.payload
+            }
+        case actionTypes.SET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
+            }
+        case actionTypes.SET_BROWSER:
+            return {
+                ...state,
+                browser: action.payload
+            }
+        case actionTypes.SET_SCREENSHOT:
+            return {
+                ...state,
+                screenshot: action.payload
+            }
+        case actionTypes.SET_SUMMARY:
+            return {
+                ...state,
+                summary: action.payload
+            }
+        case actionTypes.SET_REPRODUCTION_STEPS:
+            return {
+                ...state,
+                reproductionSteps: action.payload
+            }
+        case actionTypes.SET_EXPECTED_RESULT:
+            return {
+                ...state,
+                expectedResult: action.payload
+            }
+        case actionTypes.SET_ACTUAL_RESULT:
+            return {
+                ...state,
+                actualResult: action.payload
+            }
         default:
             return state
     }
