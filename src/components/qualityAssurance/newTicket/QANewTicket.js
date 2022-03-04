@@ -2,8 +2,8 @@
 import QANavBar from "../QANavBar";
 import PriorityDropDown from "./PriorityDropDown";
 import UploadScreenshot from "./UploadScreenshot";
-import IssueDescription from "./IssueDescription";
-import IssueReproduction from "./IssueReproduction";
+import IssueSummary from "./IssueSummary";
+import ReproductionSteps from "./ReproductionSteps";
 import ExpectedResult from "./ExpectedResult";
 import ActualResult from "./ActualResult";
 import SeverityDropDown from "./SeverityDropDown";
@@ -38,8 +38,8 @@ export default function QANewTicket() {
 
                         <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                             <UploadScreenshot/>
-                            <IssueDescription/>
-                            <IssueReproduction/>
+                            <IssueSummary/>
+                            <ReproductionSteps/>
                             <ExpectedResult/>
                             <ActualResult/>
                         </div>

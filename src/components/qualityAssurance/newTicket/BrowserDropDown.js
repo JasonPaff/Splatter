@@ -1,6 +1,8 @@
 ﻿import React, {Fragment, useState} from 'react'
+import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const browserOptions = [
     {browser: 'Microsoft Edge', description: '', current: true},
@@ -12,15 +14,27 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function BrowserDropDown() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectChange: (selected) => dispatch(actionCreators.setBrowser(selected))
+    };
+}
+
+function BrowserDropDown(props) {
 
     const [selected, setSelected] = useState(browserOptions[0])
+
+    const handleSelect = (e) => {
+        setSelected(e);
+        props.onSelectChange(e.browser);
+    }
+
     return (
         <div className="mt-2">
-            <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="browser" className="block text-sm font-medium text-gray-700">
                 Browser
             </label>
-            <Listbox value={selected} onChange={setSelected} id="severity">
+            <Listbox value={selected} onChange={handleSelect} id="browser">
                 {({open}) => (
                     <>
                         <Listbox.Label className="sr-only">change browser</Listbox.Label>
@@ -83,3 +97,5 @@ export default function BrowserDropDown() {
         </div>
     );
 }
+
+export default connect(null, mapDispatchToProps)(BrowserDropDown);
