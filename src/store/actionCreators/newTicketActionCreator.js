@@ -83,23 +83,3 @@ export const resetValues = () => {
         payload: {}
     };
 }
-
-export const submitValues = (values, token) => {
-    const headers = {
-        method: 'POST',
-        headers : {
-            'Content-Type' : 'application/json',
-            'Authorization' : `Bearer ${token}`
-        },
-        body : JSON.stringify(values)
-    };
-
-    fetch("http://localhost:4000/createTicket", headers)
-        .then(response => response.json())
-        .then(result => console.log(result));
-
-    return {
-        type: actionTypes.SUBMIT_VALUES,
-        payload: values
-    };
-}

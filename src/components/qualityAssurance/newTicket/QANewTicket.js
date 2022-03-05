@@ -19,6 +19,7 @@ export default function QANewTicket() {
 
     document.title = "New Ticket";
 
+// TODO: Needs input validation to make sure all required fields are filled in
     return (
         <>
             <QANavBar/>

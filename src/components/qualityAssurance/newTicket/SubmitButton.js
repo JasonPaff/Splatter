@@ -1,16 +1,6 @@
 ﻿import React from "react";
 import {connect} from 'react-redux'
-import { useMutation } from 'graphql-hooks';
-import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import {useAuth0} from "@auth0/auth0-react";
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSubmitClick: (values, token) => {
-            dispatch(actionCreators.submitValues(values, token));
-        }
-    };
-}
 
 const mapStateToProps = (state) => {
     return {
@@ -18,33 +8,67 @@ const mapStateToProps = (state) => {
     };
 }
 
-const createTicketMutation = `
-    mutation CreateTicket($title: String) {
-        createTicket(title: $title) {
-            id
-        }
-    }
-`
-
 function SubmitButton(props) {
-    const {getAccessTokenSilently} = useAuth0();
-    const [createTicket] = useMutation(createTicketMutation);
+    const {getAccessTokenSilently, user} = useAuth0();
+
+    console.log(props.values.priority.numeric);
 
     const handleSubmit = async () => {
+        const actualResult = props.values.actualResult;
+        const browser = props.values.browser;
+        const createdAt = Date.now().toString();
+        const createdBy = user.name;
+        const expectedResult = props.values.expectedResult;
+        const priority = props.values.priority.numeric;
+        const product = props.values.product;
+        const reproductionSteps = props.values.reproductionSteps;
+        const screenshot = props.values.screenshot;
+        const severity = props.values.severity.severity;
+        const summary = props.values.summary;
+        const title = props.values.title;
+        const type = props.values.type;
+        const assignedTo = "none";
+        const status = "created";
+
+        const query = `mutation CreateTicket($input: TicketInput) {
+            createTicket(input: $input) {
+                id
+            }
+        }`;
+
         const token = await getAccessTokenSilently({
             audience: "https://dev-eyvtzgck.us.auth0.com/api/v2/",
             scope: "read:current_user",
         });
 
-        const res = await createTicket({variables: props.values.title });
-        console.log(res);
-        props.onSubmitClick(props.values, token);
+        const headers = {
+            method: 'POST',
+            headers : {
+                'Content-Type' : 'application/json',
+                'Accept': 'application/json',
+                'Authorization' : `Bearer ${token}`
+            },
+            body : JSON.stringify({
+                query,
+                variables: { input : {
+                    title, severity, priority, type, product, browser, screenshot, summary,
+                        reproductionSteps, expectedResult, actualResult, createdAt, createdBy,
+                        assignedTo, status
+                    }
+                }
+            })
+        };
+
+        const request = await fetch("http://localhost:4000/graphql", headers);
+        const response = await request.json();
+        console.log(response);
+        //alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
     }
 
     return (
         <button
             type="submit"
-            onClick={handleSubmit}
+            onClick={() => handleSubmit()}
             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent
                 shadow-sm text-sm font-medium rounded-md text-white bg-sky-500
                 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2
@@ -55,4 +79,4 @@ function SubmitButton(props) {
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubmitButton);
+export default connect(mapStateToProps)(SubmitButton);

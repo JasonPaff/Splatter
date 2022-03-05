@@ -2,8 +2,12 @@
 
 const initialState = {
     title: '',
-    priority: '1',
-    severity: { severity: 'Minor', description: 'Minor loss of function' },
+    priority: {
+        priority: '1 - Eventual',
+        description: "not slated to be completed in the current development cycle",
+        numeric: 1
+    },
+    severity: {severity: 'Minor', description: 'Minor loss of function'},
     type: 'Coding Error',
     product: 'Tournament Life',
     browser: 'Microsoft Edge',
@@ -75,8 +79,12 @@ const newTicketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 title: '',
-                priority: '1',
-                severity: { severity: 'Minor', description: 'Minor loss of function' },
+                priority: {
+                    priority: '1 - Eventual',
+                    description: "not slated to be completed in the current development cycle",
+                    numeric: 1
+                },
+                severity: {severity: 'Minor', description: 'Minor loss of function'},
                 type: 'Coding Error',
                 product: 'Tournament Life',
                 browser: 'Microsoft Edge',
