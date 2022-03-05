@@ -28,7 +28,7 @@ export default function QANewTicket() {
                     <div className="pt-4">
                         <IssueTitle/>
 
-                        <div className="sm:flex sm:flex-wrap space-x-2 pt-2">
+                        <div className="md:flex md:flex-wrap md:space-x-2 pt-2">
                             <SeverityDropDown/>
                             <PriorityDropDown/>
                             <ReportTypesDropDown/>
