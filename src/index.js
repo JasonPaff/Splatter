@@ -3,6 +3,7 @@ import React from 'react';
 import thunk from "redux-thunk";
 import ReactDOM from 'react-dom';
 import App from './App';
+import {GraphQLClient, ClientContext} from 'graphql-hooks'
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {applyMiddleware, compose, createStore, combineReducers} from 'redux';
@@ -21,11 +22,17 @@ const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
+const client = new GraphQLClient({
+    url: '/graphql'
+})
+
 ReactDOM.render(<React.StrictMode>
     <BrowserRouter>
         <Auth0ProviderWithHistory>
             <Provider store={store}>
-                <App/>
+                <ClientContext.Provider value={client}>
+                    <App/>
+                </ClientContext.Provider>
             </Provider>
         </Auth0ProviderWithHistory>
     </BrowserRouter>

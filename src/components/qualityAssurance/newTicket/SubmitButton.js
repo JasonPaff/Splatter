@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import {connect} from 'react-redux'
+import { useMutation } from 'graphql-hooks';
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import {useAuth0} from "@auth0/auth0-react";
 
@@ -17,8 +18,17 @@ const mapStateToProps = (state) => {
     };
 }
 
+const createTicketMutation = `
+    mutation CreateTicket($title: String) {
+        createTicket(title: $title) {
+            id
+        }
+    }
+`
+
 function SubmitButton(props) {
     const {getAccessTokenSilently} = useAuth0();
+    const [createTicket] = useMutation(createTicketMutation);
 
     const handleSubmit = async () => {
         const token = await getAccessTokenSilently({
@@ -26,6 +36,8 @@ function SubmitButton(props) {
             scope: "read:current_user",
         });
 
+        const res = await createTicket({variables: props.values.title });
+        console.log(res);
         props.onSubmitClick(props.values, token);
     }
 
