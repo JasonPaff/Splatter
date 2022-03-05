@@ -7,7 +7,7 @@ import ReproductionSteps from "./ReproductionSteps";
 import ExpectedResult from "./ExpectedResult";
 import ActualResult from "./ActualResult";
 import SeverityDropDown from "./SeverityDropDown";
-import ReportTypesDropDown from "./ReportTypesDropDown";
+import ReportTypesDropDown from "./TypesDropDown";
 import ProductDropDown from "./ProductDropDown";
 import IssueTitle from "./IssueTitle";
 import BrowserDropDown from "./BrowserDropDown";
@@ -28,7 +28,7 @@ export default function QANewTicket() {
                     <div className="pt-4">
                         <IssueTitle/>
 
-                        <div className="flex flex-wrap space-x-2 pt-2">
+                        <div className="sm:flex sm:flex-wrap space-x-2 pt-2">
                             <SeverityDropDown/>
                             <PriorityDropDown/>
                             <ReportTypesDropDown/>
@@ -44,7 +44,7 @@ export default function QANewTicket() {
                             <ActualResult/>
                         </div>
 
-                        <span className="pt-5 float-right">
+                        <span className="pt-5 float-right ">
                             <ResetButton/>
                             <SubmitButton/>
                         </span>

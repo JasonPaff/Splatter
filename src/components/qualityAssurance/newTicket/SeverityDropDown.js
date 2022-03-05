@@ -1,16 +1,17 @@
-﻿import React, {Fragment, useState} from 'react'
+﻿import React, {Fragment} from 'react'
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const severityOptions = [
-    { severity: 'Minor', description: 'Minor loss of function', current: true },
-    { severity: 'Major', description: 'Major loss of function', current: false },
-    { severity: 'Blocker', description: 'No further testing work can be done', current: false },
-    { severity: 'Critical', description: 'Application crash, loss of data', current: false },
-    { severity: 'Trivial', description: 'Some UI enhancements', current: false },
-    { severity: 'Enhancement', description: 'New feature or enhancement request', current: false },]
+    { severity: 'Minor', description: 'Minor loss of function' },
+    { severity: 'Major', description: 'Major loss of function' },
+    { severity: 'Critical', description: 'Application crash, loss of data' },
+    { severity: 'Trivial', description: 'Some UI enhancements' },
+    { severity: 'Blocker', description: 'No further testing work can be done' },
+    { severity: 'Enhancement', description: 'New feature or enhancement request' }
+];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -22,38 +23,37 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        severity: {
+            severity : state.newTicketReducer.severity.severity,
+            description: state.newTicketReducer.severity.description
+        }
+    };
+}
+
 function SeverityDropDown(props) {
-
-    const [selected, setSelected] = useState(severityOptions[0])
-
-    const handleSelect = (e) => {
-        setSelected(e);
-        props.onSelectChange(e.severity);
-    }
-
     return (
         <div className="mt-2">
             <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Severity
             </label>
-            <Listbox value={selected} onChange={handleSelect} id="severity">
+            <Listbox value={props.severity.severity} onChange={(e) => props.onSelectChange(e)} id="severity">
                 {({open}) => (
                     <>
                     <Listbox.Label className="sr-only">change issue severity</Listbox.Label>
                     <div className="relative">
-                        <div className="inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
-                            <div
-                                className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
-                                <div
-                                    className="relative inline-flex items-center bg-indigo-500 py-2 pl-3 pr-4 border
-                                        border-transparent rounded-l-md shadow-sm text-white">
-                                    <p className="ml-2.5 text-sm font-medium">{selected.severity}</p>
+                        <div className="inline-flex shadow-sm rounded-md divide-x divide-sky-600">
+                            <div className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
+                                <div className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
+                                    border-transparent rounded-l-md shadow-sm text-white">
+                                    <p className="ml-2.5 text-sm font-medium">{props.severity.severity}</p>
                                 </div>
                                 <Listbox.Button
-                                    className="relative inline-flex items-center bg-indigo-500 p-2 rounded-l-none
-                                         rounded-r-md text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none
+                                    className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none
+                                         rounded-r-md text-sm font-medium text-white hover:bg-sky-600 focus:outline-none
                                          focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
-                                         focus:ring-indigo-500">
+                                         focus:ring-sky-500">
                                     <span className="sr-only">change issue severity</span>
                                     <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                 </Listbox.Button>
@@ -74,7 +74,8 @@ function SeverityDropDown(props) {
                                 {severityOptions.map((option) => (
                                     <Listbox.Option
                                         key={option.severity}
-                                        className={({active}) => classNames(active ? 'text-white bg-indigo-500' : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
+                                        className={({active}) => classNames(active ? 'text-white bg-sky-500'
+                                            : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
                                         value={option}
                                     >
                                         {({selected, active}) => (
@@ -82,11 +83,11 @@ function SeverityDropDown(props) {
                                                 <div className="flex justify-between">
                                                     <p className={selected ? 'font-semibold' : 'font-normal'}>{option.severity}</p>
                                                     {selected ? (
-                                                        <span className={active ? 'text-white' : 'text-indigo-500'}>
-                              <CheckIcon className="h-5 w-5" aria-hidden="true"/>
-                            </span>) : null}
+                                                        <span className={active ? 'text-white' : 'text-sky-500'}>
+                                                            <CheckIcon className="h-5 w-5" aria-hidden="true"/>
+                                                        </span>) : null}
                                                 </div>
-                                                <p className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'mt-2')}>
+                                                <p className={classNames(active ? 'text-sky-200' : 'text-gray-500', 'mt-2')}>
                                                     {option.description}
                                                 </p>
                                             </div>)}
@@ -98,4 +99,4 @@ function SeverityDropDown(props) {
             </Listbox>
         </div>)
 }
-export default connect(null, mapDispatchToProps)(SeverityDropDown);
+export default connect(mapStateToProps, mapDispatchToProps)(SeverityDropDown);

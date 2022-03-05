@@ -83,3 +83,12 @@ export const resetValues = () => {
         payload: {}
     }
 }
+
+export const submitValues = (values) => {
+    console.log(values);
+    fetch("http://localhost:4000/").then(response => console.log(response));
+    return {
+        type: actionTypes.SUBMIT_VALUES,
+        payload: values
+    }
+}

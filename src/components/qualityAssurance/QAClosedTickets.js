@@ -11,7 +11,7 @@ function QAClosedTickets(props) {
                     <h1>Closed Tickets</h1>
                     <h1>title: {props.title}</h1>
                     <h1>priority: {props.priority}</h1>
-                    <h1>severity: {props.severity}</h1>
+                    <h1>severity: {props.severity.severity}</h1>
                     <h1>type: {props.type}</h1>
                     <h1>product: {props.product}</h1>
                     <h1>browser: {props.browser}</h1>
