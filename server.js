@@ -30,7 +30,7 @@ const checkJwt = auth({
 });
 
 // ROUTES
-app.use("/", checkJwt, require('./routes/test.js'));
+app.use("/createTicket", checkJwt, require('./routes/createTicket'));
 
 // database error handler
 database_connection.on("error", console.error.bind(console, "connection error: "));
