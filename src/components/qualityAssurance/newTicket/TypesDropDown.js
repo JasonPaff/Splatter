@@ -1,7 +1,7 @@
 ﻿import React, {Fragment} from 'react'
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
-import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const reportTypes = [
@@ -49,9 +49,9 @@ function TypesDropDown(props) {
                                         className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none
                                             rounded-r-md text-sm font-medium text-white hover:bg-sky-600 focus:outline-none
                                             focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
-                                            focus:ring-indigo-500">
+                                            focus:ring-sky-500">
                                         <span className="sr-only">change report type</span>
-                                        <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                        <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                     </Listbox.Button>
                                 </div>
                             </div>

@@ -1,14 +1,11 @@
 ﻿import React, {Fragment} from 'react'
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react';
-import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid';
+import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
+import classNameJoiner from "../../../utils/ClassNameJoiner";
 
 const priorityOptions = ['1', '2', '3', '4', '5',];
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -33,21 +30,19 @@ function PriorityDropDown(props) {
                     <>
                         <Listbox.Label className="sr-only">change issue priority</Listbox.Label>
                         <div className="relative">
-                            <div className="inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
-                                <div
-                                    className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
-                                    <div
-                                        className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
-                                        border-transparent rounded-l-md shadow-sm text-white">
+                            <div className="inline-flex shadow-sm rounded-md divide-x divide-sky-600">
+                                <div className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
+                                    <div className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
+                                            border-transparent rounded-l-md shadow-sm text-white">
                                         <p className="ml-2.5 text-sm font-medium">{props.priority}</p>
                                     </div>
                                     <Listbox.Button
                                         className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none
-                                         rounded-r-md text-sm font-medium text-white hover:bg-sky-600 focus:outline-none
-                                         focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
-                                         focus:ring-sky-500">
+                                            rounded-r-md text-sm font-medium text-white hover:bg-sky-600 focus:outline-none
+                                            focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
+                                            focus:ring-sky-500">
                                         <span className="sr-only">change issue priority</span>
-                                        <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                        <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                     </Listbox.Button>
                                 </div>
                             </div>
@@ -66,7 +61,7 @@ function PriorityDropDown(props) {
                                     {priorityOptions.map((option) => (
                                         <Listbox.Option
                                             key={option}
-                                            className={({active}) => classNames(active ? 'text-white bg-sky-500'
+                                            className={({active}) => classNameJoiner(active ? 'text-white bg-sky-500'
                                                 : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
                                             value={option}
                                         >

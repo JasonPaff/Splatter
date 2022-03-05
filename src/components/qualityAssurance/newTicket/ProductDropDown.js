@@ -1,18 +1,15 @@
 ﻿import React, {Fragment} from 'react'
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
-import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
+import classNameJoiner from "../../../utils/ClassNameJoiner";
 
 const productOptions = [
     'Tournament Life',
     'Etsy Clone',
     'Whats for Dinner?'
 ];
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -49,7 +46,7 @@ function ProductDropDown(props) {
                                             focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
                                             focus:ring-sky-500">
                                         <span className="sr-only">change product</span>
-                                        <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                        <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                     </Listbox.Button>
                                 </div>
                             </div>
@@ -68,7 +65,7 @@ function ProductDropDown(props) {
                                     {productOptions.map((option) => (
                                         <Listbox.Option
                                             key={option}
-                                            className={({active}) => classNames(active ? 'text-white bg-sky-500'
+                                            className={({active}) => classNameJoiner(active ? 'text-white bg-sky-500'
                                                 : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
                                             value={option}
                                         >

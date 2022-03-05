@@ -1,8 +1,9 @@
 ﻿import React, {Fragment} from 'react'
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
-import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid'
+import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
+import classNameJoiner from "../../../utils/ClassNameJoiner";
 
 const severityOptions = [
     { severity: 'Minor', description: 'Minor loss of function' },
@@ -12,10 +13,6 @@ const severityOptions = [
     { severity: 'Blocker', description: 'No further testing work can be done' },
     { severity: 'Enhancement', description: 'New feature or enhancement request' }
 ];
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -55,7 +52,7 @@ function SeverityDropDown(props) {
                                          focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
                                          focus:ring-sky-500">
                                     <span className="sr-only">change issue severity</span>
-                                    <ChevronDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                    <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
                                 </Listbox.Button>
                             </div>
                         </div>
@@ -74,7 +71,7 @@ function SeverityDropDown(props) {
                                 {severityOptions.map((option) => (
                                     <Listbox.Option
                                         key={option.severity}
-                                        className={({active}) => classNames(active ? 'text-white bg-sky-500'
+                                        className={({active}) => classNameJoiner(active ? 'text-white bg-sky-500'
                                             : 'text-gray-900', 'cursor-default select-none relative p-4 text-sm')}
                                         value={option}
                                     >
@@ -87,7 +84,7 @@ function SeverityDropDown(props) {
                                                             <CheckIcon className="h-5 w-5" aria-hidden="true"/>
                                                         </span>) : null}
                                                 </div>
-                                                <p className={classNames(active ? 'text-sky-200' : 'text-gray-500', 'mt-2')}>
+                                                <p className={classNameJoiner(active ? 'text-sky-200' : 'text-gray-500', 'mt-1')}>
                                                     {option.description}
                                                 </p>
                                             </div>)}
