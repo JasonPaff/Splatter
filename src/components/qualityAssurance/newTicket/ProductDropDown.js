@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
 
 function ProductDropDown(props) {
     return (
-        <div className="mt-2">
+        <div className="mt-2 md:flex md:flex-col md:items-center">
             <label htmlFor="product" className="block text-sm font-medium text-gray-700">
                 Product
             </label>

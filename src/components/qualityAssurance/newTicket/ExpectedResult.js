@@ -17,9 +17,9 @@ const mapStateToProps = (state) => {
 function ExpectedResult(props) {
     return (
         <div className="sm:col-span-6">
-            <label htmlFor="expectedResult" className="block text-sm font-medium text-gray-700">
-                Expected result
-            </label>
+            {/*<label htmlFor="expectedResult" className="block text-sm font-medium text-gray-700">*/}
+            {/*    Expected result*/}
+            {/*</label>*/}
                 <textarea
                     id="expectedResult"
                     rows={3}

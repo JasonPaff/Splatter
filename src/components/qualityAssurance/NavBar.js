@@ -1,7 +1,7 @@
 ﻿import {Disclosure} from "@headlessui/react";
 import {useNavigate} from "react-router-dom";
 import NavBarLogo from "../navigationBar/NavBarLogo";
-import QANavBarButtons from "./QANavBarButtons";
+import NavBarButtons from "./NavBarButtons";
 import NotificationsButton from "../navigationBar/NotificationsButton";
 import MobileMenuHamburger from "../navigationBar/MobileMenuHamburger";
 import MobileNotificationsButton from "../navigationBar/MobileNotificationsButton";
@@ -10,7 +10,7 @@ import QAProfileDropDown from "./QAProfileDropDown";
 import QAMobileUserOptions from "./QAMobileUserOptions";
 import QAMobileMenuButtons from "./QAMobileMenuButtons";
 
-function QANavBar() {
+function NavBar() {
     const navigate = useNavigate();
 
     return (
@@ -20,42 +20,30 @@ function QANavBar() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
                             <div className="flex items-center">
-                                {/* Navigation logo dropdown */}
                                 <NavBarLogo/>
                                 <div className="hidden sm:block sm:ml-6">
-                                    {/* Navigation bar buttons dropdown */}
-                                    <QANavBarButtons navigate={navigate}/>
+                                    <NavBarButtons navigate={navigate}/>
                                 </div>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex items-center">
-                                    {/* Notifications dropdown */}
                                     <NotificationsButton/>
-
-                                    {/* Profile dropdown */}
                                     <QAProfileDropDown navigate={navigate}/>
                                 </div>
                             </div>
                             <div className="-mr-2 flex sm:hidden">
-                                {/* Mobile menu hamburger button */}
                                 <MobileMenuHamburger open={open}/>
                             </div>
                         </div>
                     </div>
 
                     <Disclosure.Panel className="sm:hidden">
-                        {/* Mobile menu buttons */}
                         <QAMobileMenuButtons navigate={navigate}/>
                         <div className="pt-4 pb-3 border-t border-gray-700">
                             <div className="flex items-center px-5">
-                                {/* Mobile profile drop down */}
                                 <MobileProfileView/>
-
-                                {/* Mobile notifications button */}
                                 <MobileNotificationsButton/>
                             </div>
-
-                            {/* Mobile user option buttons */}
                             <QAMobileUserOptions navigate={navigate}/>
                         </div>
                     </Disclosure.Panel>
@@ -65,4 +53,4 @@ function QANavBar() {
     );
 }
 
-export default QANavBar;
+export default NavBar;

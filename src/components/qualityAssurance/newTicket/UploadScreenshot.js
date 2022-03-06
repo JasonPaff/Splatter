@@ -3,9 +3,9 @@
 export default function UploadScreenshot() {
     return (
             <div className="sm:col-span-6">
-                <label htmlFor="screenshot" className="block text-sm font-medium text-gray-700">
-                    Upload screenshot
-                </label>
+                {/*<label htmlFor="screenshot" className="block text-sm font-medium text-gray-700">*/}
+                {/*    Upload screenshot*/}
+                {/*</label>*/}
                 <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300
                         border-dashed rounded-md"
                      id="screenshot"

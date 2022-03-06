@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 
 function BrowserDropDown(props) {
     return (
-        <div className="mt-2">
+        <div className="mt-2 md:flex md:flex-col md:items-center">
             <label htmlFor="browser" className="block text-sm font-medium text-gray-700">
                 Browser
             </label>

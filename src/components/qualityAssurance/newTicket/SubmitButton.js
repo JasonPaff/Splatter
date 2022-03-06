@@ -11,8 +11,6 @@ const mapStateToProps = (state) => {
 function SubmitButton(props) {
     const {getAccessTokenSilently, user} = useAuth0();
 
-    console.log(props.values.priority.numeric);
-
     const handleSubmit = async () => {
         const actualResult = props.values.actualResult;
         const browser = props.values.browser;
@@ -61,8 +59,7 @@ function SubmitButton(props) {
 
         const request = await fetch("http://localhost:4000/graphql", headers);
         const response = await request.json();
-        console.log(response);
-        //alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
+        alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
     }
 
     return (

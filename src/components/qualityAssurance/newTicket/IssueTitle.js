@@ -14,22 +14,17 @@ const mapStateToProps = (state) => {
 }
 
 function IssueTitle(props) {
-
-    const handleChange = (e) => {
-        props.onTitleChange(e.target.value);
-    }
-
     return (
         <>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                Title
-            </label>
+            {/*<label htmlFor="title" className="block text-sm font-medium text-gray-700">*/}
+            {/*    Title*/}
+            {/*</label>*/}
             <div className="mt-1">
                 <input
                     type="text"
                     id="title"
                     value={props.title}
-                    onChange={handleChange}
+                    onChange={(e) =>  props.onTitleChange(e.target.value)}
                     className="shadow-sm focus:ring-sky-500 focus:border-sky-500 block w-full
                         sm:text-sm border-gray-300 rounded-md"
                     placeholder="Enter a descriptive issue title"

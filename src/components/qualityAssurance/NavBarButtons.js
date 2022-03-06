@@ -1,4 +1,4 @@
-﻿export default function QANavBarButtons(props) {
+﻿export default function NavBarButtons(props) {
     return (
         <>
             <div className="flex space-x-4">

@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿const defaultTheme = require("tailwindcss/lib/public/default-theme");
+
+module.exports = {
     content: [
         'src/**/*.js',
         'src/**/*.jsx',
@@ -8,6 +10,10 @@
     ],
     theme: {
         extend: {},
+        screens: {
+            'xs': '280px',
+            ...defaultTheme.default.screens
+        }
     },
     variants: {},
     plugins: [

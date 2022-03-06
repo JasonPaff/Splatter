@@ -20,7 +20,7 @@ import StaffTickets from "./components/staff/StaffTickets";
 import StaffSupport from "./components/staff/StaffSupport";
 import StaffSettings from "./components/staff/StaffSettings";
 import StaffAccounts from "./components/staff/StaffAccounts";
-import QANewTicket from "./components/qualityAssurance/newTicket/QANewTicket";
+import NewTicket from "./components/qualityAssurance/newTicket/NewTicket";
 import QAMessages from "./components/qualityAssurance/QAMessages";
 
 export default function App() {
@@ -35,7 +35,7 @@ export default function App() {
                 <Route path="/qaHome" element={<ProtectedRoute component={QAHome}/>}/>
                 <Route path="/qaOpenTickets" element={<ProtectedRoute component={QAOpenTickets}/>}/>
                 <Route path="/qaClosedTickets" element={<ProtectedRoute component={QAClosedTickets}/>}/>
-                <Route path="/qaNewTicket" element={<ProtectedRoute component={QANewTicket}/>}/>
+                <Route path="/qaNewTicket" element={<ProtectedRoute component={NewTicket}/>}/>
                 <Route path="/adminHome" element={<ProtectedRoute component={AdminHome}/>}/>
                 <Route path="/adminProfile" element={<ProtectedRoute component={AdminProfile}/>}/>
                 <Route path="/adminTickets" element={<ProtectedRoute component={AdminTickets}/>}/>

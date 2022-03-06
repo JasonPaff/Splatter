@@ -10,7 +10,8 @@ const reportTypes = [
     'Design Error',
     'New Suggestion',
     'Documentation Issue',
-    'Hardware Problem'
+    'Hardware Problem',
+    'Unknown'
 ];
 
 const mapDispatchToProps = (dispatch) => {
@@ -27,7 +28,7 @@ const mapStateToProps = (state) => {
 
 function TypesDropDown(props) {
     return (
-        <div className="mt-2">
+        <div className="mt-2 md:flex md:flex-col md:items-center">
             <label htmlFor="type" className="block text-sm font-medium text-gray-700">
                 Type
             </label>

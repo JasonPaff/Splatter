@@ -1,10 +1,10 @@
 ﻿import React from "react";
-import QANavBar from "./QANavBar";
+import NavBar from "./NavBar";
 
 export default function QAHome() {
     return (
         <>
-            <QANavBar/>
+            <NavBar/>
             <div className="flex justify-center">
                 <h1>Home</h1>
             </div>

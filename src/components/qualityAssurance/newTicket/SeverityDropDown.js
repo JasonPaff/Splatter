@@ -43,7 +43,7 @@ function SeverityDropDown(props) {
     }, [props.severity]);
 
     return (
-        <div className="mt-2">
+        <div className="mt-2 md:flex md:flex-col md:items-center">
             <label htmlFor="severity" className="block text-sm font-medium text-gray-700">
                 Severity
             </label>

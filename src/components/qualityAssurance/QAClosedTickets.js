@@ -1,16 +1,16 @@
 ﻿import React from "react";
-import QANavBar from "./QANavBar";
+import NavBar from "./NavBar";
 import {connect} from 'react-redux';
 
 function QAClosedTickets(props) {
     return (
         <>
-            <QANavBar/>
+            <NavBar/>
             <div className="flex justify-center">
                 <ul>
                     <h1>Closed Tickets</h1>
                     <h1>title: {props.title}</h1>
-                    <h1>priority: {props.priority}</h1>
+                    <h1>priority: {props.priority.numeric}</h1>
                     <h1>severity: {props.severity.severity}</h1>
                     <h1>type: {props.type}</h1>
                     <h1>product: {props.product}</h1>

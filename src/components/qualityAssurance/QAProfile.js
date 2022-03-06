@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import QANavBar from "./QANavBar";
+import NavBar from "./NavBar";
 
 export default function QAProfile() {
     const {user, isAuthenticated} = useAuth0();
@@ -8,7 +8,7 @@ export default function QAProfile() {
     return (
         isAuthenticated && (
             <>
-                <QANavBar/>
+                <NavBar/>
 
                 <div className="sm:col-span-6">
                     <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
