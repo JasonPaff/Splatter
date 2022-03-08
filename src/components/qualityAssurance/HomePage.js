@@ -5,13 +5,11 @@ import {
     ClockIcon,
     CogIcon,
     CreditCardIcon,
-    DocumentReportIcon,
     HomeIcon,
     MenuAlt1Icon,
     QuestionMarkCircleIcon,
     ScaleIcon,
     ShieldCheckIcon,
-    UserGroupIcon,
     XIcon,
 } from '@heroicons/react/outline'
 import {

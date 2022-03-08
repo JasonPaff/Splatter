@@ -6,3 +6,10 @@ export const setLocation = (location) => {
         payload: location
     };
 }
+
+export const setSideBarOpen = (isOpen) => {
+    return {
+        type: actionTypes.SET_IS_SIDEBAR_OPEN,
+        payload: isOpen
+    };
+}
