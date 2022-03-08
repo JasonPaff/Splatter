@@ -1,11 +1,12 @@
 ﻿import {Dialog, Transition} from "@headlessui/react";
-import {Fragment} from "react";
+import {Fragment, useEffect, useState} from "react";
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actionCreators/navActionCreator";
 import Logo from "./Logo";
 import SideBarMobileHamburgerCloseButton from "./SideBarMobileHamburgerCloseButton";
 import PrimarySideBarMenu from "./PrimarySideBarMenu";
 import SecondarySideBarMenu from "./SecondarySideBarMenu";
+import * as navigationRoutes from "../../store/navigationRoutes";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -16,10 +17,19 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         isSidebarOpen: state.navReducer.isSidebarOpen,
+        location: state.navReducer.location
     }
 }
 
 function SideBarMobileHamburger(props) {
+    const [primaryNavRoutes] = useState(navigationRoutes.primaryNavigations)
+    const [secondaryNavRoutes] = useState(navigationRoutes.secondaryNavigations)
+
+    useEffect(() => {
+        console.log('close me')
+        props.onSideBar(false);
+    },[props.location])
+
     return (
         <Transition.Root
             show={props.isSidebarOpen} as={Fragment}>
@@ -67,9 +77,9 @@ function SideBarMobileHamburger(props) {
                         <nav className="mt-5 flex-shrink-0 h-full divide-y divide-cyan-800 overflow-y-auto"
                              aria-label="Sidebar"
                         >
-                            <PrimarySideBarMenu/>
+                            <PrimarySideBarMenu navigations={primaryNavRoutes}/>
                             <div className="mt-6 pt-6">
-                                <SecondarySideBarMenu/>
+                                <SecondarySideBarMenu navigations={secondaryNavRoutes}/>
                             </div>
                         </nav>
                     </div>

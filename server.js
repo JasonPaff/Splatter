@@ -29,7 +29,7 @@ app.use(logger('dev'));
 app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(checkJwt);
+//app.use(checkJwt);
 
 // Construct a schema, using GraphQL schema language
 // input TicketInput is for creating

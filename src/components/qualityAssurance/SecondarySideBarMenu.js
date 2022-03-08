@@ -1,6 +1,7 @@
 ﻿import classNameJoiner from "../../utils/ClassNameJoiner";
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actionCreators/navActionCreator";
+import {useEffect} from "react";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -10,14 +11,17 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        secondaryNavigations: state.navReducer.secondaryNavigations,
+        location: state.navReducer.location
     }
 }
 
 function SecondarySideBarMenu(props) {
+    useEffect(() => {
+    }, [props.location])
+
     return (
         <div className="px-2 space-y-1">
-            {props.secondaryNavigations.map((item) => (
+            {props.navigations.map((item) => (
                 <a key={item.name}
                    onClick={() => props.setLocation(item.location)}
                    aria-current={item.current ? 'page' : undefined}

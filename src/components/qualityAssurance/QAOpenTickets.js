@@ -2,7 +2,7 @@
 
 export default function QAOpenTickets() {
 
-    document.title = "Open Tickets";
+    document.title = "Splatter - Open Tickets";
 
     return (
         <>
