@@ -5,16 +5,13 @@ export default function MobileProfileView() {
     const {user} = useAuth0();
     return (
         <>
-            <div className="flex-shrink-0">
+            <div className="flex flex-row ml-3 mt-1">
                 <img
-                    className="h-10 w-10 rounded-full"
+                    className="h-8 w-8 rounded-full"
                     src={user.picture}
                     alt={`${user.name}`}
                 />
-            </div>
-            <div className="ml-3">
-                <div className="text-base font-medium text-white">{user.name}</div>
-                <div className="text-sm font-medium text-gray-400">{user.email}</div>
+                <span className="ml-3 text-base font-medium text-white">{user.name}</span>
             </div>
         </>
     );

@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import NavBar from "../NavBar";
 import PriorityDropDown from "./PriorityDropDown";
 import UploadScreenshot from "./UploadScreenshot";
 import IssueSummary from "./IssueSummary";
@@ -22,7 +21,6 @@ export default function NewTicket() {
 // TODO: Needs input validation to make sure all required fields are filled in
     return (
         <>
-            <NavBar/>
             <div className="m-3 flex justify-center">
                 <div className="space-y-8 divide-y divide-gray-200 min-w-[50%] max-w-screen-2xl">
                     <IssueHeader/>

@@ -26,7 +26,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 app.use(logger('dev'));
-app.use(cors({origin: process.env.APP_ORIGIN,}));
+app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(checkJwt);

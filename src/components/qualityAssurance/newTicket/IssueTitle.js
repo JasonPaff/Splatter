@@ -16,9 +16,9 @@ const mapStateToProps = (state) => {
 function IssueTitle(props) {
     return (
         <>
-            {/*<label htmlFor="title" className="block text-sm font-medium text-gray-700">*/}
-            {/*    Title*/}
-            {/*</label>*/}
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                Issue Title
+            </label>
             <div className="mt-1">
                 <input
                     type="text"

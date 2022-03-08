@@ -17,9 +17,9 @@ const mapStateToProps = (state) => {
 function ActualResult(props) {
     return (
         <div className="sm:col-span-6">
-            {/*<label htmlFor="actualResult" className="block text-sm font-medium text-gray-700">*/}
-            {/*    Actual result*/}
-            {/*</label>*/}
+            <label htmlFor="actualResult" className="block text-sm font-medium text-gray-700">
+                Actual result
+            </label>
             <textarea
                 id="actualResult"
                 rows={3}

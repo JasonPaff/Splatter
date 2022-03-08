@@ -1,11 +1,9 @@
 ﻿import React from "react";
-import NavBar from "./NavBar";
 import {connect} from 'react-redux';
 
 function QAClosedTickets(props) {
     return (
         <>
-            <NavBar/>
             <div className="flex justify-center">
                 <ul>
                     <h1>Closed Tickets</h1>

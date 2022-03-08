@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import NavBar from "./NavBar";
 
 export default function QAOpenTickets() {
 
@@ -7,7 +6,6 @@ export default function QAOpenTickets() {
 
     return (
         <>
-            <NavBar/>
             <div className="flex justify-center">
                 <h1>Open Ticket</h1>
             </div>

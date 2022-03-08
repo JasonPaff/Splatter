@@ -3,9 +3,6 @@
 export default function UploadScreenshot() {
     return (
             <div className="sm:col-span-6">
-                {/*<label htmlFor="screenshot" className="block text-sm font-medium text-gray-700">*/}
-                {/*    Upload screenshot*/}
-                {/*</label>*/}
                 <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300
                         border-dashed rounded-md"
                      id="screenshot"
@@ -30,7 +27,7 @@ export default function UploadScreenshot() {
                         <div className="flex text-sm text-gray-600">
                             <label
                                 htmlFor="file-upload"
-                                className="relative cursor-pointer bg-white rounded-md font-medium
+                                className="relative cursor-pointer rounded-md font-medium
                                     text-sky-600 hover:text-sky-500 focus-within:outline-none
                                     focus-within:ring-2 focus-within:ring-offset-2
                                     focus-within:ring-sky-500"

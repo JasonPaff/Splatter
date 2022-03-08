@@ -10,12 +10,14 @@ import {applyMiddleware, compose, createStore, combineReducers} from 'redux';
 import Auth0ProviderWithHistory from "./components/authentication/Auth0ProviderWithHistory";
 import roleReducer from "./store/reducers/roleReducer";
 import newTicketReducer from "./store/reducers/NewTicketReducer";
+import navReducer from "./store/reducers/navReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     newTicketReducer: newTicketReducer,
-    roleReducer: roleReducer
+    roleReducer: roleReducer,
+    navReducer: navReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

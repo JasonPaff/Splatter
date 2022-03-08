@@ -17,9 +17,9 @@ const mapStateToProps = (state) => {
 function ReproductionSteps(props) {
     return (
         <div className="sm:col-span-6">
-            {/*<label htmlFor="reproductionSteps" className="block text-sm font-medium text-gray-700">*/}
-            {/*    Reproduction steps*/}
-            {/*</label>*/}
+            <label htmlFor="reproductionSteps" className="block text-sm font-medium text-gray-700">
+                Reproduction steps
+            </label>
             <textarea
                 id="reproductionSteps"
                 rows={3}

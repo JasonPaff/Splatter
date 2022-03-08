@@ -9,18 +9,16 @@ export default function Auth0ProviderWithHistory({children}) {
         navigate(appState.returnTo || window.location.pathname);
     };
 
-    if (!("dev-eyvtzgck.us.auth0.com" && "Zd9AsdTm7q9zLWtbnYNMsr73bax2vZS5" && "https://dev-eyvtzgck.us.auth0.com/api/v2/")) {
-        return null;
-    }
-
-    return (<Auth0Provider
-        domain={"dev-eyvtzgck.us.auth0.com"}
-        clientId={"Zd9AsdTm7q9zLWtbnYNMsr73bax2vZS5"}
-        audience={"https://dev-eyvtzgck.us.auth0.com/api/v2/"}
-        scope="read:current_user update:current_user_metadata"
-        redirectUri={window.location.origin + "/dashboard"}
-        onRedirectCallback={onRedirectCallback}
-    >
-        {children}
-    </Auth0Provider>);
+    return (
+        <Auth0Provider
+            domain={"dev-eyvtzgck.us.auth0.com"}
+            clientId={"Zd9AsdTm7q9zLWtbnYNMsr73bax2vZS5"}
+            audience={"https://dev-eyvtzgck.us.auth0.com/api/v2/"}
+            scope="read:current_user update:current_user_metadata"
+            redirectUri={window.location.origin + "/dashboard"}
+            onRedirectCallback={onRedirectCallback}
+        >
+            {children}
+        </Auth0Provider>
+    );
 };

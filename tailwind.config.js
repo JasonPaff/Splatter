@@ -1,4 +1,5 @@
 ﻿const defaultTheme = require("tailwindcss/lib/public/default-theme");
+const colors = require('tailwindcss/colors');
 
 module.exports = {
     content: [
@@ -9,7 +10,11 @@ module.exports = {
         'public/**/*.html',
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors : {
+                cyan: colors.cyan,
+            },
+        },
         screens: {
             'xs': '280px',
             ...defaultTheme.default.screens

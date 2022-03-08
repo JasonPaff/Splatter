@@ -17,9 +17,9 @@ const mapStateToProps = (state) => {
 function IssueSummary(props) {
     return (
         <div className="sm:col-span-6">
-            {/*<label htmlFor="summary" className="block text-sm font-medium text-gray-700">*/}
-            {/*    Brief summary*/}
-            {/*</label>*/}
+            <label htmlFor="summary" className="block text-sm font-medium text-gray-700">
+                Brief summary
+            </label>
             <textarea
                 id="summary"
                 rows={3}
