@@ -1,7 +1,7 @@
 ﻿import TicketInfoTableHeader from "./TicketInfoTableHeader";
 import TicketInfoColumnHeaders from "./TicketInfoColumnHeaders";
 import TicketInfoRows from "./TicketInfoRows";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
 
@@ -23,9 +23,9 @@ function TicketInfo(props) {
             <TicketInfoTableHeader/>
             <div className="mt-8 flex flex-col">
                 <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
-                    <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-300">
+                    <div className="inline-block min-w-full py-2 align-middle">
+                        <div className="shadow-sm ring-1 ring-black ring-opacity-5">
+                            <table className="min-w-full border-separate" style={{ borderSpacing: 0}}>
                                 <TicketInfoColumnHeaders/>
                                 <TicketInfoRows tickets={props.tickets}/>
                             </table>

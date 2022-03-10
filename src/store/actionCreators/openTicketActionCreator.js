@@ -12,3 +12,10 @@ export const setSortMode = (mode) => {
         payload: mode
     }
 }
+
+export const setTicketInfoModalIsShowing = (isShowing) => {
+    return {
+        type: actionTypes.SET_TICKET_INFO_MODAL_IS_SHOWING,
+        payload: isShowing
+    };
+}

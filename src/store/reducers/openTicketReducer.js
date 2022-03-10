@@ -1,6 +1,7 @@
 ﻿const initialState = {
     selectedSort: 'Title',
-    isSortAscending: true
+    isSortAscending: true,
+    isTicketInfoModalShowing: false
 }
 
 const openTicketReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const openTicketReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isSortAscending: action.payload
+            }
+        case "SET_TICKET_INFO_MODAL_IS_SHOWING":
+            return {
+                ...state,
+                isTicketInfoModalShowing: action.payload
             }
         default:
             return state;

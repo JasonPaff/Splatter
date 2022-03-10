@@ -17,18 +17,19 @@ function mapStateToProps(state) {
 
 function OpenTicketSortButton(props) {
     return (
-        <button className="group inline-flex"
+        <label className="group inline-flex"
                 onClick={() => props.onSortSelectionChange(props.name)}
         >
             {props.name}
+
             <span className="flex-none rounded text-gray-400
                     group-hover:visible group-focus:visible">
                     {props.name === props.selectedSort &&
                         props.isSortAscending ?
-                        <ChevronUpIcon className="h-5 w-5 mt-0.5" aria-hidden="true"/>
-                    :  <ChevronDownIcon className="h-5 w-5 mt-0.5" aria-hidden="true"/>}
-                </span>
-        </button>
+                        <ChevronUpIcon className="h-5 w-5 mt-0.5 hover:cursor-pointer" aria-hidden="true"/>
+                    :  <ChevronDownIcon className="h-5 w-5 mt-0.5 hover:cursor-pointer" aria-hidden="true"/>}
+            </span>
+        </label>
     );
 }
 
