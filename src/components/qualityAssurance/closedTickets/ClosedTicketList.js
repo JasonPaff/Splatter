@@ -1,7 +1,7 @@
 ﻿import {useEffect, useState} from "react";
-import OpenTicketInfo from "./OpenTicketInfo";
+import ClosedTicketInfo from "./ClosedTicketInfo";
 
-export default function OpenTicketList(props) {
+export default function ClosedTicketList(props) {
     const [tickets, setTickets] = useState([]);
 
     const getTickets = async () => {
@@ -46,7 +46,7 @@ export default function OpenTicketList(props) {
             item.updatedAt = new Date(item.updatedAt).toLocaleString();
         })
         const filteredTickets = ticketData.filter((ticket) => {
-            return ticket.status === 'created' || ticket.status === 'assigned'
+            return ticket.status === 'closed'
         });
         setTickets(filteredTickets);
     }
@@ -56,6 +56,6 @@ export default function OpenTicketList(props) {
     }, [])
 
     return (
-        <OpenTicketInfo tickets={tickets}/>
+        <ClosedTicketInfo tickets={tickets}/>
     );
 }

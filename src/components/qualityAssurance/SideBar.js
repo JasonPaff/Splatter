@@ -1,6 +1,5 @@
 ﻿import Home from "./home/Home";
 import NewTicket from "./newTicket/NewTicket";
-import QAClosedTickets from "./closedTickets/ClosedTickets";
 import OpenTickets from "./openTickets/OpenTickets";
 import QAProfile from "./QAProfile";
 import QASettings from "./QASettings";
@@ -11,6 +10,7 @@ import {connect} from "react-redux";
 import SideBarMenu from "./SideBarMenu";
 import ProfileDropDown from "./ProfileDropDown";
 import NotificationsButton from "./NotificationsButton";
+import ClosedTickets from "./closedTickets/ClosedTickets";
 
 const mapStateToProps = (state) => {
     return {
@@ -41,7 +41,7 @@ function SideBar(props) {
                     {props.location === 'home' && (<Home/>)}
                     {props.location === 'newTicket' && (<NewTicket/>)}
                     {props.location === 'openTickets' && (<OpenTickets/>)}
-                    {props.location === 'closedTickets' && (<QAClosedTickets/>)}
+                    {props.location === 'closedTickets' && (<ClosedTickets/>)}
                     {props.location === 'profile' && (<QAProfile/>)}
                     {props.location === 'settings' && (<QASettings/>)}
                     {props.location === 'help' && (<QASupport/>)}

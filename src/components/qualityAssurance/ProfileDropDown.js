@@ -1,11 +1,11 @@
 ﻿import {Menu, Transition} from "@headlessui/react";
-import {ChevronDownIcon, UserIcon} from "@heroicons/react/solid";
+import {ChatAlt2Icon, ChevronDownIcon, LogoutIcon} from "@heroicons/react/solid";
 import {Fragment} from "react";
 import classNameJoiner from "../../utils/ClassNameJoiner";
 import {useAuth0} from "@auth0/auth0-react";
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actionCreators/navActionCreator";
-import {CogIcon, ShieldCheckIcon} from "@heroicons/react/outline";
+import {CogIcon} from "@heroicons/react/outline";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -52,12 +52,12 @@ function ProfileDropDown(props) {
                     <Menu.Item>
                         {({active}) => (
                             <a
-                                onClick={() => props.setLocation('profile')}
+                                onClick={() => props.setLocation('messages')}
                                 className={classNameJoiner(active ? 'bg-gray-300'
                                     : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
-                                <UserIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
-                                Profile
+                                <ChatAlt2Icon className="mr-2 flex-shrink-0 h-6 w-6"/>
+                                Messages
                             </a>
                         )}
                     </Menu.Item>
@@ -80,7 +80,7 @@ function ProfileDropDown(props) {
                                 className={classNameJoiner(active ? 'bg-gray-300'
                                     : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
-                                <ShieldCheckIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
+                                <LogoutIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
                                 Logout
                             </a>
                         )}
