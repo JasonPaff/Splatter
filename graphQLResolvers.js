@@ -27,8 +27,10 @@ const rootResolver = {
         });
         return ticket;
     },
-    getTicket: ({id}) => {
-
+    getTicket: (args) => {
+        return Ticket.findOne(
+            { _id: args.id }
+        );
     },
     getAllTickets: (args) => {
         const emailFilter = args.emailFilter ?

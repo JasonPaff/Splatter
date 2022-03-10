@@ -19,3 +19,10 @@ export const setTicketInfoModalIsShowing = (isShowing) => {
         payload: isShowing
     };
 }
+
+export const setSelectedFilter = (filter) => {
+    return {
+        type: actionTypes.SET_SELECTED_FILTER,
+        payload: filter
+    };
+}

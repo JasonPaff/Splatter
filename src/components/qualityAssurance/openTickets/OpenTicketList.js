@@ -1,5 +1,5 @@
 ﻿import {useEffect, useState} from "react";
-import TicketInfo from "./TicketInfo";
+import TicketInfo from "./OpenTicketInfo";
 
 export default function OpenTicketList(props) {
     const [tickets, setTickets] = useState([]);

@@ -1,9 +1,10 @@
-﻿import TicketInfoTableHeader from "./TicketInfoTableHeader";
-import TicketInfoColumnHeaders from "./TicketInfoColumnHeaders";
-import TicketInfoRows from "./TicketInfoRows";
+﻿import TicketInfoTableHeader from "./OpenTicketInfoTableHeader";
+import OpenTicketInfoColumnHeaders from "./OpenTicketInfoColumnHeaders";
+import OpenTicketInfoRows from "./OpenTicketInfoRows";
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
+import OpenTicketFilterBar from "./OpenTicketFilterBar";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-function TicketInfo(props) {
+function OpenTicketInfo(props) {
 
     useEffect(() => {
         openTicketsTableSorter(props.tickets, props.selectedSort, props.isSortAscending);
@@ -22,12 +23,13 @@ function TicketInfo(props) {
         <div className="px-4 sm:px-6 lg:px-8">
             <TicketInfoTableHeader/>
             <div className="mt-8 flex flex-col">
+                <OpenTicketFilterBar/>
                 <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle">
                         <div className="shadow-sm ring-1 ring-black ring-opacity-5">
                             <table className="min-w-full border-separate" style={{ borderSpacing: 0}}>
-                                <TicketInfoColumnHeaders/>
-                                <TicketInfoRows tickets={props.tickets}/>
+                                <OpenTicketInfoColumnHeaders/>
+                                <OpenTicketInfoRows tickets={props.tickets}/>
                             </table>
                         </div>
                     </div>
@@ -37,4 +39,4 @@ function TicketInfo(props) {
     );
 }
 
-export default connect(mapStateToProps)(TicketInfo);
+export default connect(mapStateToProps)(OpenTicketInfo);

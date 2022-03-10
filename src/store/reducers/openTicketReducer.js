@@ -1,5 +1,6 @@
 ﻿const initialState = {
     selectedSort: 'Title',
+    selectedFilter: { name: 'None', subName: 'None'},
     isSortAscending: true,
     isTicketInfoModalShowing: false
 }
@@ -20,6 +21,11 @@ const openTicketReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isSortAscending: action.payload
+            }
+        case "SET_SELECTED_FILTER":
+            return {
+                ...state,
+                selectedFilter: action.payload,
             }
         case "SET_TICKET_INFO_MODAL_IS_SHOWING":
             return {

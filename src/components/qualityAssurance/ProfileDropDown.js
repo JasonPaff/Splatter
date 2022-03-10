@@ -1,10 +1,11 @@
 ﻿import {Menu, Transition} from "@headlessui/react";
-import {ChevronDownIcon} from "@heroicons/react/solid";
+import {ChevronDownIcon, UserIcon} from "@heroicons/react/solid";
 import {Fragment} from "react";
 import classNameJoiner from "../../utils/ClassNameJoiner";
 import {useAuth0} from "@auth0/auth0-react";
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actionCreators/navActionCreator";
+import {CogIcon, ShieldCheckIcon} from "@heroicons/react/outline";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -46,15 +47,16 @@ function ProfileDropDown(props) {
             >
                 <Menu.Items
                     className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg
-                        py-1 ring-1 ring-black ring-opacity-5 focus:outline-none z-0"
-                    style={{backgroundColor: 'red'}}>
+                        py-1 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    style={{backgroundColor: '#f3f4f6', zIndex: 100}}>
                     <Menu.Item>
                         {({active}) => (
                             <a
                                 onClick={() => props.setLocation('profile')}
-                                className={classNameJoiner(active ? 'bg-gray-100'
-                                    : '', 'block px-4 py-2 text-sm text-gray-700 select-none')}
+                                className={classNameJoiner(active ? 'bg-gray-300'
+                                    : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
+                                <UserIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
                                 Profile
                             </a>
                         )}
@@ -63,9 +65,10 @@ function ProfileDropDown(props) {
                         {({active}) => (
                             <a
                                 onClick={() => props.setLocation('settings')}
-                                className={classNameJoiner(active ? 'bg-blue-100'
-                                    : '', 'block px-4 py-2 text-sm text-gray-700 select-none')}
+                                className={classNameJoiner(active ? 'bg-gray-300'
+                                    : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
+                                <CogIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
                                 Settings
                             </a>
                         )}
@@ -74,9 +77,10 @@ function ProfileDropDown(props) {
                         {({active}) => (
                             <a
                                 onClick={() => logout({returnTo: window.location.origin})}
-                                className={classNameJoiner(active ? 'bg-gray-100'
-                                    : '', 'block px-4 py-2 text-sm text-gray-700 select-none')}
+                                className={classNameJoiner(active ? 'bg-gray-300'
+                                    : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
+                                <ShieldCheckIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
                                 Logout
                             </a>
                         )}

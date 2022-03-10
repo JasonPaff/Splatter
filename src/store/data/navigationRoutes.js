@@ -1,5 +1,5 @@
-﻿import {CogIcon, HomeIcon, QuestionMarkCircleIcon, ShieldCheckIcon} from "@heroicons/react/outline";
-import {LockClosedIcon, LockOpenIcon, TicketIcon} from "@heroicons/react/solid";
+﻿import {CogIcon, HomeIcon, ShieldCheckIcon} from "@heroicons/react/outline";
+import {LockClosedIcon, LockOpenIcon, TicketIcon, UserIcon} from "@heroicons/react/solid";
 
 export const primaryNavigations = [
     {name: 'Home', location: 'home', icon: HomeIcon, current: true},
@@ -9,7 +9,7 @@ export const primaryNavigations = [
 ];
 
 export const secondaryNavigations = [
-    {name: 'Profile', location: 'profile', icon: QuestionMarkCircleIcon, current: false},
+    {name: 'Profile', location: 'profile', icon: UserIcon, current: false},
     {name: 'Settings', location: 'settings', icon: CogIcon, current: false},
     {name: 'Help', location: 'help', icon: ShieldCheckIcon, current: false},
 ];
