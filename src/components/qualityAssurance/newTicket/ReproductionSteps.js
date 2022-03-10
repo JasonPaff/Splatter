@@ -26,7 +26,7 @@ function ReproductionSteps(props) {
                 value={props.reproductionSteps}
                 onChange={(e) => props.onTextChange(e.target.value)}
                 className="shadow-sm focus:ring-sky-500 focus:border-sky-500 block w-full
-                                        sm:text-sm border border-gray-300 rounded-md mt-1"
+                                        sm:text-sm border border-gray-300 rounded-md mt-1 caret-sky-500"
                 placeholder={'Describe how to reproduce the issue'}
             />
         </div>);

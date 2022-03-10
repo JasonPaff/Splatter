@@ -4,15 +4,7 @@ import {Listbox, Transition} from '@headlessui/react'
 import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import classNameJoiner from "../../../utils/ClassNameJoiner";
-
-const severityOptions = [
-    {severity: 'Minor', description: 'Minor loss of function'},
-    {severity: 'Major', description: 'Major loss of function'},
-    {severity: 'Critical', description: 'Application crash, loss of data'},
-    {severity: 'Trivial', description: 'Some UI enhancements'},
-    {severity: 'Blocker', description: 'No further testing work can be done'},
-    {severity: 'Enhancement', description: 'New feature or enhancement request'}
-];
+import {severityOptions} from "../../../store/data/newTicketsData";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -64,7 +56,9 @@ function SeverityDropDown(props) {
                                          focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
                                          focus:ring-sky-500">
                                     <span className="sr-only">change issue severity</span>
-                                    <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                    <ArrowSmDownIcon
+                                        className={`${open ? 'transform rotate-180' : ''} h-5 w-5 text-white`}
+                                        aria-hidden="true"/>
                                 </Listbox.Button>
                             </div>
                         </div>

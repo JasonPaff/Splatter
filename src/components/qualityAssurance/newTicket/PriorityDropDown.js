@@ -4,15 +4,7 @@ import {Listbox, Transition} from '@headlessui/react';
 import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import classNameJoiner from "../../../utils/ClassNameJoiner";
-
-const priorityOptions = [
-    {priority: '0 - Wishlist', description: "doesn't necessarily need to be completed", numeric : 0},
-    {priority: '1 - Eventual', description: "not slated to be completed in the current development cycle", numeric: 1},
-    {priority: '2 - Soonish', description: "not necessary to completed in the current development cycle", numeric: 2},
-    {priority: '3 - Normal', description: 'should be completed in the current development cycle', numeric: 3},
-    {priority: '4 - Important', description: 'top priority task', numeric: 4},
-    {priority: '5 - Immediate', description: 'drop everything and work on this now!', numeric: 5},
-];
+import {priorityOptions} from "../../../store/data/newTicketsData";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -65,7 +57,9 @@ function PriorityDropDown(props) {
                                             focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
                                             focus:ring-sky-500">
                                         <span className="sr-only">change issue priority</span>
-                                        <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                        <ArrowSmDownIcon
+                                            className={`${open ? 'transform rotate-180' : ''} h-5 w-5 text-white`}
+                                            aria-hidden="true"/>
                                     </Listbox.Button>
                                 </div>
                             </div>

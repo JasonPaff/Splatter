@@ -26,7 +26,7 @@ function IssueSummary(props) {
                 value={props.summary}
                 onChange={(e) => props.onTextChange(e.target.value)}
                 className="shadow-sm focus:ring-sky-500 focus:border-sky-500 block w-full
-                                        sm:text-sm border border-gray-300 rounded-md mt-1"
+                                        sm:text-sm border border-gray-300 rounded-md mt-1 caret-sky-500"
                 placeholder={'Write a brief summary describing the issue'}
             />
         </div>

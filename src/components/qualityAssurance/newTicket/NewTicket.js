@@ -22,7 +22,7 @@ export default function NewTicket() {
     return (
         <>
             <div className="m-3 flex justify-center">
-                <div className="space-y-8 divide-y divide-gray-200 min-w-[50%] max-w-screen-2xl">
+                <div className="space-y-8 divide-y divide-gray-500 min-w-[50%] max-w-screen-2xl">
                     <IssueHeader/>
                     <div className="pt-4">
                         <IssueTitle/>

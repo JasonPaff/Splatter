@@ -3,6 +3,7 @@ import {useAuth0} from "@auth0/auth0-react";
 
 export default function QAProfile() {
     const {user, isAuthenticated} = useAuth0();
+    document.title = "Splatter - Profile";
 
     return (
         isAuthenticated && (

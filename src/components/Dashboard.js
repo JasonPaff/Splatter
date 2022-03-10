@@ -3,8 +3,6 @@ import {useAuth0} from "@auth0/auth0-react";
 import {connect} from 'react-redux'
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/roleActionCreator";
-import AdminHome from "./admin/AdminHome";
-import StaffHome from "./staff/StaffHome";
 import SideBar from "./qualityAssurance/SideBar";
 
 const mapStateToProps = (state) => {
@@ -39,7 +37,7 @@ function Dashboard(props) {
     switch (props.role) {
         case "admin":
             return (
-                <AdminHome/>
+                <></>
             )
         case "customer":
             return (
@@ -47,7 +45,7 @@ function Dashboard(props) {
             )
         case "staff":
             return (
-                <StaffHome/>
+                <></>
             )
         default:
             return (

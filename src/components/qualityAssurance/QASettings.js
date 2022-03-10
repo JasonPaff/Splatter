@@ -1,6 +1,8 @@
 ﻿import React from "react";
 
 export default function QASettings() {
+    document.title = "Splatter - Settings";
+
     return (
         <>
             <div className="flex justify-center">

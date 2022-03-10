@@ -8,8 +8,8 @@ export default function LogoutMenuButton() {
         <div className="px-2 space-y-1">
             <a
                onClick={() => logout({returnTo: window.location.origin})}
-               className="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex
-                                    items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+               className="text-sky-100 hover:text-white hover:bg-sky-600 group flex select-none
+                   items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
                 <MenuAlt1Icon className="mr-4 h-6 w-6" aria-hidden="true"/>
                 Logout
             </a>

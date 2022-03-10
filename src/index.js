@@ -9,15 +9,17 @@ import {Provider} from "react-redux";
 import {applyMiddleware, compose, createStore, combineReducers} from 'redux';
 import Auth0ProviderWithHistory from "./components/authentication/Auth0ProviderWithHistory";
 import roleReducer from "./store/reducers/roleReducer";
-import newTicketReducer from "./store/reducers/NewTicketReducer";
+import newTicketReducer from "./store/reducers/newTicketReducer";
 import navReducer from "./store/reducers/navReducer";
+import openTicketReducer from "./store/reducers/openTicketReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     newTicketReducer: newTicketReducer,
+    openTicketReducer: openTicketReducer,
     roleReducer: roleReducer,
-    navReducer: navReducer
+    navReducer: navReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(

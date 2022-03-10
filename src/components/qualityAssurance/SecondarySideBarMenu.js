@@ -26,9 +26,9 @@ function SecondarySideBarMenu(props) {
                    onClick={() => props.setLocation(item.location)}
                    aria-current={item.current ? 'page' : undefined}
                    className={classNameJoiner(
-                       item.current ? 'bg-cyan-800 text-white'
-                           : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                       'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                       item.current ? 'bg-sky-800 text-white'
+                           : 'text-sky-100 hover:text-white hover:bg-sky-600',
+                       'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md select-none'
                    )}
                 >
                     <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" aria-hidden="true"/>

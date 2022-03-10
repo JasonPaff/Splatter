@@ -1,10 +1,17 @@
 ﻿import React from "react";
 import {connect} from 'react-redux'
 import {useAuth0} from "@auth0/auth0-react";
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 
 const mapStateToProps = (state) => {
     return {
         values: state.newTicketReducer,
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onReset: () => dispatch(actionCreators.resetValues())
     };
 }
 
@@ -13,6 +20,7 @@ function SubmitButton(props) {
 
     const handleSubmit = async () => {
         const actualResult = props.values.actualResult;
+        const assignedTo = "none";
         const browser = props.values.browser;
         const createdAt = Date.now().toString();
         const createdBy = user.name;
@@ -22,11 +30,10 @@ function SubmitButton(props) {
         const reproductionSteps = props.values.reproductionSteps;
         const screenshot = props.values.screenshot;
         const severity = props.values.severity.severity;
+        const status = "created";
         const summary = props.values.summary;
         const title = props.values.title;
         const type = props.values.type;
-        const assignedTo = "none";
-        const status = "created";
 
         const query = `mutation CreateTicket($input: TicketInput) {
             createTicket(input: $input) {
@@ -60,6 +67,7 @@ function SubmitButton(props) {
         const request = await fetch("http://localhost:4000/graphql", headers);
         const response = await request.json();
         alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
+        props.onReset();
     }
 
     return (
@@ -76,4 +84,4 @@ function SubmitButton(props) {
     );
 }
 
-export default connect(mapStateToProps)(SubmitButton);
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitButton);

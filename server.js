@@ -3,10 +3,11 @@ const http = require('http');
 const debug = require("debug");
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const {buildSchema} = require('graphql');
 const {graphqlHTTP} = require('express-graphql');
 const {auth} = require('express-oauth2-jwt-bearer');
 const cors = require("cors");
+const {graphTicketSchema} = require("./graphQLSchemas");
+const {rootResolver} = require("./graphQLResolvers");
 require('dotenv').config();
 
 const checkJwt = auth({
@@ -31,98 +32,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 //app.use(checkJwt);
 
-// Construct a schema, using GraphQL schema language
-// input TicketInput is for creating
-// type Ticket is for updating
-const schema = buildSchema(`
-  input TicketInput {
-    title: String
-    severity: String
-    priority: Int
-    type: String
-    product: String
-    browser: String
-    screenshot: String
-    summary: String
-    reproductionSteps: String
-    expectedResult: String
-    actualResult: String
-    createdAt: String
-    createdBy: String
-    assignedTo: String
-    status: String
-  }
-
-  type Ticket {
-    id: ID!
-    title: String
-    severity: String
-    priority: Int
-    type: String
-    product: String
-    browser: String
-    screenshot: String
-    summary: String
-    reproductionSteps: String
-    expectedResult: String
-    actualResult: String    
-    createdAt: String
-    createdBy: String
-    assignedTo: String
-    status: String
-  }
-
-  type Query {
-    getTicket(id: ID!): Ticket
-  }
-
-  type Mutation {
-    createTicket(input: TicketInput): Ticket
-    updateTicket(id: ID!, input: TicketInput): Ticket
-    deleteTicket(id: ID!) : Ticket
-  }
-`);
-
-// mongodb ticket schema
-const ticketSchema = new mongoose.Schema({
-    title: String,
-    severity: String,
-    priority: Number,
-    type: String,
-    product: String,
-    browser: String,
-    screenshot: String,
-    summary: String,
-    reproductionSteps: String,
-    expectedResult: String,
-    actualResult: String,
-    createdAt: Date,
-    createdBy: String,
-    assignedTo: String,
-    status: String
-});
-
-// mongodb ticket model
-const Ticket = mongoose.model('Ticket', ticketSchema);
-
-const root = {
-    createTicket: ({input}) => {
-        const ticket = new Ticket(input);
-        console.log(ticket);
-        ticket.save();
-        return ticket;
-    },
-    getTicket: ({id}) => {
-    },
-    updateTicket: ({id, input}) => {
-    },
-    deleteTicket: ({id}) => {
-    }
-};
 
 // graphQL endpoint
 app.use('/graphql', graphqlHTTP({
-    schema: schema, rootValue: root, graphiql: true
+    schema: graphTicketSchema, rootValue: rootResolver, graphiql: true
 }));
 
 // database error handler

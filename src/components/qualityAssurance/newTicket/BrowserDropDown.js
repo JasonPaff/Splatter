@@ -4,13 +4,7 @@ import {Listbox, Transition} from '@headlessui/react'
 import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import classNameJoiner from "../../../utils/ClassNameJoiner";
-
-const browserOptions = [
-    'Microsoft Edge',
-    'Google Chrome',
-    'Mozilla Firefox',
-    'Apple Safari'
-];
+import {browserOptions} from "../../../store/data/newTicketsData";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -47,7 +41,9 @@ function BrowserDropDown(props) {
                                             focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50
                                             focus:ring-sky-500">
                                     <span className="sr-only">change browser</span>
-                                    <ArrowSmDownIcon className="h-5 w-5 text-white" aria-hidden="true"/>
+                                    <ArrowSmDownIcon
+                                    className={`${open ? 'transform rotate-180' : ''} h-5 w-5 text-white`}
+                                    aria-hidden="true"/>
                                 </Listbox.Button>
                             </div>
                         </div>

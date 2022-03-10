@@ -1,0 +1,35 @@
+﻿import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/solid";
+import {connect} from "react-redux";
+import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSortSelectionChange: (selected) => dispatch(actionCreators.setSortOption(selected)),
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        isSortAscending: state.openTicketReducer.isSortAscending,
+        selectedSort: state.openTicketReducer.selectedSort
+    }
+}
+
+function OpenTicketSortButton(props) {
+    return (
+        <button className="group inline-flex"
+                onClick={() => props.onSortSelectionChange(props.name)}
+        >
+            {props.name}
+            <span className="flex-none rounded text-gray-400
+                    group-hover:visible group-focus:visible">
+                    {props.name === props.selectedSort &&
+                        props.isSortAscending ?
+                        <ChevronUpIcon className="h-5 w-5 mt-0.5" aria-hidden="true"/>
+                    :  <ChevronDownIcon className="h-5 w-5 mt-0.5" aria-hidden="true"/>}
+                </span>
+        </button>
+    );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OpenTicketSortButton);
