@@ -6,10 +6,11 @@ export default function OpenTicketInfoModal(props) {
     const [open, setOpen] = useState(true)
     const {getAccessTokenSilently} = useAuth0();
     const [isTokenReady, setIsTokenReady] = useState(false);
-    const [token, setToken] = useState("");
     const [ticket, setTicket] = useState([]);
 
     const getTicket = async () => {
+        const token = await getAccessTokenSilently();
+
         const query = `query GetTicket ($id: ID!) {
             getTicket (id: $id) {
                 id
@@ -50,15 +51,10 @@ export default function OpenTicketInfoModal(props) {
         ticketData.createdAt = new Date(ticketData.createdAt).toLocaleString();
         ticketData.updatedAt = new Date(ticketData.updatedAt).toLocaleString();
         setTicket(ticketData);
-    }
-
-    const getToken = async () => {
-        setToken(await getAccessTokenSilently());
         setIsTokenReady(true);
     }
 
     useEffect(() => {
-        getToken().catch(console.error);
         getTicket().catch(console.error);
     }, [])
 
@@ -68,7 +64,7 @@ export default function OpenTicketInfoModal(props) {
                 <Transition.Root show={open} as={Fragment}>
                     <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>
                         <div
-                            className="mt-4 sm:mt-0 items-end justify-center min-h-screen px-4 pb-20 text-center block sm:p-0">
+                            className="mt-4 sm:mt-0 items-end justify-center min-h-screen px-4 pt-5 pb-20 text-center block sm:p-0">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -100,7 +96,7 @@ export default function OpenTicketInfoModal(props) {
                                             <div className="isolate -space-y-px rounded-md shadow-sm">
                                                 <div
                                                     className="relative border border-gray-300 rounded-md rounded-b-none
-                                                            px-3 py-2"
+                                                            px-3 py-2 mt-4"
                                                 >
                                                     <label htmlFor="title"
                                                            className="block text-xs font-medium text-gray-900">

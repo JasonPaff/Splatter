@@ -12,6 +12,7 @@ const graphTicketSchema = buildSchema(`
     product: String
     browser: String
     screenshot: String
+    screenshotType: String
     summary: String
     reproductionSteps: String
     expectedResult: String
@@ -31,6 +32,7 @@ const graphTicketSchema = buildSchema(`
     product: String
     browser: String
     screenshot: String
+    screenshotType: String
     summary: String
     reproductionSteps: String
     expectedResult: String

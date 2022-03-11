@@ -1,4 +1,4 @@
-﻿import {CogIcon, HomeIcon} from "@heroicons/react/outline";
+﻿import {CogIcon} from "@heroicons/react/outline";
 import {
     ChatAlt2Icon,
     LockClosedIcon,

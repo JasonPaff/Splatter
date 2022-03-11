@@ -21,8 +21,8 @@ function UploadScreenshot(props) {
         handleImageUpload(null, acceptedFiles[acceptedFiles.length - 1]);
     }, []);
 
-    const {getRootProps, getInputProps} = useDropzone({
-        onDrop
+    const {getRootProps} = useDropzone({ noClick: true, noKeyboard: true,
+        accept: 'image/*', maxFiles:1, onDrop
     });
 
     function handleImageUpload(event, file) {
@@ -73,8 +73,8 @@ function UploadScreenshot(props) {
                                    name="imageUpload"
                                    type="file"
                                    accept="image/*"
-                                   {...getInputProps()}
-                                   onChange={(e) => handleImageUpload(e, e.target.files[0])}
+                                   onChange={(e) =>
+                                       handleImageUpload(e, e.target.files[0])}
                                    className="sr-only"/>
                         </label>
                         <p className="pl-1">or drag and drop</p>

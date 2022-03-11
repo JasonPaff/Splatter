@@ -1,10 +1,14 @@
 ﻿import classNameJoiner from "../../../utils/ClassNameJoiner";
 import {useState} from "react";
 import OpenTicketInfoModal from "./OpenTicketInfoModal";
+import OpenTicketImageModal from "./OpenTicketImageModal";
 
 export default function OpenTicketInfoRows(props) {
-    const [isShowing, setIsShowing] = useState(false);
+    const [isInfoModalShowing, setIsInfoModalShowing] = useState(false);
+    const [isImageModalShowing, setIsImageModalShowing] = useState(false);
     const [modalId, setModalId] = useState(0);
+    const [imageData, setImageData] = useState("None");
+    const [imageType, setImageType] = useState("None");
 
     return (
         <>
@@ -25,7 +29,7 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500 hidden sm:table-cell'
+                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500'
                         )}
                     >
                         {ticket.type}
@@ -41,19 +45,34 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500'
+                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500 hidden sm:table-cell'
                         )}
                     >
                         {ticket.status}
                     </td>
+
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
+                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8 hidden sm:table-cell'
+                        )}
+                    >
+                        {ticket.hasScreenshot && (
+                        <button
+                            onClick={() => { setIsImageModalShowing(!isImageModalShowing);
+                                setImageData(ticket.screenshot); setImageType(ticket.screenshotType); }}
+                            className="text-sky-600 hover:text-sky-900">
+                            View<span className="sr-only">, {ticket.id}</span>
+                        </button>)}
+                    </td>
+                    <td
+                        className={classNameJoiner(
+                            index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8 hidden sm:table-cell'
                         )}
                     >
                         <button
-                            onClick={() => { setIsShowing(!isShowing); setModalId(ticket.id) }}
+                            onClick={() => { setIsInfoModalShowing(!isInfoModalShowing); setModalId(ticket.id) }}
                             className="text-sky-600 hover:text-sky-900">
                             View<span className="sr-only">, {ticket.id}</span>
                         </button>
@@ -61,7 +80,8 @@ export default function OpenTicketInfoRows(props) {
                 </tr>))}
             </tbody>
             <>
-                {isShowing && (<OpenTicketInfoModal id={modalId}/>)}
+                {isInfoModalShowing && (<OpenTicketInfoModal id={modalId}/>)}
+                {isImageModalShowing && (<OpenTicketImageModal imageData={imageData} imageType={imageType}/>)}
             </>
         </>
     );

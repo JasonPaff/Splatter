@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 function SubmitButton(props) {
     const {getAccessTokenSilently, user} = useAuth0();
 
-    const submit = async (screenshotBase64) => {
+    const submit = async (screenshotBase64, imageType) => {
         const actualResult = props.values.actualResult;
         const assignedTo = "none";
         const browser = props.values.browser;
@@ -29,6 +29,7 @@ function SubmitButton(props) {
         const product = props.values.product;
         const reproductionSteps = props.values.reproductionSteps;
         const screenshot = screenshotBase64;
+        const screenshotType = imageType;
         const severity = props.values.severity.severity;
         const status = "created";
         const summary = props.values.summary;
@@ -57,8 +58,8 @@ function SubmitButton(props) {
                 query,
                 variables: {
                     input: {
-                        title, severity, priority, type, product, browser, screenshot, summary,
-                        reproductionSteps, expectedResult, actualResult, createdAt, createdBy,
+                        title, severity, priority, type, product, browser, screenshot, screenshotType,
+                        summary, reproductionSteps, expectedResult, actualResult, createdAt, createdBy,
                         assignedTo, status
                     }
                 }
@@ -73,14 +74,16 @@ function SubmitButton(props) {
 
     const handleSubmit = async () => {
 
+        console.log(props.values.screenshot[0]);
+
         if (props.values.screenshot.length <= 0) {
-            submit('').catch(console.error);
+            submit('None', 'None').catch(console.error);
         } else {
             const reader = new FileReader();
 
             reader.onload = () => {
                 submit(reader.result.replace("data:", "")
-                    .replace(/^.+,/, ""));
+                    .replace(/^.+,/, ""), props.values.screenshot[0].type);
             }
             reader.readAsDataURL(props.values.screenshot[0]);
         }

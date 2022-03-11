@@ -12,6 +12,7 @@ export default function OpenTicketList(props) {
                 severity
                 priority
                 type
+                screenshot
                 product
                 browser
                 summary
@@ -48,6 +49,9 @@ export default function OpenTicketList(props) {
         const filteredTickets = ticketData.filter((ticket) => {
             return ticket.status === 'created' || ticket.status === 'assigned'
         });
+        ticketData.forEach((ticket) => {
+            ticket.hasScreenshot = ticket.screenshot !== "None";
+        })
         setTickets(filteredTickets);
     }
 
