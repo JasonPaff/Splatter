@@ -1,7 +1,7 @@
 ﻿import * as actionTypes from "../actions/navActionTypes";
 
 const initialState = {
-    location: "home",
+    location: "stats",
     isSidebarOpen: false,
 }
 

@@ -1,5 +1,4 @@
-﻿import Home from "./home/Home";
-import NewTicket from "./newTicket/NewTicket";
+﻿import NewTicket from "./newTicket/NewTicket";
 import OpenTickets from "./openTickets/OpenTickets";
 import QAProfile from "./QAProfile";
 import QASettings from "./QASettings";
@@ -11,6 +10,7 @@ import SideBarMenu from "./SideBarMenu";
 import ProfileDropDown from "./ProfileDropDown";
 import NotificationsButton from "./NotificationsButton";
 import ClosedTickets from "./closedTickets/ClosedTickets";
+import Stats from "./stats/Stats";
 
 const mapStateToProps = (state) => {
     return {
@@ -38,7 +38,7 @@ function SideBar(props) {
 
                 <main
                     className="flex-1 pb-8">
-                    {props.location === 'home' && (<Home/>)}
+                    {props.location === 'stats' && (<Stats/>)}
                     {props.location === 'newTicket' && (<NewTicket/>)}
                     {props.location === 'openTickets' && (<OpenTickets/>)}
                     {props.location === 'closedTickets' && (<ClosedTickets/>)}

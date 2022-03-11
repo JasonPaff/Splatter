@@ -1,5 +1,12 @@
 ﻿import * as actionTypes from "../actions/newTicketActionTypes"
 
+export const removeScreenshot = (screenshot) => {
+    return {
+        type: actionTypes.REMOVE_SCREENSHOT,
+        payload: screenshot
+    }
+}
+
 export const setTitle = (title) => {
     return {
         type: actionTypes.SET_TITLE,

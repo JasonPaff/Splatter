@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 function SubmitButton(props) {
     const {getAccessTokenSilently, user} = useAuth0();
 
-    const handleSubmit = async () => {
+    const submit = async (screenshotBase64) => {
         const actualResult = props.values.actualResult;
         const assignedTo = "none";
         const browser = props.values.browser;
@@ -28,7 +28,7 @@ function SubmitButton(props) {
         const priority = props.values.priority.numeric;
         const product = props.values.product;
         const reproductionSteps = props.values.reproductionSteps;
-        const screenshot = props.values.screenshot;
+        const screenshot = screenshotBase64;
         const severity = props.values.severity.severity;
         const status = "created";
         const summary = props.values.summary;
@@ -48,15 +48,16 @@ function SubmitButton(props) {
 
         const headers = {
             method: 'POST',
-            headers : {
-                'Content-Type' : 'application/json',
+            headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization' : `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 query,
-                variables: { input : {
-                    title, severity, priority, type, product, browser, screenshot, summary,
+                variables: {
+                    input: {
+                        title, severity, priority, type, product, browser, screenshot, summary,
                         reproductionSteps, expectedResult, actualResult, createdAt, createdBy,
                         assignedTo, status
                     }
@@ -68,6 +69,21 @@ function SubmitButton(props) {
         const response = await request.json();
         alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
         props.onReset();
+    }
+
+    const handleSubmit = async () => {
+
+        if (props.values.screenshot.length <= 0) {
+            submit('').catch(console.error);
+        } else {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                submit(reader.result.replace("data:", "")
+                    .replace(/^.+,/, ""));
+            }
+            reader.readAsDataURL(props.values.screenshot[0]);
+        }
     }
 
     return (

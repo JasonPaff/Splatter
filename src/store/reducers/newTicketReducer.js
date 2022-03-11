@@ -11,7 +11,7 @@ const initialState = {
     type: 'Coding Error',
     product: 'Tournament Life',
     browser: 'Microsoft Edge',
-    screenshot: '',
+    screenshot: [],
     summary: '',
     reproductionSteps: '',
     expectedResult: '',
@@ -49,6 +49,14 @@ const newTicketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 browser: action.payload
+            }
+        case actionTypes.REMOVE_SCREENSHOT:
+            const screenshots = state.screenshot.filter((shot) => {
+                return shot.name !== action.payload;
+            });
+            return {
+                ...state,
+                screenshot: screenshots
             }
         case actionTypes.SET_SCREENSHOT:
             return {
@@ -88,7 +96,7 @@ const newTicketReducer = (state = initialState, action) => {
                 type: 'Coding Error',
                 product: 'Tournament Life',
                 browser: 'Microsoft Edge',
-                screenshot: '',
+                screenshot: [],
                 summary: '',
                 reproductionSteps: '',
                 expectedResult: '',

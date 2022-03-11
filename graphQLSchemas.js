@@ -18,8 +18,6 @@ const graphTicketSchema = buildSchema(`
     actualResult: String
     createdAt: Date
     createdBy: String
-    updatedAt: Date
-    updatedBy: String
     assignedTo: String
     status: String
   }
