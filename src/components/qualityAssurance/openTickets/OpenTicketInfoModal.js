@@ -93,7 +93,9 @@ export default function OpenTicketInfoModal(props) {
                                     <div>
                                         <Dialog.Title as="h3"
                                                       className="text-lg leading-6 font-medium text-gray-900">
-                                            <div className="isolate -space-y-px rounded-md shadow-sm">
+                                            Ticket - {ticket.id}
+                                        </Dialog.Title>
+                                        <div className="isolate -space-y-px rounded-md shadow-sm">
                                                 <div
                                                     className="relative border border-gray-300 rounded-md rounded-b-none
                                                             px-3 py-2 mt-4"
@@ -248,7 +250,6 @@ export default function OpenTicketInfoModal(props) {
                                                     />
                                                 </div>
                                             </div>
-                                        </Dialog.Title>
                                     </div>
                                     <div className="mt-5 sm:mt-6">
                                         <button

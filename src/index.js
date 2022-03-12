@@ -12,6 +12,7 @@ import roleReducer from "./store/reducers/roleReducer";
 import newTicketReducer from "./store/reducers/newTicketReducer";
 import navReducer from "./store/reducers/navReducer";
 import openTicketReducer from "./store/reducers/openTicketReducer";
+import messageReducer from "./store/reducers/messageReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     openTicketReducer: openTicketReducer,
     roleReducer: roleReducer,
     navReducer: navReducer,
+    messageReducer: messageReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(

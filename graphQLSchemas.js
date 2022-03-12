@@ -23,6 +23,15 @@ const graphTicketSchema = buildSchema(`
     status: String
   }
 
+  input MessageInput {
+    chatId: Int
+    subject: String
+    message: String
+    sender: String
+    receiver: String
+    sentAt: Date
+  }
+  
   type Ticket {
     id: ID!
     title: String
@@ -44,16 +53,31 @@ const graphTicketSchema = buildSchema(`
     assignedTo: String
     status: String
   }
-
+  
+  type Message {
+    id: ID!
+    chatId: Int
+    subject: String
+    message: String
+    sender: String
+    receiver: String
+    sentAt: Date
+  }
+  
   type Query {
     getTicket(id: ID!): Ticket
     getAllTickets(emailFilter: String) : [Ticket]
+    getSentMessages(emailFilter: String): [Message]
+    getReceivedMessages(emailFilter: String): [Message]
+    getNewMessageId : Int
+    getMessageChain(id: Int): [Message]
   }
 
   type Mutation {
     createTicket(input: TicketInput): Ticket
     updateTicket(id: ID!, input: TicketInput): Ticket
     deleteTicket(id: ID!) : Ticket
+    createMessage(input: MessageInput): Message    
   }
   
   scalar Date  

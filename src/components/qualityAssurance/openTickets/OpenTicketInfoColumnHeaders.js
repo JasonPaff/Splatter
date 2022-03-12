@@ -16,9 +16,25 @@ export default function OpenTicketInfoColumnHeaders() {
                 scope="col"
                 className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
                     px-3 py-3.5 text-left text-md font-semibold text-gray-900
-                    backdrop-blur backdrop-filter"
+                    backdrop-blur backdrop-filter hidden sm:table-cell"
             >
                 <OpenTicketSortButton name="Type"/>
+            </th>
+            <th
+                scope="col"
+                className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
+                    px-3 py-3.5 text-left text-md font-semibold text-gray-900
+                    backdrop-blur backdrop-filter hidden xl:table-cell"
+            >
+                <OpenTicketSortButton name="Severity"/>
+            </th>
+            <th
+                scope="col"
+                className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
+                    px-3 py-3.5 text-left text-md font-semibold text-gray-900
+                    backdrop-blur backdrop-filter hidden xl:table-cell"
+            >
+                <OpenTicketSortButton name="Priority"/>
             </th>
             <th
                 scope="col"
@@ -40,7 +56,7 @@ export default function OpenTicketInfoColumnHeaders() {
                 scope="col"
                 className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
                     px-3 py-3.5 text-left text-md font-semibold text-gray-900
-                    backdrop-blur backdrop-filter hidden sm:table-cell"
+                    backdrop-blur backdrop-filter"
             >
                 Screenshot
                 <span className="sr-only">View</span>
@@ -49,7 +65,7 @@ export default function OpenTicketInfoColumnHeaders() {
                 scope="col"
                 className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
                     px-3 py-3.5 text-left text-md font-semibold text-gray-900
-                    backdrop-blur backdrop-filter hidden sm:table-cell"
+                    backdrop-blur backdrop-filter"
             >
                 Info
                 <span className="sr-only">View</span>

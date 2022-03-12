@@ -11,12 +11,12 @@ const navReducer = (state = initialState, action) => {
             return {
                 ...state,
                 location: action.payload,
-            }
+            };
         case actionTypes.SET_IS_SIDEBAR_OPEN:
             return {
                 ...state,
                 isSidebarOpen: action.payload
-            }
+            };
         default:
             return state;
     }

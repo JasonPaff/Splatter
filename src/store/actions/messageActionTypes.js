@@ -1,0 +1,2 @@
+﻿export const SET_ACTIVE_MESSAGE = 'SET_ACTIVE_MESSAGE';
+export const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';

@@ -30,9 +30,9 @@ app.use(logger('dev'));
 app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
-app.use(checkJwt);
+//app.use(checkJwt);
 
-// graphQL endpoint
+// graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
     schema: graphTicketSchema, rootValue: rootResolver, graphiql: true
 }));

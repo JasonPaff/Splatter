@@ -31,8 +31,7 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "tailwindcss": "^3.0.23",
-    "validator": "^13.7.0",
-    "web-vitals": "^2.1.4"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "build:tailwind": "tailwindcss build -i src/tailwind.css -o src/tailwind.output.css",

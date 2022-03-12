@@ -29,10 +29,26 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500'
+                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500 hidden sm:table-cell'
                         )}
                     >
                         {ticket.type}
+                    </td>
+                    <td
+                        className={classNameJoiner(
+                            index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500 hidden xl:table-cell'
+                        )}
+                    >
+                        {ticket.severity}
+                    </td>
+                    <td
+                        className={classNameJoiner(
+                            index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                            'whitespace-nowrap px-3 py-4 text-sm text-gray-500 hidden xl:table-cell'
+                        )}
+                    >
+                        {ticket.priority}
                     </td>
                     <td
                         className={classNameJoiner(
@@ -54,7 +70,7 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8 hidden sm:table-cell'
+                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
                         )}
                     >
                         {ticket.hasScreenshot && (
@@ -68,7 +84,7 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8 hidden sm:table-cell'
+                            'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
                         )}
                     >
                         <button

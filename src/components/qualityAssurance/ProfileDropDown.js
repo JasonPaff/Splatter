@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
         setLocation: (location) => dispatch(actionCreators.setLocation(location)),
     }
 }
-// TODO: Fix z-index issue
+
 function ProfileDropDown(props) {
     const {user, logout} = useAuth0();
 

@@ -1,6 +1,5 @@
 ﻿import NewTicket from "./newTicket/NewTicket";
 import OpenTickets from "./openTickets/OpenTickets";
-import QAProfile from "./QAProfile";
 import QASettings from "./QASettings";
 import QASupport from "./QASupport";
 import SideBarMobileHamburger from "./SideBarMobileMenu";
@@ -11,6 +10,7 @@ import ProfileDropDown from "./ProfileDropDown";
 import NotificationsButton from "./NotificationsButton";
 import ClosedTickets from "./closedTickets/ClosedTickets";
 import Stats from "./stats/Stats";
+import Messages from "./messages/Messages";
 
 const mapStateToProps = (state) => {
     return {
@@ -42,7 +42,7 @@ function SideBar(props) {
                     {props.location === 'newTicket' && (<NewTicket/>)}
                     {props.location === 'openTickets' && (<OpenTickets/>)}
                     {props.location === 'closedTickets' && (<ClosedTickets/>)}
-                    {props.location === 'profile' && (<QAProfile/>)}
+                    {props.location === 'messages' && (<Messages/>)}
                     {props.location === 'settings' && (<QASettings/>)}
                     {props.location === 'help' && (<QASupport/>)}
                 </main>

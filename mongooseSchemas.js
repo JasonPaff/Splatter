@@ -21,4 +21,14 @@ const mongoTicketSchema = new mongoose.Schema({
     status: String
 });
 
+const mongoMessageSchema = new mongoose.Schema({
+    chatId: Number,
+    subject: String,
+    message: String,
+    sender: String,
+    receiver: String,
+    sentAt: { type: Date, default: Date.now },
+})
+
 module.exports.mongoTicketSchema = mongoTicketSchema;
+module.exports.mongoMessageSchema = mongoMessageSchema;
