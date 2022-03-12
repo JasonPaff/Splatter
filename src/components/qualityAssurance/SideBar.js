@@ -23,8 +23,8 @@ function SideBar(props) {
         <div className="min-h-full">
             <SideBarMobileHamburger />
             <SideBarMenu />
-            <div className="lg:pl-64 flex flex-col flex-1 z-100">
-                <div className="relative z-1 flex-shrink-0 flex h-16
+            <div className="lg:pl-64 flex flex-col flex-1">
+                <div className="relative z-0 flex-shrink-0 flex h-16
                         border-b border-gray-200 lg:border-none">
                     <SideBarMobileHamburgerButton/>
                     <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">

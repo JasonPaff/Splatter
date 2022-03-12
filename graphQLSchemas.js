@@ -79,7 +79,7 @@ const graphTicketSchema = buildSchema(`
     deleteTicket(id: ID!) : Ticket
     createMessage(input: MessageInput): Message    
   }
-  
+    
   scalar Date  
 `);
 

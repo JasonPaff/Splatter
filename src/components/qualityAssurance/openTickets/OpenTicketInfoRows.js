@@ -21,7 +21,7 @@ export default function OpenTicketInfoRows(props) {
                     <td
                         className={classNameJoiner(
                             index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
-                            'whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'
+                            'whitespace-normal py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'
                         )}
                     >
                         {ticket.title}

@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/solid";
 
 export const primaryNavigations = [
-    {name: 'Stats', location: 'stats', icon: PresentationChartLineIcon, current: true},
+    {name: 'Ticket Stats', location: 'stats', icon: PresentationChartLineIcon, current: true},
     {name: 'New Ticket', location: 'newTicket', icon: TicketIcon, current: false},
     {name: 'Open Tickets', location: 'openTickets', icon: LockOpenIcon, current: false},
     {name: 'Closed Tickets', location: 'closedTickets', icon: LockClosedIcon, current: false},

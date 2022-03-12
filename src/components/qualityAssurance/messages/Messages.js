@@ -28,13 +28,20 @@ export default function Messages() {
     return (
         <>
             {isTokenReady && (
-                <div className="grid grid-cols-1">
-                    <div className="flex flex-col sm:flex-row">
-                        <SendMessage token={token} user={user}/>
+                <>
+                    <div className="flex flex-col sm:grid sm:grid-cols-2 items-start">
+                        <div className="">
+                            <SendMessage token={token} user={user}/>
+                        </div>
+                        <div className="">
+                            <SelectedMessage token={token} user={user}/>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col">
                         <MessageList token={token} user={user}/>
                     </div>
-                    <SelectedMessage token={token} user={user}/>
-                </div>
+                </>
             )}
         </>
     );
