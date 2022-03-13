@@ -34,8 +34,8 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.static(path.join(__dirname,'build')));
 app.use(checkJwt);
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 // graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
