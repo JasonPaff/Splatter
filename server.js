@@ -18,12 +18,11 @@ const checkJwt = auth({
 mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
 
-const port = 4000;
 const app = express();
 const server = http.createServer(app);
 
 app.set('port', port);
-server.listen(port);
+server.listen(process.env.PORT || 4000);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -35,7 +34,7 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(checkJwt);
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 // graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
