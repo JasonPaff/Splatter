@@ -18,23 +18,24 @@ const checkJwt = auth({
 mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
 
+const port = 4000;
 const app = express();
 const server = http.createServer(app);
 
 app.set('port', port);
-server.listen(process.env.PORT || 4000);
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-app.use(express.static(path.join(__dirname,'./build')));
 app.use(logger('dev'));
 app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.static(path.join(__dirname,'build')));
 app.use(checkJwt);
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 // graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
