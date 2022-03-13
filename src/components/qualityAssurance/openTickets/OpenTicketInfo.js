@@ -1,7 +1,7 @@
 ﻿import TicketInfoTableHeader from "./OpenTicketInfoTableHeader";
 import OpenTicketInfoColumnHeaders from "./OpenTicketInfoColumnHeaders";
 import OpenTicketInfoRows from "./OpenTicketInfoRows";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
 import OpenTicketFilterBar from "./OpenTicketFilterBar";
@@ -14,10 +14,12 @@ const mapStateToProps = (state) => {
 }
 
 function OpenTicketInfo(props) {
+    const [sortedTickets, setSortedTickets] = useState([]);
+
     useEffect(() => {
-        console.table(props.tickets)
-        openTicketsTableSorter(props.tickets, props.selectedSort, props.isSortAscending);
-        console.table(props.tickets)
+        const ticks = [...sortedTickets];
+        openTicketsTableSorter(ticks, props.selectedSort, props.isSortAscending);
+        setSortedTickets(ticks);
     }, [props.tickets, props.selectedSort, props.isSortAscending]);
 
     return (
@@ -30,7 +32,7 @@ function OpenTicketInfo(props) {
                         <div className="shadow-sm ring-1 ring-black ring-opacity-5">
                             <table className="min-w-full border-separate" style={{ borderSpacing: 0}}>
                                 <OpenTicketInfoColumnHeaders/>
-                                <OpenTicketInfoRows tickets={props.tickets}/>
+                                <OpenTicketInfoRows tickets={sortedTickets}/>
                             </table>
                         </div>
                     </div>
