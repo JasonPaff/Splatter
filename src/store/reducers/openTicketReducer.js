@@ -1,5 +1,5 @@
 ﻿const initialState = {
-    selectedSort: 'Title',
+    selectedSort: 'Date Created',
     selectedFilter: { name: 'None', subName: 'None'},
     isSortAscending: true,
     isTicketInfoModalShowing: false,

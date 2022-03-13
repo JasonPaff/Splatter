@@ -17,7 +17,8 @@ function ClosedTicketInfoTableHeader(props) {
     return (
         <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-                <h1 className="text-xl font-semibold text-gray-900">Closed Tickets</h1>
+                {props.role === 'admin' && (<h1 className="text-xl font-semibold text-gray-900">Assign Tickets</h1>)}
+                {(props.role === 'customer' || props.role === 'staff') && (<h1 className="text-xl font-semibold text-gray-900">Closed Tickets</h1>)}
                 <p className="mt-2 text-sm text-gray-700">
                     Some subtext about open tickets should go here
                 </p>

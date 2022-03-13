@@ -5,6 +5,7 @@ import OpenTicketImageModal from "./OpenTicketImageModal";
 import {connect} from "react-redux";
 import {useAuth0} from "@auth0/auth0-react";
 import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
+import AssignTicketModal from "../assignTickets/AssignTicketModal";
 
 const mapStateToProps = (state) => {
     return {
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
 function OpenTicketInfoRows(props) {
     const [isInfoModalShowing, setIsInfoModalShowing] = useState(false);
     const [isImageModalShowing, setIsImageModalShowing] = useState(false);
+    const [isAssignModalShowing, setIsAssignModalShowing] = useState(false);
     const {getAccessTokenSilently} = useAuth0();
     const [modalId, setModalId] = useState(0);
     const [imageData, setImageData] = useState("None");
@@ -89,10 +91,6 @@ function OpenTicketInfoRows(props) {
 
         await fetch("http://localhost:4000/graphql", headers);
         props.onTicketStatusChange(true);
-    }
-
-    const handleAssignTicket = async () => {
-        console.log('assigning!');
     }
 
     return (
@@ -214,7 +212,7 @@ function OpenTicketInfoRows(props) {
                             )}
                         >
                             <button
-                                onClick={() => { handleAssignTicket(ticket.id).catch(console.error) }}
+                                onClick={() => { setIsAssignModalShowing(!isAssignModalShowing); setModalId(ticket.id) }}
                                 className="text-sky-600 hover:text-sky-900">
                                 Assign<span className="sr-only">, {ticket.id}</span>
                             </button>
@@ -225,6 +223,7 @@ function OpenTicketInfoRows(props) {
             <>
                 {isInfoModalShowing && (<OpenTicketInfoModal id={modalId}/>)}
                 {isImageModalShowing && (<OpenTicketImageModal imageData={imageData} imageType={imageType}/>)}
+                {isAssignModalShowing && (<AssignTicketModal id={modalId}/>)}
             </>
         </>
     );

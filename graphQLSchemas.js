@@ -78,6 +78,7 @@ const graphTicketSchema = buildSchema(`
     createTicket(input: TicketInput): Ticket
     closeTicket(id: ID!) : Ticket
     openTicket(id: ID!) : Ticket
+    assignTicket(id: ID!, email: String) : Ticket
     updateTicket(id: ID!, input: TicketInput): Ticket
     deleteTicket(id: ID!) : Ticket
     createMessage(input: MessageInput): Message    

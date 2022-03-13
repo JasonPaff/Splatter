@@ -14,10 +14,10 @@ const mapStateToProps = (state) => {
 }
 
 function OpenTicketInfo(props) {
-    const [sortedTickets, setSortedTickets] = useState([]);
+    const [sortedTickets, setSortedTickets] = useState(props.tickets);
 
     useEffect(() => {
-        const ticks = [...sortedTickets];
+        const ticks = [...props.tickets];
         openTicketsTableSorter(ticks, props.selectedSort, props.isSortAscending);
         setSortedTickets(ticks);
     }, [props.tickets, props.selectedSort, props.isSortAscending]);

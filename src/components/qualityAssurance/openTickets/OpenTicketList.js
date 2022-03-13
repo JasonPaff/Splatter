@@ -5,14 +5,11 @@ import {connect} from "react-redux";
 import {getAssignedTickets} from "../../../utils/GetAssignedTickets";
 import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
 import {getAllAdminTickets} from "../../../utils/getAllAdminTickets";
-import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
 
 const mapStateToProps = (state) => {
     return {
         role: state.roleReducer.role,
-        updateTickets: state.openTicketReducer.updateTickets,
-        isSortAscending: state.openTicketReducer.isSortAscending,
-        selectedSort: state.openTicketReducer.selectedSort
+        updateTickets: state.openTicketReducer.updateTickets
     }
 }
 
@@ -36,7 +33,6 @@ function OpenTicketList(props) {
         else if (props.role === 'admin') {
             filteredTickets = await getAllAdminTickets(props.token, props.user).catch(console.error);
         }
-        //const sortedTickets = openTicketsTableSorter(filteredTickets,props.selectedSort,props.isSortAscending);
         setTickets(filteredTickets);
     }
 

@@ -50,6 +50,10 @@ const rootResolver = {
         Ticket.findByIdAndUpdate(
             args.id, {status : 'assigned'}, () => {});
     },
+    assignTicket: (args) => {
+        Ticket.findByIdAndUpdate(
+            args.id, {status: 'assigned', assignedTo: args.email}, () => {});
+    },
     updateTicket: (args) => {
     },
     deleteTicket: ({id}) => {

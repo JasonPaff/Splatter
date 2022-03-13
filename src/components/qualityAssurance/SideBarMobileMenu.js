@@ -9,6 +9,7 @@ import SecondarySideBarMenu from "./SecondarySideBarMenu";
 import * as navigationRoutes from "../../store/data/navigationRoutes";
 import LogoutMenuButton from "./LogoutMenuButton";
 import * as developerNavigationRoutes from "../../store/data/developerNavigationRoutes";
+import * as adminNavigationRoutes from "../../store/data/adminNavigationRoutes";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -32,7 +33,8 @@ function SideBarMobileMenu(props) {
         primaryRoutes = developerNavigationRoutes.primaryNavigations;
         secondaryRoutes = navigationRoutes.secondaryNavigations;
     } else if (props.role === 'admin') {
-
+        primaryRoutes = adminNavigationRoutes.primaryNavigations;
+        secondaryRoutes = navigationRoutes.secondaryNavigations;
     } else if (props.role === 'customer') {
         primaryRoutes = navigationRoutes.primaryNavigations;
         secondaryRoutes = navigationRoutes.secondaryNavigations;
