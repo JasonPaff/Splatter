@@ -23,7 +23,7 @@ function SideBarMenu(props) {
         secondaryRoutes = navigationRoutes.secondaryNavigations;
     } else if (props.role === 'admin') {
 
-    } else {
+    } else if (props.role === 'customer') {
         primaryRoutes = navigationRoutes.primaryNavigations;
         secondaryRoutes = navigationRoutes.secondaryNavigations;
     }

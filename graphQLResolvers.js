@@ -18,13 +18,7 @@ const rootResolver = {
 
     createTicket: ({input}) => {
         const ticket = new Ticket(input);
-        ticket.save((error) => {
-            if (error) {
-                //something
-            } else {
-                // something else
-            }
-        });
+        ticket.save();
         return ticket;
     },
     getTicket: (args) => {
@@ -37,22 +31,32 @@ const rootResolver = {
             {createdBy: args.emailFilter} : {}
 
         return Ticket.find(
-            emailFilter,
+            emailFilter
         );
     },
-    updateTicket: ({id, input}) => {
+    getAllAssignedTickets: (args) => {
+        const emailFilter = args.emailFilter ?
+            {assignedTo: args.emailFilter} : {}
+
+        return Ticket.find(
+            emailFilter
+        );
+    },
+    closeTicket: (args) => {
+        Ticket.findByIdAndUpdate(
+            args.id, {status : 'closed'}, () => {});
+    },
+    openTicket: (args) => {
+        Ticket.findByIdAndUpdate(
+            args.id, {status : 'assigned'}, () => {});
+    },
+    updateTicket: (args) => {
     },
     deleteTicket: ({id}) => {
     },
     createMessage: ({input}) => {
         const message = new Message(input);
-        message.save((error) => {
-            if (error) {
-                //something
-            } else {
-                // something else
-            }
-        });
+        message.save();
         return message;
     },
     getSentMessages: (args) => {

@@ -8,6 +8,7 @@ import PrimarySideBarMenu from "./PrimarySideBarMenu";
 import SecondarySideBarMenu from "./SecondarySideBarMenu";
 import * as navigationRoutes from "../../store/data/navigationRoutes";
 import LogoutMenuButton from "./LogoutMenuButton";
+import * as developerNavigationRoutes from "../../store/data/developerNavigationRoutes";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -18,13 +19,27 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         isSidebarOpen: state.navReducer.isSidebarOpen,
-        location: state.navReducer.location
+        location: state.navReducer.location,
+        role: state.roleReducer.role
     }
 }
 
 function SideBarMobileMenu(props) {
-    const [primaryNavRoutes] = useState(navigationRoutes.primaryNavigations)
-    const [secondaryNavRoutes] = useState(navigationRoutes.secondaryNavigations)
+    let primaryRoutes = [];
+    let secondaryRoutes = [];
+
+    if (props.role === 'staff') {
+        primaryRoutes = developerNavigationRoutes.primaryNavigations;
+        secondaryRoutes = navigationRoutes.secondaryNavigations;
+    } else if (props.role === 'admin') {
+
+    } else if (props.role === 'customer') {
+        primaryRoutes = navigationRoutes.primaryNavigations;
+        secondaryRoutes = navigationRoutes.secondaryNavigations;
+    }
+
+    const [primaryNavRoutes] = useState(primaryRoutes);
+    const [secondaryNavRoutes] = useState(secondaryRoutes);
 
     useEffect(() => {
         props.onSideBar(false);

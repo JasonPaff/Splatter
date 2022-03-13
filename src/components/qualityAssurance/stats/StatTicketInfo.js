@@ -5,13 +5,27 @@ import SeverityPieChart from "./SeverityPieChart";
 import ErrorTypePieChart from "./ErrorTypePieChart";
 import ProductPieChart from "./ProductPieChart";
 import BrowserPieChart from "./BrowserPieChart";
+import {getAssignedAndClosedTickets, getAssignedTickets} from "../../../utils/GetAssignedTickets";
+import {connect} from "react-redux";
 
-export default function StatTicketInfo(props) {
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role
+    }
+}
+
+function StatTicketInfo(props) {
     const [tickets, setTickets] = useState([]);
     const [hasTickets, setHasTickets] = useState(false);
 
     const getAllTickets = async () => {
-        const filteredTickets = await getTickets(props.token, props.user).catch(console.error);
+        let filteredTickets = []
+        if (props.role === 'customer') {
+            filteredTickets = await getTickets(props.token, props.user).catch(console.error);
+        }
+        else if (props.role === 'staff') {
+            filteredTickets = await getAssignedAndClosedTickets(props.token, props.user).catch(console.error);
+        }
         setTickets(filteredTickets);
         setHasTickets(true);
     }
@@ -50,3 +64,5 @@ export default function StatTicketInfo(props) {
         </div>
     );
 }
+
+export default connect(mapStateToProps)(StatTicketInfo);

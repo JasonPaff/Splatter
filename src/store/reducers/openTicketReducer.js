@@ -2,7 +2,8 @@
     selectedSort: 'Title',
     selectedFilter: { name: 'None', subName: 'None'},
     isSortAscending: true,
-    isTicketInfoModalShowing: false
+    isTicketInfoModalShowing: false,
+    updateTickets: false
 }
 
 const openTicketReducer = (state = initialState, action) => {
@@ -31,6 +32,11 @@ const openTicketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isTicketInfoModalShowing: action.payload
+            }
+        case "SET_RELOAD_TICKETS":
+            return{
+                ...state,
+                updateTickets: action.payload
             }
         default:
             return state;

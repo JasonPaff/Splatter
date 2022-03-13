@@ -1,14 +1,11 @@
-﻿import {CogIcon} from "@heroicons/react/outline";
-import {
-    ChatAlt2Icon,
+﻿import {
     LockClosedIcon,
     LockOpenIcon,
     PresentationChartLineIcon,
-    SupportIcon,
 } from "@heroicons/react/solid";
 
 export const primaryNavigations = [
-    {name: 'Ticket Stats', location: 'stats', icon: PresentationChartLineIcon, current: false},
-    {name: 'Open Tickets', location: 'openTickets', icon: LockOpenIcon, current: true},
+    {name: 'Ticket Stats', location: 'stats', icon: PresentationChartLineIcon, current: true},
+    {name: 'Open Tickets', location: 'openTickets', icon: LockOpenIcon, current: false},
     {name: 'Closed Tickets', location: 'closedTickets', icon: LockClosedIcon, current: false},
 ];

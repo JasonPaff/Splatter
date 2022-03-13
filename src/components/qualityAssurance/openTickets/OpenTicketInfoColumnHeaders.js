@@ -1,6 +1,14 @@
 ﻿import OpenTicketSortButton from "./OpenTicketSortButton";
+import {connect} from "react-redux";
 
-export default function OpenTicketInfoColumnHeaders() {
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role,
+        location: state.navReducer.location
+    }
+}
+
+function OpenTicketInfoColumnHeaders(props) {
     return (
         <thead className="bg-gray-50">
         <tr>
@@ -70,7 +78,31 @@ export default function OpenTicketInfoColumnHeaders() {
                 Info
                 <span className="sr-only">View</span>
             </th>
+            {props.role === 'staff' && props.location === 'openTickets' && (
+                <th
+                    scope="col"
+                    className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
+                    px-3 py-3.5 text-left text-md font-semibold text-gray-900
+                    backdrop-blur backdrop-filter"
+                >
+                    Close
+                    <span className="sr-only">Close</span>
+                </th>
+            )}
+            {props.role === 'staff' && props.location === 'closedTickets' && (
+                <th
+                    scope="col"
+                    className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
+                    px-3 py-3.5 text-left text-md font-semibold text-gray-900
+                    backdrop-blur backdrop-filter"
+                >
+                    Open
+                    <span className="sr-only">Open</span>
+                </th>
+            )}
         </tr>
         </thead>
     );
 }
+
+export default connect(mapStateToProps)(OpenTicketInfoColumnHeaders);

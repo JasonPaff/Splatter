@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import Loader from "./navigation/Loader";
 import * as actionCreators from "../store/actionCreators/roleActionCreator";
 import SideBar from "./qualityAssurance/SideBar";
-import DeveloperSidebar from "./developer/DeveloperSidebar";
 
 const mapStateToProps = (state) => {
     return {
@@ -38,7 +37,7 @@ function Dashboard(props) {
     switch (props.role) {
         case "admin":
             return (
-                <></>
+                <SideBar/>
             )
         case "customer":
             return (
@@ -46,7 +45,7 @@ function Dashboard(props) {
             )
         case "staff":
             return (
-                <DeveloperSidebar/>
+                <SideBar/>
             )
         default:
             return (

@@ -26,3 +26,10 @@ export const setSelectedFilter = (filter) => {
         payload: filter
     };
 }
+
+export const setReloadTickets = (value) => {
+    return {
+        type: actionTypes.SET_RELOAD_TICKETS,
+        payload: value
+    };
+}

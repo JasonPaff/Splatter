@@ -2,13 +2,96 @@
 import {useState} from "react";
 import OpenTicketInfoModal from "./OpenTicketInfoModal";
 import OpenTicketImageModal from "./OpenTicketImageModal";
+import {connect} from "react-redux";
+import {useAuth0} from "@auth0/auth0-react";
+import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
 
-export default function OpenTicketInfoRows(props) {
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role,
+        location: state.navReducer.location
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onTicketStatusChange: (value) => dispatch(actionCreators.setReloadTickets(value))
+    }
+}
+
+function OpenTicketInfoRows(props) {
     const [isInfoModalShowing, setIsInfoModalShowing] = useState(false);
     const [isImageModalShowing, setIsImageModalShowing] = useState(false);
+    const {getAccessTokenSilently} = useAuth0();
     const [modalId, setModalId] = useState(0);
     const [imageData, setImageData] = useState("None");
     const [imageType, setImageType] = useState("None");
+
+    const handleCloseTicket = async (id) => {
+        const query = `mutation closeTicket($id: ID!) {
+            closeTicket(id: $id) {
+                id
+                status
+            }
+        }`;
+
+        const token = await getAccessTokenSilently({
+            audience: "https://dev-eyvtzgck.us.auth0.com/api/v2/",
+            scope: "read:current_user",
+        });
+
+        const headers = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                query,
+                variables: {
+                    id :  id ,
+                }
+            })
+        };
+
+        const request = await fetch("http://localhost:4000/graphql", headers);
+        const response = await request.json();
+        props.onTicketStatusChange(true);
+    }
+
+    const handleOpenTicket = async (id) => {
+        const query = `mutation OpenTicket($id: ID!) {
+            openTicket(id: $id) {
+                id
+                status
+            }
+        }`;
+
+        const token = await getAccessTokenSilently({
+            audience: "https://dev-eyvtzgck.us.auth0.com/api/v2/",
+            scope: "read:current_user",
+        });
+
+        const headers = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                query,
+                variables: {
+                    id :  id ,
+                }
+            })
+        };
+
+        const request = await fetch("http://localhost:4000/graphql", headers);
+        const response = await request.json();
+        props.onTicketStatusChange(true);
+    }
 
     return (
         <>
@@ -93,6 +176,34 @@ export default function OpenTicketInfoRows(props) {
                             View<span className="sr-only">, {ticket.id}</span>
                         </button>
                     </td>
+                    {props.role === 'staff' && props.location === 'openTickets' && (
+                        <td
+                            className={classNameJoiner(
+                                index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                                'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
+                            )}
+                        >
+                            <button
+                                onClick={() => { handleCloseTicket(ticket.id).catch(console.error) }}
+                                className="text-sky-600 hover:text-sky-900">
+                                Close<span className="sr-only">, {ticket.id}</span>
+                            </button>
+                        </td>
+                    )}
+                    {props.role === 'staff' && props.location === 'closedTickets' && (
+                        <td
+                            className={classNameJoiner(
+                                index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                                'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
+                            )}
+                        >
+                            <button
+                                onClick={() => { handleOpenTicket(ticket.id).catch(console.error) }}
+                                className="text-sky-600 hover:text-sky-900">
+                                Open<span className="sr-only">, {ticket.id}</span>
+                            </button>
+                        </td>
+                    )}
                 </tr>))}
             </tbody>
             <>
@@ -102,3 +213,4 @@ export default function OpenTicketInfoRows(props) {
         </>
     );
 }
+export default connect(mapStateToProps, mapDispatchToProps)(OpenTicketInfoRows);

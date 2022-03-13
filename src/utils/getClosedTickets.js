@@ -1,4 +1,4 @@
-﻿export const getTickets = async (token, user) => {
+﻿export const getClosedTickets = async (token, user) => {
     const query = `query GetAllTickets ($name: String) {
             getAllTickets (emailFilter: $name) {
                 id
@@ -6,7 +6,6 @@
                 severity
                 priority
                 type
-                screenshot
                 product
                 browser
                 summary
@@ -31,7 +30,7 @@
                 name: user.email
             }
         })
-    };
+    }
 
     const request = await fetch("http://localhost:4000/graphql", headers);
     const response = await request.json();
@@ -39,11 +38,8 @@
     ticketData.forEach((item) => {
         item.createdAt = new Date(item.createdAt).toLocaleString();
         item.updatedAt = new Date(item.updatedAt).toLocaleString();
-    });
-    ticketData.forEach((ticket) => {
-        ticket.hasScreenshot = ticket.screenshot !== "None";
-    });
+    })
     return ticketData.filter((ticket) => {
-        return ticket.status === 'created' || ticket.status === 'assigned'
+        return ticket.status === 'closed'
     });
 }
