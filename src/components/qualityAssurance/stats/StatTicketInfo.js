@@ -7,6 +7,7 @@ import ProductPieChart from "./ProductPieChart";
 import BrowserPieChart from "./BrowserPieChart";
 import {getAssignedAndClosedTickets, getAssignedTickets} from "../../../utils/GetAssignedTickets";
 import {connect} from "react-redux";
+import {getAllAdminTickets} from "../../../utils/getAllAdminTickets";
 
 const mapStateToProps = (state) => {
     return {
@@ -25,6 +26,9 @@ function StatTicketInfo(props) {
         }
         else if (props.role === 'staff') {
             filteredTickets = await getAssignedAndClosedTickets(props.token, props.user).catch(console.error);
+        }
+        else if (props.role === 'admin') {
+            filteredTickets = await getAllAdminTickets(props.token, props.user).catch(console.error);
         }
         setTickets(filteredTickets);
         setHasTickets(true);

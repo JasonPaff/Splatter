@@ -4,6 +4,7 @@ import {getAssignedClosedTickets} from "../../../utils/GetAssignedTickets";
 import {getClosedTickets} from "../../../utils/getClosedTickets";
 import {connect} from "react-redux";
 import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
+import {getAllCreatedTickets} from "../../../utils/getAllCreatedTickets";
 
 const mapStateToProps = (state) => {
     return {
@@ -28,6 +29,9 @@ function ClosedTicketList(props) {
         }
         else if (props.role === 'staff') {
             filteredTickets = await getAssignedClosedTickets(props.token, props.user).catch(console.error);
+        }
+        else if (props.role === 'admin') {
+            filteredTickets = await getAllCreatedTickets(props.token, props.user).catch(console.error);
         }
         setTickets(filteredTickets);
     }

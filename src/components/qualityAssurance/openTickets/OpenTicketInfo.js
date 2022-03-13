@@ -14,9 +14,10 @@ const mapStateToProps = (state) => {
 }
 
 function OpenTicketInfo(props) {
-
     useEffect(() => {
+        console.table(props.tickets)
         openTicketsTableSorter(props.tickets, props.selectedSort, props.isSortAscending);
+        console.table(props.tickets)
     }, [props.tickets, props.selectedSort, props.isSortAscending]);
 
     return (

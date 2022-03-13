@@ -9,10 +9,16 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role
+    }
+}
+
 function SendMessage(props) {
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
-    const [receiver, setReceiver] = useState("Admin@fake.com");
+    const [receiver, setReceiver] = useState("admin@fake.com");
 
     const sendMessage = async () => {
         if (message.length <= 0 || subject.length <= 0)
@@ -80,8 +86,22 @@ function SendMessage(props) {
                     className="block w-full text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
                 >
-                    <option>admin@fake.com</option>
-                    <option>developer@fake.com</option>
+                    {props.role === 'customer' && (
+                        <>
+                            <option>admin@fake.com</option>
+                            <option>developer@fake.com</option>
+                        </>)}
+                    {props.role === 'staff' && (
+                        <>
+                            <option>admin@fake.com</option>
+                            <option>support@fake.com</option>
+                        </>)}
+                    {props.role === 'admin' && (
+                        <>
+                            <option>developer@fake.com</option>
+                            <option>support@fake.com</option>
+                        </>)}
+
                 </select>
                 <button
                     type="submit"
@@ -98,4 +118,4 @@ function SendMessage(props) {
     );
 }
 
-export default connect(null, mapDispatchToProps)(SendMessage);
+export default connect(mapStateToProps, mapDispatchToProps)(SendMessage);

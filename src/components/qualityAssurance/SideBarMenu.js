@@ -3,6 +3,7 @@ import PrimarySideBarMenu from "./PrimarySideBarMenu";
 import LogoutMenuButton from "./LogoutMenuButton";
 import * as navigationRoutes from "../../store/data/navigationRoutes";
 import * as developerNavigationRoutes from "../../store/data/developerNavigationRoutes";
+import * as adminNavigationRoutes from "../../store/data/adminNavigationRoutes";
 import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import SecondarySideBarMenu from "./SecondarySideBarMenu";
@@ -22,7 +23,8 @@ function SideBarMenu(props) {
         primaryRoutes = developerNavigationRoutes.primaryNavigations;
         secondaryRoutes = navigationRoutes.secondaryNavigations;
     } else if (props.role === 'admin') {
-
+        primaryRoutes = adminNavigationRoutes.primaryNavigations;
+        secondaryRoutes = navigationRoutes.secondaryNavigations;
     } else if (props.role === 'customer') {
         primaryRoutes = navigationRoutes.primaryNavigations;
         secondaryRoutes = navigationRoutes.secondaryNavigations;

@@ -7,6 +7,12 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role
+    }
+}
+
 function ClosedTicketInfoTableHeader(props) {
     return (
         <div className="sm:flex sm:items-center">
@@ -17,6 +23,7 @@ function ClosedTicketInfoTableHeader(props) {
                 </p>
             </div>
             <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                {props.role === 'customer' && (
                 <button
                     type="button"
                     onClick={() => props.setLocation('newTicket') }
@@ -26,9 +33,9 @@ function ClosedTicketInfoTableHeader(props) {
                             focus:ring-offset-2 sm:w-auto z-3"
                 >
                     New Ticket
-                </button>
+                </button>)}
             </div>
         </div>
     )
 }
-export default connect(null, mapDispatchToProps)(ClosedTicketInfoTableHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(ClosedTicketInfoTableHeader);

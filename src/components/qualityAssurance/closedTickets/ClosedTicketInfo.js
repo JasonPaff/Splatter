@@ -4,7 +4,6 @@ import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
 import OpenTicketFilterBar from "../openTickets/OpenTicketFilterBar";
 import OpenTicketInfoColumnHeaders from "../openTickets/OpenTicketInfoColumnHeaders";
 import OpenTicketInfoRows from "../openTickets/OpenTicketInfoRows";
-import OpenTicketInfoTableHeader from "../openTickets/OpenTicketInfoTableHeader";
 import ClosedTicketInfoTableHeader from "./ClosedTicketInfoTableHeader";
 
 const mapStateToProps = (state) => {

@@ -100,6 +100,17 @@ function OpenTicketInfoColumnHeaders(props) {
                     <span className="sr-only">Open</span>
                 </th>
             )}
+            {props.role === 'admin' && props.location === 'closedTickets' && (
+                <th
+                    scope="col"
+                    className="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75
+                    px-3 py-3.5 text-left text-md font-semibold text-gray-900
+                    backdrop-blur backdrop-filter"
+                >
+                    Assign
+                    <span className="sr-only">Assign</span>
+                </th>
+            )}
         </tr>
         </thead>
     );

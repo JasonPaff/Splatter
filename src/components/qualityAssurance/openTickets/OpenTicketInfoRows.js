@@ -55,8 +55,7 @@ function OpenTicketInfoRows(props) {
             })
         };
 
-        const request = await fetch("http://localhost:4000/graphql", headers);
-        const response = await request.json();
+        await fetch("http://localhost:4000/graphql", headers);
         props.onTicketStatusChange(true);
     }
 
@@ -88,9 +87,12 @@ function OpenTicketInfoRows(props) {
             })
         };
 
-        const request = await fetch("http://localhost:4000/graphql", headers);
-        const response = await request.json();
+        await fetch("http://localhost:4000/graphql", headers);
         props.onTicketStatusChange(true);
+    }
+
+    const handleAssignTicket = async () => {
+        console.log('assigning!');
     }
 
     return (
@@ -176,7 +178,7 @@ function OpenTicketInfoRows(props) {
                             View<span className="sr-only">, {ticket.id}</span>
                         </button>
                     </td>
-                    {props.role === 'staff' && props.location === 'openTickets' && (
+                    {(props.role === 'staff') && props.location === 'openTickets' && (
                         <td
                             className={classNameJoiner(
                                 index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
@@ -201,6 +203,20 @@ function OpenTicketInfoRows(props) {
                                 onClick={() => { handleOpenTicket(ticket.id).catch(console.error) }}
                                 className="text-sky-600 hover:text-sky-900">
                                 Open<span className="sr-only">, {ticket.id}</span>
+                            </button>
+                        </td>
+                    )}
+                    {props.role === 'admin' && props.location === 'closedTickets' && (
+                        <td
+                            className={classNameJoiner(
+                                index !== props.tickets.length - 1 ? 'border-b border-gray-200' : '',
+                                'relative whitespace-nowrap py-4 pr-4 pl-3 text-sm font-medium sm:pr-6 lg:pr-8'
+                            )}
+                        >
+                            <button
+                                onClick={() => { handleAssignTicket(ticket.id).catch(console.error) }}
+                                className="text-sky-600 hover:text-sky-900">
+                                Assign<span className="sr-only">, {ticket.id}</span>
                             </button>
                         </td>
                     )}
