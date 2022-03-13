@@ -50,8 +50,6 @@ function SendMessage(props) {
         const request = await fetch("http://localhost:4000/graphql", headers);
         const response = await request.json();
 
-        alert(`Message sent!\n\nMessage ID: ${response.data.createMessage.id}`);
-
         setSubject('');
         setMessage('');
         props.onMessageSent(true);

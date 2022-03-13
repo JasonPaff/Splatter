@@ -1,16 +1,15 @@
-﻿import NewTicket from "./newTicket/NewTicket";
-import OpenTickets from "./openTickets/OpenTickets";
-import QASettings from "./QASettings";
-import QASupport from "./QASupport";
-import SideBarMobileHamburger from "./SideBarMobileMenu";
-import SideBarMobileHamburgerButton from "./SideBarMobileHamburgerButton";
-import {connect} from "react-redux";
-import SideBarMenu from "./SideBarMenu";
-import ProfileDropDown from "./ProfileDropDown";
-import NotificationsButton from "./NotificationsButton";
-import ClosedTickets from "./closedTickets/ClosedTickets";
-import Stats from "./stats/Stats";
-import Messages from "./messages/Messages";
+﻿import {connect} from "react-redux";
+import SideBarMenu from "../qualityAssurance/SideBarMenu";
+import SideBarMobileHamburgerButton from "../qualityAssurance/SideBarMobileHamburgerButton";
+import ProfileDropDown from "../qualityAssurance/ProfileDropDown";
+import Stats from "../qualityAssurance/stats/Stats";
+import OpenTickets from "../qualityAssurance/openTickets/OpenTickets";
+import ClosedTickets from "../qualityAssurance/closedTickets/ClosedTickets";
+import Messages from "../qualityAssurance/messages/Messages";
+import QASettings from "../qualityAssurance/QASettings";
+import QASupport from "../qualityAssurance/QASupport";
+import SideBarMobileMenu from "../qualityAssurance/SideBarMobileMenu";
+
 
 const mapStateToProps = (state) => {
     return {
@@ -18,10 +17,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-function SideBar(props) {
+function DeveloperSidebar(props) {
     return (
         <div className="min-h-full">
-            <SideBarMobileHamburger />
+            <SideBarMobileMenu />
             <SideBarMenu />
             <div className="lg:pl-64 flex flex-col flex-1">
                 <div className="relative z-0 flex-shrink-0 flex h-16
@@ -39,7 +38,6 @@ function SideBar(props) {
                 <main
                     className="flex-1 pb-8">
                     {props.location === 'stats' && (<Stats/>)}
-                    {props.location === 'newTicket' && (<NewTicket/>)}
                     {props.location === 'openTickets' && (<OpenTickets/>)}
                     {props.location === 'closedTickets' && (<ClosedTickets/>)}
                     {props.location === 'messages' && (<Messages/>)}
@@ -51,4 +49,4 @@ function SideBar(props) {
     );
 }
 
-export default connect(mapStateToProps)(SideBar);
+export default connect(mapStateToProps)(DeveloperSidebar);

@@ -2,7 +2,7 @@
 import {useAuth0} from "@auth0/auth0-react";
 import StatTicketInfo from "./StatTicketInfo";
 
-export default function OpenTickets() {
+export default function Stats() {
     document.title = "Splatter - Stats";
 
     const {getAccessTokenSilently, user} = useAuth0();

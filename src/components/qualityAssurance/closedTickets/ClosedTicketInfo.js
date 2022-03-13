@@ -5,6 +5,7 @@ import OpenTicketFilterBar from "../openTickets/OpenTicketFilterBar";
 import OpenTicketInfoColumnHeaders from "../openTickets/OpenTicketInfoColumnHeaders";
 import OpenTicketInfoRows from "../openTickets/OpenTicketInfoRows";
 import OpenTicketInfoTableHeader from "../openTickets/OpenTicketInfoTableHeader";
+import ClosedTicketInfoTableHeader from "./ClosedTicketInfoTableHeader";
 
 const mapStateToProps = (state) => {
     return {
@@ -21,7 +22,7 @@ function ClosedTicketInfo(props) {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
-            <OpenTicketInfoTableHeader/>
+            <ClosedTicketInfoTableHeader/>
             <div className="mt-8 flex flex-col">
                 <OpenTicketFilterBar/>
                 <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
