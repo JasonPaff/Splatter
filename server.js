@@ -23,7 +23,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.set('port', port);
-server.listen(port);
+server.listen(process.env.PORT || port);
 server.on('error', onError);
 server.on('listening', onListening);
 
