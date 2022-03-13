@@ -32,7 +32,9 @@ app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.static(path.join(__dirname, 'build')));
-//app.use(checkJwt);
+app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html')))
+app.use(checkJwt);
 
 // graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
