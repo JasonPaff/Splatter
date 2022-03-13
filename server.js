@@ -27,7 +27,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-app.use(express.static(path.join(__dirname,'build')));
+app.use(express.static(path.join(__dirname,'./build')));
 app.use(logger('dev'));
 app.use(cors({origin: process.env.APP_ORIGIN}));
 app.use(express.json({limit: '50mb'}));
