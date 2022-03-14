@@ -11,10 +11,12 @@ const {rootResolver} = require("./graphQLResolvers");
 const path = require("path");
 require('dotenv').config();
 
+// auth0
 const checkJwt = auth({
     audience: process.env.AUTH_AUDIENCE, issuerBaseURL: process.env.AUTH_BASE_URL
 });
 
+// mongodb setup
 mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
 
@@ -22,11 +24,13 @@ const port = 4000;
 const app = express();
 const server = http.createServer(app);
 
+// server setup
 app.set('port', port);
 server.listen(process.env.PORT || port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+// middleware
 app.use(logger('dev'));
 app.use(cors());
 app.use(express.json({limit: '50mb'}));
@@ -39,9 +43,11 @@ app.use('/graphql', graphqlHTTP({
     schema: graphTicketSchema, rootValue: rootResolver, graphiql: true
 }));
 
+// static file server for deployment
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
+
 // database error handler
 database_connection.on("error", console.error.bind(console, "connection error: "));
 
