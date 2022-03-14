@@ -3,12 +3,12 @@ const http = require('http');
 const debug = require("debug");
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const cors = require("cors");
-const path = require("path");
 const {graphqlHTTP} = require('express-graphql');
 const {auth} = require('express-oauth2-jwt-bearer');
+const cors = require("cors");
 const {graphqlSchema} = require("./graphQLSchemas");
 const {rootResolver} = require("./graphQLResolvers");
+const path = require("path");
 
 require('dotenv').config();
 
@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 // server setup
 app.set('port', port);
-server.listen(port || process.env.PORT);
+server.listen(process.env.PORT || port);
 server.on('error', onError);
 server.on('listening', onListening);
 

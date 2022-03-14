@@ -97,11 +97,6 @@ const rootResolver = {
             {chatId: args.id}
         );
     },
-    message: {
-        subscribe(parent, args, {pubsub}) {
-            return pubsub.asyncIterator('message');
-        }
-    }
 };
 
 module.exports.rootResolver = rootResolver;

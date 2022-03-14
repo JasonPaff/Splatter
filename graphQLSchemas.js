@@ -83,16 +83,7 @@ const graphqlSchema = buildSchema(`
     deleteTicket(id: ID!) : Ticket
     createMessage(input: MessageInput): Message    
   }
-  
-  type Subscription {
-    message: MessageSubscriptionPayload
-  }
-  
-  type MessageSubscriptionPayload {
-    mutation: String
-    data: Message
-  }
-    
+      
   scalar Date  
 `);
 
