@@ -3,7 +3,7 @@
 // Construct a schema, using GraphQL schema language
 // input TicketInput is for creating
 // type Ticket is for updating
-const graphTicketSchema = buildSchema(`
+const graphqlSchema = buildSchema(`
   input TicketInput {
     title: String
     severity: String
@@ -96,4 +96,4 @@ const graphTicketSchema = buildSchema(`
   scalar Date  
 `);
 
-module.exports.graphTicketSchema = graphTicketSchema;
+module.exports.graphqlSchema = graphqlSchema;

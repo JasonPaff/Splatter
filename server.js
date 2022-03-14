@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const {graphqlHTTP} = require('express-graphql');
 const {auth} = require('express-oauth2-jwt-bearer');
 const cors = require("cors");
-const {graphTicketSchema} = require("./graphQLSchemas");
+const {graphqlSchema} = require("./graphQLSchemas");
 const {rootResolver} = require("./graphQLResolvers");
 const path = require("path");
 require('dotenv').config();
@@ -38,9 +38,9 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.static(path.join(__dirname,'build')));
 app.use(checkJwt);
 
-//graphQL query/mutation endpoint
+// graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
-    schema: graphTicketSchema, rootValue: rootResolver, graphiql: true
+    schema: graphqlSchema, rootValue: rootResolver, graphiql: true
 }));
 
 // static file server for deployment
