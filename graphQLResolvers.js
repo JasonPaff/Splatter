@@ -15,7 +15,6 @@ const rootResolver = {
     typeDefs: {
         Data: dateScalar
     },
-
     createTicket: ({input}) => {
         const ticket = new Ticket(input);
         ticket.save();
@@ -98,11 +97,9 @@ const rootResolver = {
             {chatId: args.id}
         );
     },
-    Subscription: {
-        message: {
-            subscribe(parent, args, {pubsub}) {
-                return pubsub.asyncIterator('message');
-            }
+    message: {
+        subscribe(parent, args, {pubsub}) {
+            return pubsub.asyncIterator('message');
         }
     }
 };
