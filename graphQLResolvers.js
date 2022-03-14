@@ -44,23 +44,33 @@ const rootResolver = {
     },
     closeTicket: (args) => {
         Ticket.findByIdAndUpdate(
-            args.id, {status : 'closed'}, () => {});
+            args.id, {status: 'closed'}, () => {
+            });
     },
     openTicket: (args) => {
         Ticket.findByIdAndUpdate(
-            args.id, {status : 'assigned'}, () => {});
+            args.id, {status: 'assigned'}, () => {
+            });
     },
     assignTicket: (args) => {
         Ticket.findByIdAndUpdate(
-            args.id, {status: 'assigned', assignedTo: args.email}, () => {});
+            args.id, {status: 'assigned', assignedTo: args.email}, () => {
+            });
     },
     updateTicket: (args) => {
     },
     deleteTicket: ({id}) => {
     },
-    createMessage: ({input}) => {
-        const message = new Message(input);
+    createMessage: (args, {pubsub}) => {
+        console.log('test');
+        const message = new Message(args.input);
         message.save();
+        pubsub.publish('message', {
+            message: {
+                mutation: 'CREATED',
+                data: {...message}
+            },
+        });
         return message;
     },
     getSentMessages: (args) => {
@@ -76,7 +86,7 @@ const rootResolver = {
     getNewMessageId: async () => {
         let maxId = 0;
         const messages = await Message.find({})
-        for (let i = 0; i < messages.length; i++ ) {
+        for (let i = 0; i < messages.length; i++) {
             if (messages[i].chatId > maxId) {
                 maxId = messages[i].chatId;
             }
@@ -87,6 +97,13 @@ const rootResolver = {
         return Message.find(
             {chatId: args.id}
         );
+    },
+    Subscription: {
+        message: {
+            subscribe(parent, args, {pubsub}) {
+                return pubsub.asyncIterator('message');
+            }
+        }
     }
 };
 

@@ -26,7 +26,7 @@ const server = http.createServer(app);
 
 // server setup
 app.set('port', port);
-server.listen(process.env.PORT || port);
+server.listen(port || process.env.PORT);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -38,7 +38,7 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.static(path.join(__dirname,'build')));
 app.use(checkJwt);
 
-// graphQL query/mutation endpoint
+//graphQL query/mutation endpoint
 app.use('/graphql', graphqlHTTP({
     schema: graphTicketSchema, rootValue: rootResolver, graphiql: true
 }));
