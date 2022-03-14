@@ -5,7 +5,6 @@ export default function OpenTicketImageModal(props) {
     const [open, setOpen] = useState(true)
 
     const imageSrc = `data:${props.imageType};base64, ${props.imageData}`;
-    // src="data:{{imageType}};base64, {{imageData}}"
     return (
         <>
             <Transition.Root show={open} as={Fragment}>

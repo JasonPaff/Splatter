@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import {getChatChains} from "../../../utils/GetChatMessages";
 import * as actionCreators from "../../../store/actionCreators/messagesActionCreator";
+import {apiRoute} from "../../../utils/routeUtility";
 
 const mapStateToProps = (state) => {
     return {
@@ -61,7 +62,7 @@ function SelectedMessage(props) {
             })
         };
 
-        const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+        const request = await fetch(`${apiRoute}/graphql`, headers);
         const response = await request.json();
         setMessage('');
         props.onMessageSent(true);

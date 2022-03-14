@@ -2,6 +2,7 @@
 import GetNewChatId from "../../../utils/GetNewChatId";
 import * as actionCreators from "../../../store/actionCreators/messagesActionCreator";
 import {connect} from "react-redux";
+import {apiRoute} from "../../../utils/routeUtility";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -53,7 +54,7 @@ function SendMessage(props) {
             })
         };
 
-        const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+        const request = await fetch(`${apiRoute}/graphql`, headers);
         const response = await request.json();
 
         setSubject('');

@@ -2,6 +2,7 @@
 import {connect} from 'react-redux'
 import {useAuth0} from "@auth0/auth0-react";
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
+import {apiRoute} from "../../../utils/routeUtility";
 
 const mapStateToProps = (state) => {
     return {
@@ -66,7 +67,7 @@ function SubmitButton(props) {
             })
         };
 
-        const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+        const request = await fetch(`${apiRoute}/graphql`, headers);
         const response = await request.json();
         alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
         props.onReset();

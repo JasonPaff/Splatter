@@ -1,7 +1,7 @@
 ﻿import * as actionTypes from "../actions/roleActionTypes";
 
 const initialState = {
-    role: 'none'
+    role: 'none',
 }
 
 const roleReducer = (state = initialState, action) => {

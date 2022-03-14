@@ -1,6 +1,7 @@
 ﻿import {Fragment, useEffect, useState} from 'react'
 import {Dialog, Transition} from '@headlessui/react'
 import {useAuth0} from "@auth0/auth0-react";
+import {apiRoute} from "../../../utils/routeUtility";
 
 export default function OpenTicketInfoModal(props) {
     const [open, setOpen] = useState(true)
@@ -45,7 +46,7 @@ export default function OpenTicketInfoModal(props) {
             })
         };
 
-        const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+        const request = await fetch(`${apiRoute}/graphql`, headers);
         const response = await request.json();
         const ticketData = response.data.getTicket;
         ticketData.createdAt = new Date(ticketData.createdAt).toLocaleString();

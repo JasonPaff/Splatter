@@ -3,6 +3,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {useAuth0} from "@auth0/auth0-react";
 import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
 import {connect} from "react-redux";
+import {apiRoute} from "../../../utils/routeUtility";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -42,7 +43,7 @@ function AssignTicketModal(props) {
             })
         };
 
-        await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+        const request = await fetch(`${apiRoute}/graphql`, headers);
         props.onTicketStatusChange(true);
         setOpen(false);
     }

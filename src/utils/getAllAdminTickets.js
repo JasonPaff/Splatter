@@ -1,4 +1,6 @@
-﻿export const getAllAdminTickets = async (token, user) => {
+﻿import {apiRoute} from "./routeUtility";
+
+export const getAllAdminTickets = async (token, user) => {
     const query = `query GetAllTickets {
             getAllTickets {
                 id
@@ -30,7 +32,7 @@
         )
     };
 
-    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+    const request = await fetch(`${apiRoute}/graphql`, headers);
     const response = await request.json();
     const ticketData = response.data.getAllTickets;
     ticketData.forEach((item) => {

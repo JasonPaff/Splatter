@@ -1,4 +1,6 @@
-﻿export default async function GetNewChatId(token) {
+﻿import {apiRoute} from "./routeUtility";
+
+export default async function GetNewChatId(token) {
 
     const query = `query GetNewMessageID {
         getNewMessageId 
@@ -14,7 +16,7 @@
         body: JSON.stringify( {query })
     };
 
-    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+    const request = await fetch(`${apiRoute}/graphql`, headers);
     const response = await request.json();
 
     return response.data.getNewMessageId;

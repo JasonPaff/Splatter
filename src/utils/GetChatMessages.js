@@ -1,4 +1,6 @@
-﻿export async function getReceivedChatMessage(token, user) {
+﻿import {apiRoute} from "./routeUtility";
+
+export async function getReceivedChatMessage(token, user) {
     const query = `query GetReceivedMessages ($name: String) {
             getReceivedMessages (emailFilter: $name) {
                 subject
@@ -23,7 +25,7 @@
         })
     }
 
-    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+    const request = await fetch(`${apiRoute}/graphql`, headers);
     const response = await request.json();
     const receivedMessages = response.data.getReceivedMessages;
     receivedMessages.forEach((item) => {
@@ -62,7 +64,7 @@ export async function getSentChatMessage(token, user) {
         })
     }
 
-    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+    const request = await fetch(`${apiRoute}/graphql`, headers);
     const response = await request.json();
     const sentMessages = response.data.getSentMessages;
     sentMessages.forEach((item) => {
@@ -100,7 +102,7 @@ export async function getChatChains(token, user, id) {
         })
     }
 
-    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
+    const request = await fetch(`${apiRoute}/graphql`, headers);
     const response = await request.json();
     const messageChain = response.data.getMessageChain;
     messageChain.forEach((item) => {
