@@ -33,7 +33,7 @@
         })
     };
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const ticketData = response.data.getAllAssignedTickets;
     ticketData.forEach((item) => {
@@ -83,7 +83,7 @@ export const getAssignedClosedTickets = async (token, user) => {
         })
     };
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const ticketData = response.data.getAllAssignedTickets;
     ticketData.forEach((item) => {
@@ -133,7 +133,7 @@ export const getAssignedAndClosedTickets = async (token, user) => {
         })
     };
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const ticketData = response.data.getAllAssignedTickets;
     ticketData.forEach((item) => {

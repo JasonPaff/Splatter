@@ -66,7 +66,7 @@ function SubmitButton(props) {
             })
         };
 
-        const request = await fetch("http://localhost:4000/graphql", headers);
+        const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
         const response = await request.json();
         alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
         props.onReset();

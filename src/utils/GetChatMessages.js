@@ -23,7 +23,7 @@
         })
     }
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const receivedMessages = response.data.getReceivedMessages;
     receivedMessages.forEach((item) => {
@@ -62,7 +62,7 @@ export async function getSentChatMessage(token, user) {
         })
     }
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const sentMessages = response.data.getSentMessages;
     sentMessages.forEach((item) => {
@@ -100,7 +100,7 @@ export async function getChatChains(token, user, id) {
         })
     }
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const messageChain = response.data.getMessageChain;
     messageChain.forEach((item) => {

@@ -42,7 +42,7 @@ function AssignTicketModal(props) {
             })
         };
 
-        await fetch("http://localhost:4000/graphql", headers);
+        await fetch("https://splatter-app.herokuapp.com/graphql", headers);
         props.onTicketStatusChange(true);
         setOpen(false);
     }

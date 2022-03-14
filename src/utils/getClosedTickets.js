@@ -32,7 +32,7 @@
         })
     }
 
-    const request = await fetch("http://localhost:4000/graphql", headers);
+    const request = await fetch("https://splatter-app.herokuapp.com/graphql", headers);
     const response = await request.json();
     const ticketData = response.data.getAllTickets;
     ticketData.forEach((item) => {
