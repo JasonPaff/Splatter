@@ -1,2 +1,2 @@
 ﻿//export const apiRoute = 'http://localhost:4000';
-export const apiRoute = 'https://splatter-app.heropsuapp.com';
+export const apiRoute = 'https://splatter-app.herokuapp.com/';
