@@ -62,6 +62,6 @@ database_connection.once("open", function () {
 });
 
 // start express server
-app.listen({port}, () => {
+app.listen({port:process.env.PORT}, () => {
     console.log(`Apollo Server on http://localhost:${port}/graphql`);
 })
