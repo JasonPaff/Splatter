@@ -2,7 +2,7 @@ import "./tailwind.output.css"
 import React from 'react';
 import thunk from "redux-thunk";
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.js';
 import {GraphQLClient, ClientContext} from 'graphql-hooks'
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";

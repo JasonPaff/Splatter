@@ -1,5 +1,5 @@
-﻿const {Ticket, Message} = require("./mongoModels");
-const {GraphQLScalarType} = require("graphql");
+﻿import {Ticket, Message} from './mongoModels';
+import {GraphQLScalarType} from 'graphql';
 
 const dateScalar = new GraphQLScalarType({
     name: 'Date',

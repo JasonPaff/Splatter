@@ -2,7 +2,7 @@
 
 export async function getReceivedChatMessage(token, user) {
     const query = `query GetReceivedMessages ($name: String) {
-            getReceivedMessages (emailFilter: $name) {
+            getReceivedMessages (email: $name) {
                 subject
                 message
                 receiver
@@ -41,7 +41,7 @@ export async function getReceivedChatMessage(token, user) {
 
 export async function getSentChatMessage(token, user) {
     const query = `query GetSentMessages ($name: String) {
-            getSentMessages (emailFilter: $name) {
+            getSentMessages (email: $name) {
                 subject
                 message
                 receiver

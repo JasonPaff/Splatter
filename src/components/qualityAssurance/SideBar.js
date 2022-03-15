@@ -1,16 +1,16 @@
-﻿import NewTicket from "./newTicket/NewTicket";
-import OpenTickets from "./openTickets/OpenTickets";
-import QASettings from "./QASettings";
-import QASupport from "./QASupport";
-import SideBarMobileHamburger from "./SideBarMobileMenu";
-import SideBarMobileHamburgerButton from "./SideBarMobileHamburgerButton";
+﻿import NewTicket from "./newTicket/NewTicket.js";
+import OpenTickets from "./openTickets/OpenTickets.js";
+import QASettings from "./QASettings.js";
+import QASupport from "./QASupport.js";
+import SideBarMobileHamburger from "./SideBarMobileMenu.js";
+import SideBarMobileHamburgerButton from "./SideBarMobileHamburgerButton.js";
 import {connect} from "react-redux";
-import SideBarMenu from "./SideBarMenu";
-import ProfileDropDown from "./ProfileDropDown";
+import SideBarMenu from "./SideBarMenu.js";
+import ProfileDropDown from "./ProfileDropDown.js";
 import NotificationsButton from "./NotificationsButton";
-import ClosedTickets from "./closedTickets/ClosedTickets";
-import Stats from "./stats/Stats";
-import Messages from "./messages/Messages";
+import ClosedTickets from "./closedTickets/ClosedTickets.js";
+import Stats from "./stats/Stats.js";
+import Messages from "./messages/Messages.js";
 
 const mapStateToProps = (state) => {
     return {

@@ -2,7 +2,7 @@
 
 export const getTickets = async (token, user) => {
     const query = `query GetAllTickets ($name: String) {
-            getAllTickets (emailFilter: $name) {
+            getAllTickets (email: $name) {
                 id
                 title
                 severity

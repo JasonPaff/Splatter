@@ -1,9 +1,9 @@
 ﻿import React, {useEffect} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import {connect} from 'react-redux'
-import Loader from "./navigation/Loader";
-import * as actionCreators from "../store/actionCreators/roleActionCreator";
-import SideBar from "./qualityAssurance/SideBar";
+import Loader from "./navigation/Loader.js";
+import * as actionCreators from "../store/actionCreators/roleActionCreator.js";
+import SideBar from "./qualityAssurance/SideBar.js";
 
 const mapStateToProps = (state) => {
     return {
