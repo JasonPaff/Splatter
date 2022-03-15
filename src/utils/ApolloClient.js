@@ -4,16 +4,17 @@ import {split} from "apollo-link";
 import {getMainDefinition} from "apollo-utilities";
 import {ApolloClient} from "apollo-client";
 import {InMemoryCache} from "apollo-cache-inmemory";
+import {apiRoute, apiRouteWs} from "./routeUtility";
 
 const wsLink = new WebSocketLink({
-    uri: `ws://localhost:4000/graphql`,
+    uri: `${apiRouteWs}/graphql`,
     options: {
         reconnect: true,
     },
 });
 
 const httpLink = new HttpLink({
-    uri: 'http://localhost:4000/graphql',
+    uri: `${apiRoute}/graphql`,
 });
 
 const link = split(
