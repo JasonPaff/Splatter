@@ -64,6 +64,6 @@ database_connection.once("open", function () {
     console.log("MongoDB Connected successfully");
 });
 
-httpServer.listen({port}, () => {
+httpServer.listen({port: process.env.PORT}, () => {
     console.log(`Apollo Server on http://localhost:${port}/graphql`);
 })
