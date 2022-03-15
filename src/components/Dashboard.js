@@ -36,13 +36,7 @@ function Dashboard(props) {
 
     switch (props.role) {
         case "admin":
-            return (
-                <SideBar/>
-            )
         case "customer":
-            return (
-                <SideBar/>
-            )
         case "staff":
             return (
                 <SideBar/>

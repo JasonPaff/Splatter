@@ -5,6 +5,8 @@ import {getClosedTickets} from "../../../utils/getClosedTickets";
 import {connect} from "react-redux";
 import * as actionCreators from "../../../store/actionCreators/openTicketActionCreator";
 import {getAllCreatedTickets} from "../../../utils/getAllCreatedTickets";
+import {gql} from "@apollo/client";
+import {useSubscription} from "@apollo/react-hooks";
 
 const mapStateToProps = (state) => {
     return {
@@ -18,6 +20,22 @@ const mapDispatchToProps = (dispatch) => {
         onTicketStatusChange: (value) => dispatch(actionCreators.setReloadTickets(value))
     }
 }
+
+const subAssign = gql`subscription {
+    ticketAssigned {
+        ticket {
+            title
+        }
+    }
+}`
+
+const subCreated = gql`subscription {
+    ticketCreated {
+        ticket {
+            title
+        }
+    }
+}`
 
 function ClosedTicketList(props) {
     const [tickets, setTickets] = useState([]);
@@ -35,6 +53,18 @@ function ClosedTicketList(props) {
         }
         setTickets(filteredTickets);
     }
+
+    useSubscription(subAssign, {
+        onSubscriptionData: (res) => {
+            props.onTicketStatusChange(true);
+        }
+    });
+
+    useSubscription(subCreated, {
+        onSubscriptionData: (res) => {
+            props.onTicketStatusChange(true);
+        }
+    });
 
     useEffect(() => {
         getTickets().catch(console.error)

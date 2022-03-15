@@ -1,4 +1,6 @@
 ﻿const {Message, Ticket} = require("./mongoModels");
+const {PubSub} = require('apollo-server');
+const pubsub = new PubSub();
 
 const resolvers = {
     Query: {
@@ -46,11 +48,6 @@ const resolvers = {
         },
     },
     Mutation: {
-        createTicket: async (parent, {input}) => {
-            const ticket = new Ticket(input);
-            ticket.save();
-            return ticket;
-        },
         closeTicket: (parent, {id}) => {
             Ticket.findByIdAndUpdate(
                 id, {status: 'closed'}, () => {});
@@ -59,16 +56,45 @@ const resolvers = {
             Ticket.findByIdAndUpdate(
                 id, {status: 'assigned'}, () => {});
         },
-        assignTicket: (parent, {id, email}) => {
-            Ticket.findByIdAndUpdate(
-                id, {status: 'assigned', assignedTo: email}, () => {});
+        createTicket: async (parent, {input}) => {
+            const ticket = new Ticket(input);
+            await ticket.save();
+            await pubsub.publish("TICKET_CREATED", {
+                ticketCreated: {ticket}
+            });
+            return ticket;
         },
-        createMessage: (parent, {input}) => {
+        assignTicket: async (parent, {id, email}) => {
+            await Ticket.findByIdAndUpdate(
+                id, {status: 'assigned', assignedTo: email}, () => {});
+            const ticket = await Ticket.findOne(
+                {_id: id}
+            );
+            await pubsub.publish("TICKET_ASSIGNED", {
+                ticketAssigned: {ticket}
+            });
+            return ticket;
+        },
+        createMessage: async (parent, {input}) => {
             const message = new Message(input);
-            message.save();
+            await message.save();
+            await pubsub.publish("MESSAGE_CREATED", {
+                messageCreated: {message}
+            });
             return message;
         },
     },
+    Subscription: {
+        messageCreated: {
+            subscribe: async () => await pubsub.asyncIterator("MESSAGE_CREATED")
+        },
+        ticketCreated: {
+            subscribe: async () => await pubsub.asyncIterator("TICKET_CREATED")
+        },
+        ticketAssigned: {
+            subscribe: async () => await pubsub.asyncIterator("TICKET_ASSIGNED")
+        }
+    }
 };
 
 module.exports.resolvers = resolvers;

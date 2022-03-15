@@ -2,6 +2,8 @@
 import {getReceivedChatMessage, getSentChatMessage} from "../../../utils/GetChatMessages";
 import {connect} from "react-redux";
 import * as actionCreators from "../../../store/actionCreators/messagesActionCreator";
+import {gql} from "@apollo/client";
+import { useSubscription } from '@apollo/react-hooks';
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -16,17 +18,32 @@ const mapStateToProps = (state) => {
     };
 }
 
+const sub = gql`subscription {
+  messageCreated {
+    message {
+      message
+    }
+  }
+}`
+
 function MessageList(props) {
     const [messages, setMessages] = useState([]);
 
+    useSubscription(sub, {
+        onSubscriptionData: (res) => {
+            getMessages().catch(console.log);
+            props.onMessageSent(false);
+        }
+    });
+
     useEffect(() => {
-        getMessages().catch(console.error);
+        getMessages().catch(console.log);
         props.onMessageSent(false);
     }, [props.newMessage]);
 
-    const getMessages = async () => {
-        const sentMessages = await getSentChatMessage(props.token, props.user).catch(console.error);
-        const receivedMessages = await getReceivedChatMessage(props.token, props.user).catch(console.error);
+     const getMessages = async () => {
+        const sentMessages = await getSentChatMessage(props.token, props.user);
+        const receivedMessages = await getReceivedChatMessage(props.token, props.user);
         const combinedMessages = [...sentMessages, ...receivedMessages];
 
         combinedMessages.sort((a,b) => {

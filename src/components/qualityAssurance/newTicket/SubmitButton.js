@@ -74,9 +74,6 @@ function SubmitButton(props) {
     }
 
     const handleSubmit = async () => {
-
-        console.log(props.values.screenshot[0]);
-
         if (props.values.screenshot.length <= 0) {
             submit('None', 'None').catch(console.error);
         } else {

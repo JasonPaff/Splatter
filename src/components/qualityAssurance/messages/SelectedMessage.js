@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 import {getChatChains} from "../../../utils/GetChatMessages";
 import * as actionCreators from "../../../store/actionCreators/messagesActionCreator";
 import {apiRoute} from "../../../utils/routeUtility";
+import {gql} from "@apollo/client";
+import {useSubscription} from "@apollo/react-hooks";
 
 const mapStateToProps = (state) => {
     return {
@@ -17,13 +19,28 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
+const sub = gql`subscription {
+    messageCreated {
+        message {
+            message
+        }
+    }
+}`
+
 function SelectedMessage(props) {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
 
     useEffect(() => {
         getMessages().catch(console.error);
-    }, [props.chatId, props.newMessage])
+    }, [props.chatId, props.newMessage]);
+
+    useSubscription(sub, {
+        onSubscriptionData: (res) => {
+            getMessages().catch(console.log);
+            props.onMessageSent(false);
+        }
+    });
 
     const getMessages = async () => {
         if (props.chatId === -1) return;
@@ -62,8 +79,7 @@ function SelectedMessage(props) {
             })
         };
 
-        const request = await fetch(`${apiRoute}/graphql`, headers);
-        const response = await request.json();
+        await fetch(`${apiRoute}/graphql`, headers);
         setMessage('');
         props.onMessageSent(true);
     }

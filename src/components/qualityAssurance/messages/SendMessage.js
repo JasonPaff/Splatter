@@ -54,8 +54,7 @@ function SendMessage(props) {
             })
         };
 
-        const request = await fetch(`${apiRoute}/graphql`, headers);
-        const response = await request.json();
+        await fetch(`${apiRoute}/graphql`, headers);
 
         setSubject('');
         setMessage('');

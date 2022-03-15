@@ -58,7 +58,7 @@ function OpenTicketInfoRows(props) {
             })
         };
 
-        const request = await fetch(`${apiRoute}/graphql`, headers);
+        await fetch(`${apiRoute}/graphql`, headers);
         props.onTicketStatusChange(true);
     }
 
@@ -90,7 +90,7 @@ function OpenTicketInfoRows(props) {
             })
         };
 
-        const request = await fetch(`${apiRoute}/graphql`, headers);
+        await fetch(`${apiRoute}/graphql`, headers);
         props.onTicketStatusChange(true);
     }
 
