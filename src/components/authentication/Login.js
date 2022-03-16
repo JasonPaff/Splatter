@@ -15,7 +15,7 @@ export default function LoginButton() {
     return (
         <div className="flex justify-center w-full">
             <div className="flex flex-col w-96 ">
-                <div className="flex flex-col justify-centermb-10 mt-10">
+                <div className="flex flex-col justify-center mb-10 mt-10">
                     <h1>Welcome to Splatter!</h1>
 
                     <p className="mt-4">

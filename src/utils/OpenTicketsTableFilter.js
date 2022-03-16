@@ -19,7 +19,12 @@
 
     if (priority !== 'All') {
         tickets = tickets.filter((ticket) => {
-            return ticket.priority === priority;
+            if (ticket.priority === 0 && priority === '0 - Wishlist') return true;
+            else if (ticket.priority === 1 && priority === '1 - Eventual') return true;
+            else if (ticket.priority === 2 && priority === '2 - Soonish') return true;
+            else if (ticket.priority === 3 && priority === '3 - Normal') return true;
+            else if (ticket.priority === 4 && priority === '4 - Important') return true;
+            else return ticket.priority === 5 && priority === '5 - Immediate';
         });
     }
 

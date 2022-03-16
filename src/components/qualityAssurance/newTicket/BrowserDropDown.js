@@ -2,8 +2,8 @@
 import {connect} from 'react-redux';
 import {Listbox, Transition} from '@headlessui/react'
 import {ArrowSmDownIcon, CheckIcon} from '@heroicons/react/solid'
-import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import classNameJoiner from "../../../utils/ClassNameJoiner";
+import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import {browserOptions} from "../../../store/data/newTicketsData";
 
 const mapDispatchToProps = (dispatch) => {

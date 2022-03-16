@@ -11,32 +11,32 @@ const initialState = {
 
 const filterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_PRODUCT:
+        case actionTypes.SET_PRODUCT_FILTER:
             return {
                 ...state,
                 product: action.payload
             }
-            case actionTypes.SET_BROWSER:
+            case actionTypes.SET_BROWSER_FILTER:
             return {
                 ...state,
                 browser: action.payload
             }
-            case actionTypes.SET_SEVERITY:
+            case actionTypes.SET_SEVERITY_FILTER:
             return {
                 ...state,
                 severity: action.payload
             }
-            case actionTypes.SET_PRIORITY:
+            case actionTypes.SET_PRIORITY_FILTER:
             return {
                 ...state,
                 priority: action.payload
             }
-            case actionTypes.SET_TYPE:
+            case actionTypes.SET_TYPE_FILTER:
             return {
                 ...state,
                 type: action.payload
             }
-            case actionTypes.SET_STATUS:
+            case actionTypes.SET_STATUS_FILTER:
             return {
                 ...state,
                 status: action.payload

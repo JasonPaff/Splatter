@@ -1,5 +1,4 @@
 ﻿import {useEffect, useState} from "react";
-import {getTickets} from "../../../utils/GetTickets";
 import PriorityPieChart from "./PriorityPieChart";
 import SeverityPieChart from "./SeverityPieChart";
 import ErrorTypePieChart from "./ErrorTypePieChart";
@@ -13,6 +12,7 @@ import PriorityBarChart from "./priorityBarChart";
 import SeverityBarChart from "./severityBarChart";
 import BrowserBarChart from "./BrowserBarChart";
 import ErrorTypeBarChart from "./ErrorTypeBarChart";
+import {getAllSupportTickets} from "../../../utils/getAllSupportTickets";
 
 const mapStateToProps = (state) => {
     return {
@@ -27,7 +27,7 @@ function StatTicketInfo(props) {
     const getAllTickets = async () => {
         let filteredTickets = []
         if (props.role === 'customer') {
-            filteredTickets = await getTickets(props.token, props.user).catch(console.error);
+            filteredTickets = await getAllSupportTickets(props.token, props.user).catch(console.error);
         }
         else if (props.role === 'staff') {
             filteredTickets = await getAssignedAndClosedTickets(props.token, props.user).catch(console.error);
@@ -46,8 +46,8 @@ function StatTicketInfo(props) {
     return (
         <div className="flex flex-row">
             {hasTickets && (
-                <div className="grid grid-cols-1 grid-rows-2">
-                    <div className="flex flex-col sm:flex-row flex-wrap ml-10 mt-20">
+                <div className="grid grid-cols-1">
+                    <div className="flex flex-col sm:flex-row flex-wrap ml-5 mt-5 mb-10">
                         <div className="flex flex-col items-center">
                             <h1>Priority</h1>
                             <PriorityPieChart tickets={tickets}/>
@@ -69,7 +69,7 @@ function StatTicketInfo(props) {
                             <BrowserPieChart tickets={tickets}/>
                         </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row flex-wrap ml-10 mt-20">
+                    <div className="flex flex-col sm:flex-row flex-wrap">
                         <div className="flex flex-col items-center">
                             <h1>Product</h1>
                             <ProductBarChart tickets={tickets}/>

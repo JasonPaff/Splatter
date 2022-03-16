@@ -20,11 +20,28 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         role: state.roleReducer.role,
-        location: state.navReducer.location
+        location: state.navReducer.location,
+        product: state.filterReducer.product,
+        browser: state.filterReducer.browser,
+        severity: state.filterReducer.severity,
+        priority: state.filterReducer.priority,
+        type: state.filterReducer.type,
+        status: state.filterReducer.status
     }
 }
 
+
 function OpenTicketFilterBar(props) {
+
+    function resetFilters() {
+            props.onProductChange('All');
+            props.onBrowserChange('All');
+            props.onSeverityChange('All');
+            props.onPriorityChange('All');
+            props.onTypeChange('All');
+            props.onStatusChange('All');
+    }
+
     return (
         <div className="flex flex-wrap">
             <div className="mr-2 mb-2">
@@ -34,7 +51,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="product"
                     name="product"
-                    defaultValue="All"
+                    value={props.product}
                     onChange={(e) => props.onProductChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -52,7 +69,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="browser"
                     name="browser"
-                    defaultValue="All"
+                    value={props.browser}
                     onChange={(e) => props.onBrowserChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -71,7 +88,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="severity"
                     name="severity"
-                    defaultValue="All"
+                    value={props.severity}
                     onChange={(e) => props.onSeverityChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -92,7 +109,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="priority"
                     name="priority"
-                    defaultValue="All"
+                    value={props.priority}
                     onChange={(e) => props.onPriorityChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -113,7 +130,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="type"
                     name="type"
-                    defaultValue="All"
+                    value={props.type}
                     onChange={(e) => props.onTypeChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -135,7 +152,7 @@ function OpenTicketFilterBar(props) {
                 <select
                     id="status"
                     name="status"
-                    defaultValue="All"
+                    value={props.status}
                     onChange={(e) => props.onStatusChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
@@ -146,6 +163,18 @@ function OpenTicketFilterBar(props) {
                     <option>{statusOptions[2]}</option>
                 </select>
             </div>)}
+            <div className="mr-2 mb-2">
+                <button
+                    type="button"
+                    onClick={() => resetFilters() }
+                    className="inline-flex items-center justify-center rounded-md border border-transparent
+                            bg-sky-500 px-4 py-2 text-sm font-medium text-white shadow-sm mt-6
+                            hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500
+                            focus:ring-offset-2 sm:w-auto z-3"
+                >
+                    Reset
+                </button>
+            </div>
         </div>
     );
 }
