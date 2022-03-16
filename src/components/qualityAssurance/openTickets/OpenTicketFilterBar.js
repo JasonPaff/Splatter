@@ -3,8 +3,20 @@ import {browserOptions} from "../../../store/data/newTicketsData";
 import {priorityOptions} from "../../../store/data/newTicketsData";
 import {severityOptions} from "../../../store/data/newTicketsData";
 import {reportTypes} from "../../../store/data/newTicketsData";
+import {connect} from "react-redux";
+import * as actionCreators from "../../../store/actionCreators/filterActionCreator";
 
-export default function OpenTicketFilterBar() {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onProductChange: (product) => dispatch(actionCreators.setProduct(product)),
+        onBrowserChange: (browser) => dispatch(actionCreators.setBrowser(browser)),
+        onSeverityChange: (severity) => dispatch(actionCreators.setSeverity(severity)),
+        onPriorityChange: (priority) => dispatch(actionCreators.setPriority(priority)),
+        onTypeChange: (type) => dispatch(actionCreators.setType(type)),
+    }
+}
+
+function OpenTicketFilterBar(props) {
     return (
         <div className="flex flex-wrap">
             <div className="mr-2 mb-2">
@@ -14,9 +26,10 @@ export default function OpenTicketFilterBar() {
                 <select
                     id="product"
                     name="product"
+                    defaultValue="All"
+                    onChange={(e) => props.onProductChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
-                    defaultValue="All"
                 >
                     <option>All</option>
                     <option>{productOptions[0]}</option>
@@ -31,9 +44,10 @@ export default function OpenTicketFilterBar() {
                 <select
                     id="browser"
                     name="browser"
+                    defaultValue="All"
+                    onChange={(e) => props.onBrowserChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
-                    defaultValue="All"
                 >
                     <option>All</option>
                     <option>{browserOptions[0]}</option>
@@ -49,9 +63,10 @@ export default function OpenTicketFilterBar() {
                 <select
                     id="severity"
                     name="severity"
+                    defaultValue="All"
+                    onChange={(e) => props.onSeverityChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
-                    defaultValue="All"
                 >
                     <option>All</option>
                     <option>{severityOptions[0].severity}</option>
@@ -69,9 +84,10 @@ export default function OpenTicketFilterBar() {
                 <select
                     id="priority"
                     name="priority"
+                    defaultValue="All"
+                    onChange={(e) => props.onPriorityChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
-                    defaultValue="All"
                 >
                     <option>All</option>
                     <option>{priorityOptions[0].priority}</option>
@@ -89,9 +105,10 @@ export default function OpenTicketFilterBar() {
                 <select
                     id="type"
                     name="type"
+                    defaultValue="All"
+                    onChange={(e) => props.onTypeChange(e.target.value)}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
                         focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
-                    defaultValue="All"
                 >
                     <option>All</option>
                     <option>{reportTypes[0]}</option>
@@ -104,5 +121,6 @@ export default function OpenTicketFilterBar() {
             </div>
         </div>
     );
-
 }
+
+export default connect(null, mapDispatchToProps)(OpenTicketFilterBar);

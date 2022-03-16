@@ -702,6 +702,10 @@ select {
   z-index: 10;
 }
 
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
+
 .float-right {
   float: right;
 }
@@ -789,6 +793,10 @@ select {
   margin-top: 2rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mr-8 {
   margin-right: 2rem;
 }
@@ -799,10 +807,6 @@ select {
 
 .ml-2\.5 {
   margin-left: 0.625rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
 }
 
 .ml-0\.5 {
@@ -893,8 +897,8 @@ select {
   height: 0.5rem;
 }
 
-.h-96 {
-  height: 24rem;
+.h-auto {
+  height: auto;
 }
 
 .min-h-full {
@@ -967,6 +971,10 @@ select {
 
 .w-2 {
   width: 0.5rem;
+}
+
+.w-4\/5 {
+  width: 80%;
 }
 
 .min-w-full {
@@ -1179,10 +1187,6 @@ select {
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .overflow-y-auto {
@@ -1994,6 +1998,10 @@ select {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
+  .sm\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -2052,11 +2060,6 @@ select {
 
   .md\:rounded-lg {
     border-radius: 0.5rem;
-  }
-
-  .md\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }
 

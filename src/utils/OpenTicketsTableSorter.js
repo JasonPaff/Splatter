@@ -1,5 +1,5 @@
 ﻿export default function openTicketsTableSorter (tickets, selectedSort, isSortAscending) {
-    const sorted = tickets.sort((a,b ) => {
+    return tickets.sort((a,b ) => {
         switch(selectedSort) {
             case 'Title':
                 if (isSortAscending) {
@@ -149,6 +149,4 @@
                 return 0;
         }
     });
-
-    return sorted;
 }

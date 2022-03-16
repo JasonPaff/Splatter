@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {useAuth0} from "@auth0/auth0-react";
 import * as actionCreators from "../../../store/actionCreators/newTicketActionCreator";
 import {apiRoute} from "../../../utils/routeUtility";
+import * as otherActionCreators from "../../../store/actionCreators/openTicketActionCreator";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onReset: () => dispatch(actionCreators.resetValues())
+        onReset: () => dispatch(actionCreators.resetValues()),
+        onTicketStatusChange: (value) => dispatch(otherActionCreators.setReloadTickets(value))
     };
 }
 
@@ -71,6 +73,7 @@ function SubmitButton(props) {
         const response = await request.json();
         alert(`Ticket Created!\n\nTicket ID: ${response.data.createTicket.id}`);
         props.onReset();
+        props.onTicketStatusChange(true);
     }
 
     const handleSubmit = async () => {

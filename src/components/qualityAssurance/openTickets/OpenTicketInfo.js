@@ -5,11 +5,17 @@ import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import openTicketsTableSorter from "../../../utils/OpenTicketsTableSorter";
 import OpenTicketFilterBar from "./OpenTicketFilterBar";
+import openTicketsTableFilter from "../../../utils/OpenTicketsTableFilter";
 
 const mapStateToProps = (state) => {
     return {
         selectedSort: state.openTicketReducer.selectedSort,
-        isSortAscending: state.openTicketReducer.isSortAscending
+        isSortAscending: state.openTicketReducer.isSortAscending,
+        product: state.filterReducer.product,
+        browser: state.filterReducer.browser,
+        severity: state.filterReducer.severity,
+        priority: state.filterReducer.priority,
+        type: state.filterReducer.type
     }
 }
 
@@ -17,10 +23,12 @@ function OpenTicketInfo(props) {
     const [sortedTickets, setSortedTickets] = useState(props.tickets);
 
     useEffect(() => {
-        const ticks = [...props.tickets];
-        openTicketsTableSorter(ticks, props.selectedSort, props.isSortAscending);
+        let ticks = [...props.tickets];
+        ticks = openTicketsTableSorter(ticks, props.selectedSort, props.isSortAscending);
+        ticks = openTicketsTableFilter(ticks, props.product, props.browser, props.severity, props.priority, props.type);
         setSortedTickets(ticks);
-    }, [props.tickets, props.selectedSort, props.isSortAscending]);
+    }, [props.tickets, props.selectedSort, props.isSortAscending,
+        props.product, props.browser,props.severity, props.priority, props.type]);
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">

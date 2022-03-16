@@ -62,7 +62,7 @@ function SendMessage(props) {
     }
 
     return (
-        <div className="flex flex-col px-4 pt-4 pb-8 justify-center">
+        <div className="flex flex-col pt-4 pb-8 justify-center">
             <span className="ml-1">New Message</span>
             <input
                 type="text"

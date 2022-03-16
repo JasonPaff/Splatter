@@ -20,13 +20,6 @@ export const setTicketInfoModalIsShowing = (isShowing) => {
     };
 }
 
-export const setSelectedFilter = (filter) => {
-    return {
-        type: actionTypes.SET_SELECTED_FILTER,
-        payload: filter
-    };
-}
-
 export const setReloadTickets = (value) => {
     return {
         type: actionTypes.SET_RELOAD_TICKETS,
