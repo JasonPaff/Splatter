@@ -76,6 +76,18 @@ function ProfileDropDown(props) {
                     <Menu.Item>
                         {({active}) => (
                             <a
+                                onClick={() => props.setLocation('help')}
+                                className={classNameJoiner(active ? 'bg-gray-300'
+                                    : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
+                            >
+                                <CogIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
+                                Help
+                            </a>
+                        )}
+                    </Menu.Item>
+                    <Menu.Item>
+                        {({active}) => (
+                            <a
                                 onClick={() => logout({returnTo: window.location.origin})}
                                 className={classNameJoiner(active ? 'bg-gray-300'
                                     : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}

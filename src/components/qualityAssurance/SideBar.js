@@ -29,7 +29,7 @@ function SideBar(props) {
                     <div className="relative z-0 flex-shrink-0 flex h-16
                         border-b border-gray-200 lg:border-none">
                         <SideBarMobileHamburgerButton/>
-                        <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+                        <div className="flex-1 px-4 flex justify-between">
                             <div className="flex-1 flex"/>
                             <div className="ml-4 flex items-center md:ml-6">
                                 <ProfileDropDown/>

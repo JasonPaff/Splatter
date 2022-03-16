@@ -1,4 +1,4 @@
-﻿export default function openTicketsTableFilter(tickets, product, browser, severity, priority, type) {
+﻿export default function openTicketsTableFilter(tickets, product, browser, severity, priority, type, status) {
     if (product !== 'All') {
         tickets = tickets.filter((ticket) => {
             return ticket.product === product;
@@ -26,6 +26,12 @@
     if (type !== 'All') {
         tickets = tickets.filter((ticket) => {
             return ticket.type === type;
+        });
+    }
+
+    if (status !== 'All') {
+        tickets = tickets.filter((ticket) => {
+            return ticket.status === status;
         });
     }
 

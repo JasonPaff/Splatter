@@ -1,4 +1,4 @@
-﻿import {productOptions} from "../../../store/data/newTicketsData";
+﻿import {productOptions, statusOptions} from "../../../store/data/newTicketsData";
 import {browserOptions} from "../../../store/data/newTicketsData";
 import {priorityOptions} from "../../../store/data/newTicketsData";
 import {severityOptions} from "../../../store/data/newTicketsData";
@@ -13,6 +13,14 @@ const mapDispatchToProps = (dispatch) => {
         onSeverityChange: (severity) => dispatch(actionCreators.setSeverity(severity)),
         onPriorityChange: (priority) => dispatch(actionCreators.setPriority(priority)),
         onTypeChange: (type) => dispatch(actionCreators.setType(type)),
+        onStatusChange: (status) => dispatch(actionCreators.setStatus(status)),
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        role: state.roleReducer.role,
+        location: state.navReducer.location
     }
 }
 
@@ -119,8 +127,27 @@ function OpenTicketFilterBar(props) {
                     <option>{reportTypes[5]}</option>
                 </select>
             </div>
+            {(props.location !== 'closedTickets') && (
+            <div className="mr-2 mb-2">
+                <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+                    Status
+                </label>
+                <select
+                    id="status"
+                    name="status"
+                    defaultValue="All"
+                    onChange={(e) => props.onStatusChange(e.target.value)}
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none
+                        focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
+                >
+                    <option>All</option>
+                    <option>{statusOptions[0]}</option>
+                    <option>{statusOptions[1]}</option>
+                    <option>{statusOptions[2]}</option>
+                </select>
+            </div>)}
         </div>
     );
 }
 
-export default connect(null, mapDispatchToProps)(OpenTicketFilterBar);
+export default connect(mapStateToProps, mapDispatchToProps)(OpenTicketFilterBar);

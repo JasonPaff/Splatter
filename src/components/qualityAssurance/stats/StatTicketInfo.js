@@ -5,9 +5,14 @@ import SeverityPieChart from "./SeverityPieChart";
 import ErrorTypePieChart from "./ErrorTypePieChart";
 import ProductPieChart from "./ProductPieChart";
 import BrowserPieChart from "./BrowserPieChart";
-import {getAssignedAndClosedTickets, getAssignedTickets} from "../../../utils/GetAssignedTickets";
+import {getAssignedAndClosedTickets} from "../../../utils/GetAssignedTickets";
 import {connect} from "react-redux";
 import {getAllAdminTickets} from "../../../utils/getAllAdminTickets";
+import ProductBarChart from "./ProductBarChart";
+import PriorityBarChart from "./priorityBarChart";
+import SeverityBarChart from "./severityBarChart";
+import BrowserBarChart from "./BrowserBarChart";
+import ErrorTypeBarChart from "./ErrorTypeBarChart";
 
 const mapStateToProps = (state) => {
     return {
@@ -41,7 +46,7 @@ function StatTicketInfo(props) {
     return (
         <div className="flex flex-row">
             {hasTickets && (
-                <>
+                <div className="grid grid-cols-1 grid-rows-2">
                     <div className="flex flex-col sm:flex-row flex-wrap ml-10 mt-20">
                         <div className="flex flex-col items-center">
                             <h1>Priority</h1>
@@ -64,7 +69,29 @@ function StatTicketInfo(props) {
                             <BrowserPieChart tickets={tickets}/>
                         </div>
                     </div>
-                </>)}
+                    <div className="flex flex-col sm:flex-row flex-wrap ml-10 mt-20">
+                        <div className="flex flex-col items-center">
+                            <h1>Product</h1>
+                            <ProductBarChart tickets={tickets}/>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <h1>Priority</h1>
+                            <PriorityBarChart tickets={tickets}/>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <h1>Severity</h1>
+                            <SeverityBarChart tickets={tickets}/>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <h1>Browser</h1>
+                            <BrowserBarChart tickets={tickets}/>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <h1>Error Type</h1>
+                            <ErrorTypeBarChart tickets={tickets}/>
+                        </div>
+                    </div>
+                </div>)}
         </div>
     );
 }

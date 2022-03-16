@@ -38,3 +38,9 @@ export const browserOptions = [
     'Mozilla Firefox',
     'Apple Safari'
 ];
+
+export const statusOptions = [
+    'created',
+    'assigned',
+    'closed',
+]

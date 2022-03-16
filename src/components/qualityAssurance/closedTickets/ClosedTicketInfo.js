@@ -15,20 +15,21 @@ const mapStateToProps = (state) => {
         browser: state.filterReducer.browser,
         severity: state.filterReducer.severity,
         priority: state.filterReducer.priority,
-        type: state.filterReducer.type
+        type: state.filterReducer.type,
+        status: state.filterReducer.status
     }
 }
 
 function ClosedTicketInfo(props) {
-    const [sortedTickets, setSortedTickets] = useState(props.tickets);
+    const [sortedTickets, setSortedTickets] = useState([]);
 
     useEffect(() => {
         let ticks = [...props.tickets];
         ticks = openTicketsTableSorter(ticks, props.selectedSort, props.isSortAscending);
-        ticks = openTicketsTableFilter(ticks, props.product, props.browser, props.severity, props.priority, props.type);
+        ticks = openTicketsTableFilter(ticks, props.product, props.browser, props.severity, props.priority, props.type, props.status);
         setSortedTickets(ticks);
     }, [props.tickets, props.selectedSort, props.isSortAscending,
-        props.product, props.browser,props.severity, props.priority, props.type]);
+        props.product, props.browser,props.severity, props.priority, props.type, props.status]);
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">

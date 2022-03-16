@@ -1,4 +1,4 @@
-﻿import * as actionTypes from "../actions/newTicketActionTypes";
+﻿import * as actionTypes from "../actions/filterActionTypes";
 
 export const setProduct = (product) => {
     return {
@@ -32,5 +32,12 @@ export const setType = (type) => {
     return {
         type: actionTypes.SET_TYPE,
         payload: type
+    };
+}
+
+export const setStatus = (status) => {
+    return {
+        type: actionTypes.SET_STATUS,
+        payload: status
     };
 }

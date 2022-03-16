@@ -52,6 +52,16 @@ const resolvers = {
             Ticket.findByIdAndUpdate(
                 id, {status: 'closed'}, () => {});
         },
+        deleteTicket: async (parent, {id}) => {
+            const ticket = await Ticket.findOne(
+                {_id: id}
+            );
+            await Ticket.findByIdAndRemove(
+                id, () => {});
+            await pubsub.publish("TICKET_DELETED", {
+               ticketDeleted: {ticket}
+            });
+        },
         openTicket: (parent, {id}) => {
             Ticket.findByIdAndUpdate(
                 id, {status: 'assigned'}, () => {});
@@ -93,6 +103,9 @@ const resolvers = {
         },
         ticketAssigned: {
             subscribe: async () => await pubsub.asyncIterator("TICKET_ASSIGNED")
+        },
+        ticketDeleted: {
+            subscribe: async () => await pubsub.asyncIterator("TICKET_DELETED")
         }
     }
 };

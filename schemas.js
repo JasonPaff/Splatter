@@ -74,6 +74,10 @@ const schema = gql`
         ticket: Ticket
     }
     
+    type TicketDeleted {
+        ticket: Ticket
+    }
+    
     type Query {
         getTicket(id: ID!): Ticket
         getAllTickets(email: String) : [Ticket]
@@ -87,6 +91,7 @@ const schema = gql`
     type Mutation {
         createTicket(input: TicketInput): Ticket
         closeTicket(id: ID!) : Ticket
+        deleteTicket(id: ID!) : Ticket
         openTicket(id: ID!) : Ticket
         assignTicket(id: ID!, email: String) : Ticket
         createMessage(input: MessageInput): Message
@@ -95,6 +100,7 @@ const schema = gql`
     type Subscription {
         messageCreated: MessageCreated
         ticketCreated: TicketCreated
+        ticketDeleted: TicketDeleted
         ticketAssigned: TicketAssigned
     }    
     

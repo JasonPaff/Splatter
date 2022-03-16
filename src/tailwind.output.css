@@ -2073,11 +2073,6 @@ select {
     bottom: 0px;
   }
 
-  .lg\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .lg\:-mx-8 {
     margin-left: -2rem;
     margin-right: -2rem;
@@ -2101,10 +2096,6 @@ select {
 
   .lg\:w-64 {
     width: 16rem;
-  }
-
-  .lg\:max-w-6xl {
-    max-width: 72rem;
   }
 
   .lg\:flex-col {

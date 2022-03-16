@@ -1,11 +1,12 @@
-﻿import * as actionTypes from "../actions/newTicketActionTypes";
+﻿import * as actionTypes from "../actions/filterActionTypes";
 
 const initialState = {
     product: 'All',
     browser: 'All',
     severity: 'All',
     priority: 'All',
-    type: 'All'
+    type: 'All',
+    status: 'All'
 }
 
 const filterReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const filterReducer = (state = initialState, action) => {
             return {
                 ...state,
                 type: action.payload
+            }
+            case actionTypes.SET_STATUS:
+            return {
+                ...state,
+                status: action.payload
             }
         default:
             return state;
