@@ -53,12 +53,5 @@ startUp().catch(console.error);
 database_connection.on("error", console.error.bind(console, "connection error: "));
 database_connection.once("open", function () { console.log("MongoDB Connected successfully") });
 
-httpServer.listen({port: port}, () => { console.log(`Apollo Server on http://localhost:${port}/graphql`)});
-
-// httpServer.listen({port: port}, () => {
-//     console.log(`Apollo Server on http://localhost.com:4000/graphql`);
-// });
-
-httpServer.listen({port: process.env.PORT}, () => {
-    console.log(`Apollo Server on https://splatter-app.herokuapp.com/graphql`);
-});
+//httpServer.listen({port: port}, () => { console.log(`Apollo Server on http://localhost:${port}/graphql`)});
+httpServer.listen({port: process.env.PORT}, () => { console.log(`Apollo Server on https://splatter-app.herokuapp.com/graphql`)});
