@@ -21,14 +21,9 @@ function OpenTicketInfoTableHeader(props) {
                     <h1 className="text-xl font-semibold text-gray-900">Open Tickets</h1>)}
                 {props.role === 'admin' && (
                     <h1 className="text-xl font-semibold text-gray-900">All Tickets</h1>)}
-                {(props.role === 'customer' || props.role === 'staff') && (
                 <p className="mt-2 text-sm text-gray-700">
-                    Some subtext about open tickets should go here
-                </p>)}
-                {props.role === 'admin'  && (
-                    <p className="mt-2 text-sm text-gray-700">
-                        Some subtext about the tickets should go here
-                    </p>)}
+                    Use the filter and sorting options to fine tune the display
+                </p>
             </div>
             <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                 {props.role === 'customer' && (

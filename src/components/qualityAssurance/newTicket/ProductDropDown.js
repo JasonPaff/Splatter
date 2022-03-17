@@ -33,7 +33,7 @@ function ProductDropDown(props) {
                             <div className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
                                 <div className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
                                             border-transparent rounded-l-md shadow-sm text-white">
-                                    <p className="ml-2.5 text-sm font-medium">{props.product}</p>
+                                    <p className="ml-2.5 text-sm font-medium select-none">{props.product}</p>
                                 </div>
                                 <Listbox.Button
                                     className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none

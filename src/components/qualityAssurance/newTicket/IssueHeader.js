@@ -16,7 +16,7 @@ function IssueHeader(props) {
                     Create a new ticket
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                    Some kind of subtext about ticket creating.
+                    Refer to the help page for an example ticket.
                 </p>
             </div>
         </div>

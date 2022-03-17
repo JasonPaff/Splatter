@@ -1,4 +1,4 @@
-﻿import TicketInfoTableHeader from "./OpenTicketInfoTableHeader";
+﻿import OpenTicketInfoTableHeader from "./OpenTicketInfoTableHeader";
 import OpenTicketInfoColumnHeaders from "./OpenTicketInfoColumnHeaders";
 import OpenTicketInfoRows from "./OpenTicketInfoRows";
 import React, {useEffect, useState} from "react";
@@ -33,7 +33,7 @@ function OpenTicketInfo(props) {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
-            <TicketInfoTableHeader/>
+            <OpenTicketInfoTableHeader/>
             <div className="mt-8 flex flex-col">
                 <OpenTicketFilterBar/>
                 <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">

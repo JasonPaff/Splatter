@@ -27,13 +27,15 @@ function BrowserDropDown(props) {
             <Listbox value={props.browser} onChange={(e) => props.onSelectChange(e)} id="browser">
                 {({ open }) => (
                 <>
-                    <Listbox.Label className="sr-only">change browser</Listbox.Label>
+                    <Listbox.Label className="sr-only">
+                        change browser list-box
+                    </Listbox.Label>
                     <div className="relative">
                         <div className="inline-flex shadow-sm rounded-md divide-x divide-sky-600">
                             <div className="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-sky-600">
                                 <div className="relative inline-flex items-center bg-sky-500 py-2 pl-3 pr-4 border
                                             border-transparent rounded-l-md shadow-sm text-white">
-                                    <p className="ml-2.5 text-sm font-medium">{props.browser}</p>
+                                    <p className="ml-2.5 text-sm font-medium select-none">{props.browser}</p>
                                 </div>
                                 <Listbox.Button
                                     className="relative inline-flex items-center bg-sky-500 p-2 rounded-l-none
