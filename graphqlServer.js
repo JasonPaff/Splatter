@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const {auth} = require('express-oauth2-jwt-bearer');
 const cors = require("cors");
 const path = require("path");
-const {schema} = require("./schemas");
-const {resolvers} = require("./resolvers");
+const {schema} = require("./graphql/schemas");
+const {resolvers} = require("./graphql/resolvers");
 const http = require('http');
-const {Ticket, Message} = require("./mongoModels");
+const {Ticket, Message} = require("./mongoDB/mongoModels");
 
 require('dotenv').config();
 

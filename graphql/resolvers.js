@@ -1,4 +1,4 @@
-﻿const {Message, Ticket} = require("./mongoModels");
+﻿const {Message, Ticket} = require("../mongoDB/mongoModels");
 const {PubSub} = require('apollo-server');
 const pubsub = new PubSub();
 
