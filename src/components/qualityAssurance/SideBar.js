@@ -1,7 +1,7 @@
 ﻿import NewTicket from "./newTicket/NewTicket.js";
 import OpenTickets from "./openTickets/OpenTickets.js";
-import QASettings from "./QASettings.js";
-import QASupport from "./QASupport.js";
+import Settings from "./Settings.js";
+import Support from "./Support.js";
 import SideBarMobileHamburger from "./SideBarMobileMenu.js";
 import SideBarMobileHamburgerButton from "./SideBarMobileHamburgerButton.js";
 import {connect} from "react-redux";
@@ -44,8 +44,8 @@ function SideBar(props) {
                         {props.location === 'openTickets' && (<OpenTickets/>)}
                         {props.location === 'closedTickets' && (<ClosedTickets/>)}
                         {props.location === 'messages' && (<Messages/>)}
-                        {props.location === 'settings' && (<QASettings/>)}
-                        {props.location === 'help' && (<QASupport/>)}
+                        {props.location === 'settings' && (<Settings/>)}
+                        {props.location === 'help' && (<Support/>)}
                     </main>
                 </div>
             </div>

@@ -1,11 +1,10 @@
 ﻿import {
-    LockClosedIcon,
-    LockOpenIcon,
-    PresentationChartLineIcon,
+    ArchiveIcon,
+    PresentationChartLineIcon, TicketIcon,
 } from "@heroicons/react/solid";
 
 export const primaryNavigations = [
     {name: 'Ticket Stats', location: 'stats', icon: PresentationChartLineIcon, current: true},
-    {name: 'View Tickets', location: 'openTickets', icon: LockOpenIcon, current: false},
-    {name: 'Assign Tickets', location: 'closedTickets', icon: LockClosedIcon, current: false},
+    {name: 'View Tickets', location: 'openTickets', icon: TicketIcon, current: false},
+    {name: 'Assign Tickets', location: 'closedTickets', icon: ArchiveIcon, current: false}
 ];

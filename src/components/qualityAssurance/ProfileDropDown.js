@@ -1,5 +1,5 @@
 ﻿import {Menu, Transition} from "@headlessui/react";
-import {ChatAlt2Icon, ChevronDownIcon, LogoutIcon} from "@heroicons/react/solid";
+import {ChatAlt2Icon, ChevronDownIcon, LogoutIcon, SupportIcon} from "@heroicons/react/solid";
 import {Fragment} from "react";
 import classNameJoiner from "../../utils/ClassNameJoiner";
 import {useAuth0} from "@auth0/auth0-react";
@@ -80,7 +80,7 @@ function ProfileDropDown(props) {
                                 className={classNameJoiner(active ? 'bg-gray-300'
                                     : '', 'block flex items-center px-4 py-2 text-sm text-gray-700 select-none')}
                             >
-                                <CogIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
+                                <SupportIcon className="mr-2 flex-shrink-0 h-6 w-6"/>
                                 Help
                             </a>
                         )}

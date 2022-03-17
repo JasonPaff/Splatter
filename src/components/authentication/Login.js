@@ -25,6 +25,16 @@ export default function LoginButton() {
                     </p>
                 </div>
                 <div className="flex flex-col">
+                    <div className="flex flex-col items-center">
+                        <h1 className="text-sky-700">GUEST ACCOUNTS</h1>
+                        <div className="flex flex-row">
+                            <h1 className="text-sky-600">support@fake.com</h1><p>- this one is best</p>
+                        </div>
+                        <h1 className="text-sky-600">developer@fake.com</h1>
+                        <h1 className="text-sky-600">admin@fake.com</h1>
+                        <h1 className="ml-6">The password for all 3 accounts is <span
+                            className="text-sky-600">Password1!</span></h1>
+                    </div>
                     <button
                         onClick={() => loginWithPopup({auto_login: false})}
                         className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent
@@ -33,19 +43,21 @@ export default function LoginButton() {
                         focus:ring-sky-500">
                         Log In
                     </button>
-                    <h1 className="mb-2 ml-6">The password for all 3 accounts is <span
-                        className="text-sky-600">Password1!</span></h1>
+
                     <h1 className="mb-2 mt-5">
-                       Quality Assurance Login: <span className="text-sky-600">support@fake.com</span></h1>
+                        <span className="text-sky-600">Quality Assurance</span></h1>
                     <p>The quality assurance test account will allow you to create new tickets and view previously
                         submitted tickets. You can also access the internal messaging system and view charts/graphs.
                     </p>
-                    <h1 className="mb-2 mt-5">Developer Login: <span className="text-sky-600">developer@fake.com</span></h1>
-                    <p>The developer test account will allow you to view tickets that have been assigned to you by an admin.
+                    <h1 className="mb-2 mt-5">
+                    <span className="text-sky-600">Developer Account</span></h1>
+                    <p>The developer test account will allow you to view tickets that have been assigned to you by an
+                        admin.
                         You can also access the internal messaging system and view charts/graphs.
                     </p>
-                    <h1 className="mb-2 mt-5">Admin Login: <span className="text-sky-600">admin@fake.com</span></h1>
-                    <p>The admin test account will allow you to view all tickets in the system and assign new tickets to a developer.
+                    <h1 className="mb-2 mt-5"><span className="text-sky-600">Admin Account</span></h1>
+                    <p>The admin test account will allow you to view all tickets in the system and assign new tickets to
+                        a developer.
                         You can also access the internal messaging system and view charts/graphs.
                     </p>
 
