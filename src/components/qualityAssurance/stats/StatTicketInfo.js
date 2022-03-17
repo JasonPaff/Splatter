@@ -47,7 +47,7 @@ function StatTicketInfo(props) {
                 <div className="flex flex-col justify-center">
                     <div>
                         <div className="flex items-center justify-center">
-                            <h1 className="text-2xl mb-2 text-sky-600">Products</h1>
+                            <h1 className="text-2xl mb-2 text-sky-600">Issues by Product</h1>
                         </div>
                         <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
                             <ProductPieChart tickets={tickets}/>
@@ -56,7 +56,7 @@ function StatTicketInfo(props) {
                     </div>
                     <div>
                         <div className="flex items-center justify-center">
-                            <h1 className="text-2xl mb-2 text-sky-600">Browser</h1>
+                            <h1 className="text-2xl mb-2 text-sky-600">Issues by Browser</h1>
                         </div>
                         <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
                             <BrowserPieChart tickets={tickets}/>
@@ -65,7 +65,7 @@ function StatTicketInfo(props) {
                     </div>
                     <div>
                         <div className="flex items-center justify-center">
-                            <h1 className="text-2xl mb-2 text-sky-600">Priority</h1>
+                            <h1 className="text-2xl mb-2 text-sky-600">Issues by Priority</h1>
                         </div>
                         <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
                             <PriorityPieChart tickets={tickets}/>
@@ -74,7 +74,7 @@ function StatTicketInfo(props) {
                     </div>
                     <div>
                         <div className="flex items-center justify-center mt-10">
-                            <h1 className="text-2xl mb-2 text-sky-600">Severity</h1>
+                            <h1 className="text-2xl mb-2 text-sky-600">Issues by Severity</h1>
                         </div>
                         <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
                             <SeverityPieChart tickets={tickets}/>
@@ -83,7 +83,7 @@ function StatTicketInfo(props) {
                     </div>
                     <div>
                         <div className="flex items-center justify-center mt-10">
-                            <h1 className="text-2xl mb-2 text-sky-600">Error Type</h1>
+                            <h1 className="text-2xl mb-2 text-sky-600">Issues by Error Type</h1>
                         </div>
                         <div className="flex flex-row flex-wrap justify-center">
                             <ErrorTypePieChart tickets={tickets}/>
