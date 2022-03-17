@@ -9,7 +9,6 @@ const {schema} = require("./graphql/schemas");
 const {resolvers} = require("./graphql/resolvers");
 const http = require('http');
 const {Ticket, Message} = require("./mongoDB/mongoModels");
-const port = 4000;
 const app = express();
 require('dotenv').config();
 
@@ -26,12 +25,8 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(checkJwt);
+app.get('/', (req, res) => {res.sendFile(path.resolve(__dirname, 'build', 'index.html'))});
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
-
-// graphql server
 const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
@@ -53,5 +48,5 @@ startUp().catch(console.error);
 database_connection.on("error", console.error.bind(console, "connection error: "));
 database_connection.once("open", function () { console.log("MongoDB Connected successfully") });
 
-//httpServer.listen({port: port}, () => { console.log(`Apollo Server on http://localhost:${port}/graphql`)});
+//httpServer.listen({port: 4000}, () => { console.log(`Apollo Server on http://localhost:4000/graphql`)});
 httpServer.listen({port: process.env.PORT}, () => { console.log(`Apollo Server on https://splatter-app.herokuapp.com/graphql`)});
