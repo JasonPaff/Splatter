@@ -28,11 +28,9 @@ function StatTicketInfo(props) {
         let filteredTickets = []
         if (props.role === 'customer') {
             filteredTickets = await getAllSupportTickets(props.token, props.user).catch(console.error);
-        }
-        else if (props.role === 'staff') {
+        } else if (props.role === 'staff') {
             filteredTickets = await getAssignedAndClosedTickets(props.token, props.user).catch(console.error);
-        }
-        else if (props.role === 'admin') {
+        } else if (props.role === 'admin') {
             filteredTickets = await getAllAdminTickets(props.token, props.user).catch(console.error);
         }
         setTickets(filteredTickets);
@@ -44,50 +42,51 @@ function StatTicketInfo(props) {
     }, [])
 
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-col">
             {hasTickets && (
-                <div className="grid grid-cols-1">
-                    <div className="flex flex-col sm:flex-row flex-wrap ml-5 mt-5 mb-10">
-                        <div className="flex flex-col items-center">
-                            <h1>Priority</h1>
-                            <PriorityPieChart tickets={tickets}/>
+                <div className="flex flex-col justify-center">
+                    <div>
+                        <div className="flex items-center justify-center">
+                            <h1 className="text-2xl mb-2 text-sky-600">Products</h1>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Severity</h1>
-                            <SeverityPieChart tickets={tickets}/>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Issue Type</h1>
-                            <ErrorTypePieChart tickets={tickets}/>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Product</h1>
+                        <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
                             <ProductPieChart tickets={tickets}/>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Browser</h1>
-                            <BrowserPieChart tickets={tickets}/>
-                        </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row flex-wrap">
-                        <div className="flex flex-col items-center">
-                            <h1>Product</h1>
                             <ProductBarChart tickets={tickets}/>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Priority</h1>
-                            <PriorityBarChart tickets={tickets}/>
+                    </div>
+                    <div>
+                        <div className="flex items-center justify-center">
+                            <h1 className="text-2xl mb-2 text-sky-600">Browser</h1>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Severity</h1>
-                            <SeverityBarChart tickets={tickets}/>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Browser</h1>
+                        <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
+                            <BrowserPieChart tickets={tickets}/>
                             <BrowserBarChart tickets={tickets}/>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <h1>Error Type</h1>
+                    </div>
+                    <div>
+                        <div className="flex items-center justify-center">
+                            <h1 className="text-2xl mb-2 text-sky-600">Priority</h1>
+                        </div>
+                        <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
+                            <PriorityPieChart tickets={tickets}/>
+                            <PriorityBarChart tickets={tickets}/>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex items-center justify-center mt-10">
+                            <h1 className="text-2xl mb-2 text-sky-600">Severity</h1>
+                        </div>
+                        <div className="flex flex-row flex-wrap justify-center border-b-2 border-dashed mb-4">
+                            <SeverityPieChart tickets={tickets}/>
+                            <SeverityBarChart tickets={tickets}/>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex items-center justify-center mt-10">
+                            <h1 className="text-2xl mb-2 text-sky-600">Error Type</h1>
+                        </div>
+                        <div className="flex flex-row flex-wrap justify-center">
+                            <ErrorTypePieChart tickets={tickets}/>
                             <ErrorTypeBarChart tickets={tickets}/>
                         </div>
                     </div>
