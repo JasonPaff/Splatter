@@ -11,6 +11,10 @@
     animation: spin 2s infinite linear;
 }
 
+.filter-green{
+    filter: invert(100%);
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);

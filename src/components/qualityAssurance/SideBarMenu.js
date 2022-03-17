@@ -55,7 +55,7 @@ function SideBarMenu(props) {
             <div className="hidden z-4 lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
                 <div className="flex flex-col flex-grow bg-sky-500 pt-5 pb-4 overflow-y-auto">
                     <div className="flex items-center flex-shrink-0 px-4">
-                        <Logo/><span className="-mt-4 text-2xl">Splatter</span>
+                        <Logo/><span className="-mt-4 text-2xl text-white">Splatter</span>
                     </div>
                     <nav className="mt-5 flex-1 flex flex-col divide-y divide-sky-600 overflow-y-auto"
                          aria-label="Sidebar">

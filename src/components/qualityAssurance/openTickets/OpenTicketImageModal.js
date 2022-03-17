@@ -35,7 +35,7 @@ export default function OpenTicketImageModal(props) {
                             <div
                                 className="relative inline-block align-bottom bg-white rounded-lg px-4 pb-4 pt-4
                                         text-left overflow-hidden shadow-xl transform transition-all sm:my-8
-                                        align-middle w-4/5 sm:p-6">
+                                        align-middle w-1/2 sm:p-6">
                                 <div>
                                     <img
                                         className="w-full h-auto"
