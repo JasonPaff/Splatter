@@ -15,7 +15,7 @@ export default function Support() {
             <HelpDisclosure
                 text="How to correct errors on already submitted tickets"
                 body="Arcu dui vivamus arcu felis bibendum ut tristique et. Arcu non sodales neque
-                        sodales ut etiam. Volutpat lacus laoreet non curabitur gravida arcu ac.
+                        sodales ut etiam. Lacus laoreet non curabitur gravida arcu ac.
                         Ultrices eros in cursus turpis massa. Enim neque volutpat ac tincidunt vitae semper
                         quis lectus. Semper eget duis at tellus at urna condimentum. Ornare massa eget egestas purus.
                         Quam elementum pulvinar etiam non quam lacus. Massa tincidunt nunc pulvinar sapien et.
