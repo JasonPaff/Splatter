@@ -9,7 +9,8 @@ const {schema} = require("./graphql/schemas");
 const {resolvers} = require("./graphql/resolvers");
 const http = require('http');
 const {Ticket, Message} = require("./mongoDB/mongoModels");
-
+const port = 4000;
+const app = express();
 require('dotenv').config();
 
 const checkJwt = auth({
@@ -18,9 +19,6 @@ const checkJwt = auth({
 
 mongoose.connect(process.env.MONGO_DB).catch(console.error);
 const database_connection = mongoose.connection;
-
-const port = 4000;
-const app = express();
 
 app.use(logger('dev'));
 app.use(cors());
@@ -38,16 +36,8 @@ const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
     context: async({ req, connection}) => {
-        if (connection) {
-            return {
-                Message, Ticket
-            }
-        }
-        if (req) {
-            return {
-                Message, Ticket,
-            }
-        }
+        if (connection) { return { Message, Ticket } }
+        if (req) { return { Message, Ticket } }
     }
 });
 
@@ -61,12 +51,12 @@ const httpServer = http.createServer(app);
 startUp().catch(console.error);
 
 database_connection.on("error", console.error.bind(console, "connection error: "));
-database_connection.once("open", function () {
-    console.log("MongoDB Connected successfully");
-});
+database_connection.once("open", function () { console.log("MongoDB Connected successfully") });
+
+httpServer.listen({port: port}, () => { console.log(`Apollo Server on http://localhost:${port}/graphql`)});
 
 // httpServer.listen({port: port}, () => {
-//     console.log(`Apollo Server on http://localhost:${port}/graphql`);
+//     console.log(`Apollo Server on http://localhost.com:4000/graphql`);
 // });
 
 httpServer.listen({port: process.env.PORT}, () => {
