@@ -24,10 +24,10 @@ function IssueTitle(props) {
                     type="text"
                     id="title"
                     value={props.title}
-                    onChange={(e) =>  props.onTitleChange(e.target.value)}
-                    className="shadow-sm focus:ring-sky-500 focus:border-sky-500 block w-full
-                        sm:text-sm border-gray-300 rounded-md caret-sky-500"
                     placeholder="Enter a descriptive issue title"
+                    onChange={(e) =>  props.onTitleChange(e.target.value)}
+                    className="block border-gray-300 focus:border-sky-500 focus:ring-sky-500 w-full text-md sm:text-sm
+                         shadow-sm rounded-md caret-sky-500"
                 />
             </div>
         </>

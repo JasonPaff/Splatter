@@ -30,6 +30,22 @@ const schema = gql`
         sentAt: Date
     }
 
+    type MessageCreated {
+        message: Message
+    }
+
+    type TicketCreated {
+        ticket: Ticket
+    }
+
+    type TicketAssigned {
+        ticket: Ticket
+    }
+    
+    type TicketDeleted {
+        ticket: Ticket
+    }
+
     type Ticket {
         id: ID!
         title: String
@@ -61,23 +77,6 @@ const schema = gql`
         receiver: String
         sentAt: Date
     }
-
-    type MessageCreated {
-        message: Message
-    }
-
-    type TicketCreated {
-        ticket: Ticket
-    }
-
-    type TicketAssigned {
-        ticket: Ticket
-    }
-    
-    type TicketDeleted {
-        ticket: Ticket
-    }
-    
     type Query {
         getTicket(id: ID!): Ticket
         getAllTickets(email: String) : [Ticket]

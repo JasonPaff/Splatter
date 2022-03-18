@@ -89,7 +89,7 @@ function SideBarMobileMenu(props) {
                             </div>
                         </Transition.Child>
                         <div className="flex-shrink-0 flex items-center px-4">
-                            <Logo/>
+                            <Logo/><span className="-mt-4 text-2xl text-white">Splatter</span>
                         </div>
                         <nav className="mt-5 flex-shrink-0 h-full divide-y divide-sky-800 overflow-y-auto"
                              aria-label="Sidebar"

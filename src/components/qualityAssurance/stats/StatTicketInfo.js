@@ -45,7 +45,7 @@ function StatTicketInfo(props) {
         <div className="flex flex-col">
             {hasTickets && (
                 <div className="flex flex-col justify-center">
-                    <h1 className="flex justify-center text-4xl mb-10 text-sky-600 underline">Issues Breakdown</h1>
+                    <h1 className="flex justify-center text-4xl mb-10 text-sky-600 underline">Issues Statistical Breakdown</h1>
                     <div>
                         <div className="flex items-center justify-center">
                             <h1 className="text-2xl mb-2 text-sky-600">Product</h1>
