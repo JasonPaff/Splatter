@@ -1,6 +1,8 @@
 # Splatter
 
 - **Purpose:** 
+- Splatter is an app designed to enable software development teams to easily track and catalogue bugs/issues 
+- during the software development process.
 
 ### Live Link
 
