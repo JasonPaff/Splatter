@@ -1,7 +1,7 @@
 # Splatter
 
-**Purpose:** 
-- Splatter is an app designed to enable software development teams to easily track and catalogue bugs/issues 
+- **Purpose:** 
+Splatter is an app designed to enable software development teams to easily track and catalogue bugs/issues 
 during the software development process.
 
 ### Live Link
@@ -20,3 +20,6 @@ Apollo Server, Auth0, MongoDB, GraphQL, Websockets
 
 ### New Ticket Creation Page
 ![new ticket](newticket.png)
+
+### Ticket View Page
+![ticket view](opentickets.png)
