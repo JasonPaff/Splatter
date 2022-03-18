@@ -18,4 +18,5 @@ React, Html, Css, Redux, Recharts, React-Dropzone, TailwindCSS, HeadlessUI, Hero
 BACK-END
 Apollo Server, Auth0, MongoDB, GraphQL, Websockets
 
- (/
+### New Ticket Creation Page
+![new ticket](newticket.png)
