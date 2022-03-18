@@ -2,7 +2,8 @@
 
 - **Purpose:** 
 Splatter is an app designed to enable software development teams to easily track and catalogue bugs/issues 
-during the software development process.
+during the software development process. Splatter utilizes a roles based authentication & authorization system
+designed to be used by support staff, developers and admins.
 
 ### Live Link
 
