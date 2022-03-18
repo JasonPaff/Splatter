@@ -6,12 +6,10 @@
 
 <https://splatter-app.herokuapp.com//>
 
-### Technology Stack
-
-FRONT-END
+### Front End Stack
 React, Html, Css, Redux, Recharts, React-Dropzone, TailwindCSS, HeadlessUI, HeroIcons
 
-BACK-END
+### Back End Stack
 Apollo Server, Auth0, MongoDB, GraphQL, Websockets
 
 ### Landing Page
