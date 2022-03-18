@@ -1,7 +1,7 @@
 # Splatter
 Issue/Bug Tracker
 
-![landing page](/main page.png)
+![landing page](/mainpage.png)
 
 ## How I worked on this project
 My goal was to simulate a professional work environment. 
